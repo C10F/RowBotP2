@@ -10,9 +10,9 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="72dp"
-        android:layout_marginBottom="276dp"
-        android:layout_marginStart="144dp"
-        android:layout_marginTop="11dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="157dp"
         android:text="You are in guide activity" />
 
     <View
@@ -28,13 +28,22 @@
         android:id="@+id/videoText"
         android:layout_width="403dp"
         android:layout_height="29dp"
+        android:layout_above="@+id/embedVideoPH"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/textView2"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="-276dp"
+        android:layout_marginStart="14dp"
         android:text="INSTRUCTIONAL VIDEO NAME"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/setupPH"
+        android:layout_width="447dp"
+        android:layout_height="251dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="27dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/setupph" />
 
     <ImageView
         android:id="@+id/embedVideoPH"
@@ -76,6 +85,7 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="showTermin"
             android:text="@string/termButton" />
     </LinearLayout>
 

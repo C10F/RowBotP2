@@ -25,7 +25,13 @@ public class Guide extends AppCompatActivity {
 
     public void showVideo(View view){
         ImageView videoPH = findViewById(R.id.embedVideoPH);
+        ImageView setupPH = findViewById(R.id.setupPH);
         TextView videoTxt = findViewById(R.id.videoText);
+        // check for other views showing
+        if (setupShowing) {
+            setupPH.setVisibility(View.GONE);
+            setupShowing = false;
+        }
         // set our video-view and title to be visible on button press
         videoPH.setVisibility(View.VISIBLE);
         videoTxt.setVisibility(View.VISIBLE);
@@ -35,7 +41,9 @@ public class Guide extends AppCompatActivity {
 
     public void showSetup(View view){
         ImageView videoPH = findViewById(R.id.embedVideoPH);
+        ImageView setupPH = findViewById(R.id.setupPH);
         TextView videoTxt = findViewById(R.id.videoText);
+
         // check for other views showing
         if (videoShowing) {
            videoPH.setVisibility(View.GONE);
@@ -43,5 +51,25 @@ public class Guide extends AppCompatActivity {
            videoShowing = false;
         }
         // set our setup guide to be visible on button press
+        setupPH.setVisibility(View.VISIBLE);
+        setupShowing = true;
+    }
+
+    public void showTermin(View view){
+        ImageView videoPH = findViewById(R.id.embedVideoPH);
+        ImageView setupPH = findViewById(R.id.setupPH);
+        TextView videoTxt = findViewById(R.id.videoText);
+
+        // check for other views showing
+        if(videoShowing){
+            videoPH.setVisibility(View.GONE);
+            videoTxt.setVisibility(View.GONE);
+            videoShowing = false;
+        }
+        if(setupShowing){
+            setupPH.setVisibility(View.GONE);
+            setupShowing = false;
+        }
+        // set our terminology infographic to be visible on button press
     }
 }
