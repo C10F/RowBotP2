@@ -7,16 +7,45 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="247dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginStart="486dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/StartButton"
+        android:id="@+id/guideButton"
+        android:layout_width="179dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="84dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="397dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/GuideButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statButton" />
+
+    <Button
+        android:id="@+id/statButton"
+        android:layout_width="179dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="397dp"
+        android:layout_marginTop="9dp"
+        android:text="@string/StatButton"
+        app:layout_constraintBottom_toTopOf="@+id/guideButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startbutton" />
+
+    <Button
+        android:id="@+id/startbutton"
+        android:layout_width="179dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="9dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="397dp"
+        android:layout_marginTop="93dp"
+        android:text="@string/StartButton"
+        app:layout_constraintBottom_toTopOf="@+id/statButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
