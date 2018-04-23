@@ -4,4 +4,9 @@
     <string name="StatButton">Statistics</string>
     <string name="GuideButton">Guide</string>
     <string name="SketchyImageDescription">This is the imageView holding the image of sketchy</string>
+    <string name="PowergraphImageDescription">This is the imageView holding the image of the power graph</string>
+    <string name="SessionData">Target : 01:20:00\n\nSPM : 20\nPace : 18\n\nDist : 1202/1500m</string>
+    <string name="StartSession">Start</string>
+    <string name="PauseSession">Pause</string>
+    <string name="timerText">Time : \u0020</string>
 </resources>
