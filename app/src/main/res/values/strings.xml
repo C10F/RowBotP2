@@ -3,4 +3,5 @@
     <string name="StartButton">Start</string>
     <string name="StatButton">Statistics</string>
     <string name="GuideButton">Guide</string>
+    <string name="SketchyImageDescription">This is the imageView holding the image of sketchy</string>
 </resources>
