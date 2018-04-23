@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,78 +13,47 @@
         android:layout_marginBottom="276dp"
         android:layout_marginStart="144dp"
         android:layout_marginTop="11dp"
-        android:text="You are in guide activity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:text="You are in guide activity" />
 
     <View
         android:id="@+id/divider"
         android:layout_width="2dp"
-        android:layout_height="343dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="8dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageView
-        android:id="@+id/embedVideoPH"
-        android:layout_width="417dp"
-        android:layout_height="312dp"
-        android:layout_marginBottom="29dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="18dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/divider"
-        app:layout_constraintHorizontal_bias="0.611"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.216"
-        app:srcCompat="@drawable/embedvideoph" />
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="141dp"
+        android:background="?android:attr/listDivider" />
 
     <TextView
         android:id="@+id/videoText"
         android:layout_width="403dp"
         android:layout_height="29dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView2"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="-276dp"
         android:text="INSTRUCTIONAL VIDEO NAME"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/embedVideoPH"
+        android:layout_width="446dp"
+        android:layout_height="248dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/divider"
-        app:layout_constraintHorizontal_bias="0.38"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.264" />
+        app:srcCompat="@drawable/embedvideoph" />
 
     <LinearLayout
         android:id="@+id/rightSideLadder"
         android:layout_width="143dp"
-        android:layout_height="343dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
         android:gravity="fill_horizontal|center"
         android:orientation="vertical"
-        android:showDividers="none"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/divider"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        android:showDividers="none">
 
         <Button
             android:id="@+id/videoButton"
@@ -111,5 +80,5 @@
     </LinearLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
 
