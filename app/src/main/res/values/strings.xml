@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RowBot-P2</string>
+    <string name="StartButton">Start</string>
 </resources>
