@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Session" />
+        <activity android:name=".Guide" />
+        <activity android:name=".Statistics"></activity>
     </application>
 
 </manifest>
