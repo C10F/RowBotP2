@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToSession (View view) {
-        Intent intent = new Intent(getApplicationContext(),Session.class);
+        Intent intent = new Intent(getApplicationContext(),SessionInput.class);
         startActivity(intent);
     }
 
