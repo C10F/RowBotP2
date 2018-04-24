@@ -16,7 +16,7 @@
     <string name="SessionInputContinue">Continue</string>
     <string name="SessionInputPreset">Session preset</string>
     <string-array name="Presets">
-        <item>Choose a build in preset.</item>
+        <item>Choose a build-in preset.</item>
         <item>500m in 20 minutes</item>
         <item>1.000m in 30 minutes</item>
         <item>2.000m in 40 minutes</item>
@@ -28,5 +28,10 @@
     <string name="SessionInputDistance">Distance in meters</string>
     <string name="SessionInputTime">Time in minutes</string>
     <string name="SessionInputPresetNone">No preset has been selected\nplease select a preset.</string>
-    <string name="SessionInputPresetSelection1">You have selected the following preset:\n500 meters over 20 minutes</string>
+    <string name="SessionInputPresetSelection1">You have selected the following preset:\n\n500 meters in 20 minutes</string>
+    <string name="SessionInputPresetSelection2">You have selected the following preset:\n\n1.000 meters in 30 minutes</string>
+    <string name="SessionInputPresetSelection3">You have selected the following preset:\n\n2.000 meters in 40 minutes</string>
+    <string name="SessionInputPresetSelection4">You have selected the following preset:\n\n5.000 meters in 50 minutes</string>
+    <string name="SessionInputPresetSelection5">You have selected the following preset:\n\n10.000 meters in 60 minutes</string>
+    <string name="SessionInputPresetSelection6">You have selected the following preset:\n\n15.000 meters in 70 minutes</string>
 </resources>
