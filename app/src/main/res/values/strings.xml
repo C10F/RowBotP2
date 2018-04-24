@@ -23,7 +23,8 @@
         <item>5.000m in 50 minutes</item>
         <item>10.000m in 60 minutes</item>
         <item>15.000m in 70 minutes</item>
+        <item>Custom</item>
     </string-array>
-    <string name="SessionInputDistance">Custom distance</string>
-    <string name="SessionInputTime">Custom time</string>
+    <string name="SessionInputDistance">Distance in meters</string>
+    <string name="SessionInputTime">Time in minutes</string>
 </resources>
