@@ -57,9 +57,9 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         //casts the variable selected to a TextView object by finding it's id
-        selected = (TextView) findViewById(R.id.selectedPresetText);
+        selected = findViewById(R.id.selectedPresetText);
         //same as above just for a button instead
-        goTo = (Button) findViewById(R.id.continueTo);
+        goTo = findViewById(R.id.continueTo);
         //sets a specific text in the textView and make the button disappear when position is 0
         if (position == 0) {
             selected.setText(R.string.SessionInputPresetNone);
