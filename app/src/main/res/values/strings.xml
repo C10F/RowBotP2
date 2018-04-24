@@ -26,4 +26,9 @@
     </string-array>
     <string name="SessionInputDistance">Custom distance</string>
     <string name="SessionInputTime">Custom time</string>
+    <string name="timeButton">Time</string>
+    <string name="spmButton">SPM</string>
+    <string name="distButton">Distance</string>
+    <string name="week">WEEK</string>
+    <string name="month">MONTH</string>
 </resources>
