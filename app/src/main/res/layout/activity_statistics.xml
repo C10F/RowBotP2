@@ -94,7 +94,7 @@
         android:layout_height="268dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:visibility="visible"
+        android:visibility="gone"
         app:srcCompat="@drawable/monthtimespent_ph" />
 
     <ImageView
@@ -115,6 +115,24 @@
         android:layout_alignParentStart="true"
         android:visibility="gone"
         app:srcCompat="@drawable/monthdistcov_ph" />
+
+    <ImageView
+        android:id="@+id/weekSPM"
+        android:layout_width="445dp"
+        android:layout_height="270dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone"
+        app:srcCompat="@drawable/weekspm_ph" />
+
+    <ImageView
+        android:id="@+id/monthSPM"
+        android:layout_width="458dp"
+        android:layout_height="260dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone"
+        app:srcCompat="@drawable/monthspm_ph" />
 
 
 </RelativeLayout>

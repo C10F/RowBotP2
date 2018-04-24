@@ -2,6 +2,7 @@ package b135.rowbot_p2;
 
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -56,10 +57,14 @@ public class Statistics extends AppCompatActivity {
         ImageView tweekph = findViewById(R.id.weekTimeSpent);
         ImageView dmonthph = findViewById(R.id.monthDistCov);
         ImageView dweekph = findViewById(R.id.weekDistCov);
+        ImageView sweekph = findViewById(R.id.weekSPM);
+        ImageView smonthph = findViewById(R.id.monthSPM);
 
         // make other selections GONE
         dmonthph.setVisibility(View.GONE);
         dweekph.setVisibility(View.GONE);
+        smonthph.setVisibility(View.GONE);
+        sweekph.setVisibility(View.GONE);
 
         if(weekSelected){
             // show weekly overview of selected
@@ -82,10 +87,14 @@ public class Statistics extends AppCompatActivity {
         ImageView tweekph = findViewById(R.id.weekTimeSpent);
         ImageView dmonthph = findViewById(R.id.monthDistCov);
         ImageView dweekph = findViewById(R.id.weekDistCov);
+        ImageView sweekph = findViewById(R.id.weekSPM);
+        ImageView smonthph = findViewById(R.id.monthSPM);
 
         // make other selections GONE
         tmonthph.setVisibility(View.GONE);
         tweekph.setVisibility(View.GONE);
+        smonthph.setVisibility(View.GONE);
+        sweekph.setVisibility(View.GONE);
 
         if(weekSelected){
             // show weekly overview of selected
@@ -104,13 +113,28 @@ public class Statistics extends AppCompatActivity {
     }
 
     public void spmSelected (View view){
+        ImageView tmonthph = findViewById(R.id.monthTimeSpent);
+        ImageView tweekph = findViewById(R.id.weekTimeSpent);
+        ImageView dmonthph = findViewById(R.id.monthDistCov);
+        ImageView dweekph = findViewById(R.id.weekDistCov);
+        ImageView sweekph = findViewById(R.id.weekSPM);
+        ImageView smonthph = findViewById(R.id.monthSPM);
+
+        // make other selections GONE
+        tmonthph.setVisibility(View.GONE);
+        tweekph.setVisibility(View.GONE);
+        dmonthph.setVisibility(View.GONE);
+        dweekph.setVisibility(View.GONE);
 
         if(weekSelected){
             // show weekly overview of selected
-
+            smonthph.setVisibility(View.GONE);
+            sweekph.setVisibility(View.VISIBLE);
         }
         else if (monthSelected){
             // show monthly overview of selected
+            sweekph.setVisibility(View.GONE);
+            smonthph.setVisibility(View.VISIBLE);
         }
         // prompt user to make a decision on weekly/monthly overview if none has been selected
         else Toast.makeText(getApplicationContext(),"please select either weekly, or monthly overview",Toast.LENGTH_SHORT).show();
