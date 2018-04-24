@@ -126,15 +126,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    //missing a method here saying if this boolean is true pass preset to next activity and if false
-    //pass custom to next activity
-
-    //this method validates whether or not we can move to the next activity
-    //and makes the app go to the sessions page once continue is clicked
     public void goToSessionFinal(View view) {
-        //if(sessionInputD.is) {
-
-        //}
         Intent intent = new Intent(getApplicationContext(),Session.class);
         startActivity(intent);
     }

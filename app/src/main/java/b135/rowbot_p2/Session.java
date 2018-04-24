@@ -1,5 +1,6 @@
 package b135.rowbot_p2;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Chronometer;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Session extends AppCompatActivity {
 
@@ -28,7 +31,7 @@ public class Session extends AppCompatActivity {
         //sets the chronometer variable to the chronometer in the xml file by id
         sessionTimer = findViewById(R.id.timerCounter);
         //sets the input format to a string of text where the %s means the format is mm:ss after 59:59 the format change automatically to hh:mm:ss
-        sessionTimer.setFormat("Time:\n%s\n");
+        sessionTimer.setFormat("Elapsed time:\n%s\n");
         //this updates the string when we start the activity
         sessionTimer.setBase(SystemClock.elapsedRealtime());
 
