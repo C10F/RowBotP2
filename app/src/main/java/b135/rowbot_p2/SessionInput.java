@@ -11,11 +11,13 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class SessionInput extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private TextInputLayout sessionInputD;
     private TextInputLayout sessionInputT;
+    private TextView selected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,11 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
     //this method is from the implemented interface and determines what happens once an item is selected
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        selected = (TextView) findViewById(R.id.selectedPresetText);
+        if (position == 1) {
+            selected.setText(R.string.SessionInputPresetSelection1);
+            selected.setVisibility(View.VISIBLE);
+        }
     }
 
     //this method is from the implemented interface and determines what happens when nothing is selected

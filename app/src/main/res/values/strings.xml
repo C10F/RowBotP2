@@ -27,4 +27,6 @@
     </string-array>
     <string name="SessionInputDistance">Distance in meters</string>
     <string name="SessionInputTime">Time in minutes</string>
+    <string name="SessionInputPresetNone">No preset has been selected\nplease select a preset.</string>
+    <string name="SessionInputPresetSelection1">You have selected the following preset:\n500 meters over 20 minutes</string>
 </resources>
