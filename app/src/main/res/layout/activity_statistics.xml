@@ -88,5 +88,33 @@
             android:text="@string/distButton" />
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/monthTimeSpent"
+        android:layout_width="437dp"
+        android:layout_height="268dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:visibility="visible"
+        app:srcCompat="@drawable/monthtimespent_ph" />
+
+    <ImageView
+        android:id="@+id/weekDistCov"
+        android:layout_width="440dp"
+        android:layout_height="267dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="18dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/weekdistcov_ph" />
+
+    <ImageView
+        android:id="@+id/monthDistCov"
+        android:layout_width="460dp"
+        android:layout_height="271dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone"
+        app:srcCompat="@drawable/monthdistcov_ph" />
+
 
 </RelativeLayout>

@@ -52,15 +52,25 @@ public class Statistics extends AppCompatActivity {
     }
 
     public void timeSelected (View view){
+        ImageView tmonthph = findViewById(R.id.monthTimeSpent);
+        ImageView tweekph = findViewById(R.id.weekTimeSpent);
+        ImageView dmonthph = findViewById(R.id.monthDistCov);
+        ImageView dweekph = findViewById(R.id.weekDistCov);
+
+        // make other selections GONE
+        dmonthph.setVisibility(View.GONE);
+        dweekph.setVisibility(View.GONE);
 
         if(weekSelected){
             // show weekly overview of selected
-            ImageView weekph = findViewById(R.id.weekTimeSpent);
-            weekph.setVisibility(View.VISIBLE);
+            tmonthph.setVisibility(View.GONE);
+            tweekph.setVisibility(View.VISIBLE);
 
         }
         else if (monthSelected){
             // show monthly overview of selected
+            tweekph.setVisibility(View.GONE);
+            tmonthph.setVisibility(View.VISIBLE);
         }
         // prompt user to make a decision on weekly/monthly overview if none has been selected
         else Toast.makeText(getApplicationContext(),"please select either weekly, or monthly overview",Toast.LENGTH_SHORT).show();
@@ -68,13 +78,25 @@ public class Statistics extends AppCompatActivity {
     }
 
     public void distanceSelected (View view){
+        ImageView tmonthph = findViewById(R.id.monthTimeSpent);
+        ImageView tweekph = findViewById(R.id.weekTimeSpent);
+        ImageView dmonthph = findViewById(R.id.monthDistCov);
+        ImageView dweekph = findViewById(R.id.weekDistCov);
+
+        // make other selections GONE
+        tmonthph.setVisibility(View.GONE);
+        tweekph.setVisibility(View.GONE);
 
         if(weekSelected){
             // show weekly overview of selected
+            dmonthph.setVisibility(View.GONE);
+            dweekph.setVisibility(View.VISIBLE);
 
         }
         else if (monthSelected){
             // show monthly overview of selected
+            dweekph.setVisibility(View.GONE);
+            dmonthph.setVisibility(View.VISIBLE);
         }
         // prompt user to make a decision on weekly/monthly overview if none has been selected
         else Toast.makeText(getApplicationContext(),"please select either weekly, or monthly overview",Toast.LENGTH_SHORT).show();
