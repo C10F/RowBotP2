@@ -10,5 +10,16 @@
     <string name="PauseSession">Pause</string>
     <string name="timerText">Time : \u0020</string>
     <string name="SessionInputContinue">Continue</string>
-    <string name="SessionInputPreset">Recommended preset</string>
+    <string name="SessionInputPreset">Session preset</string>
+    <string-array name="Presets">
+        <item>Choose a build in preset.</item>
+        <item>500m in 20 minutes</item>
+        <item>1.000m in 30 minutes</item>
+        <item>2.000m in 40 minutes</item>
+        <item>5.000m in 50 minutes</item>
+        <item>10.000m in 60 minutes</item>
+        <item>15.000m in 70 minutes</item>
+    </string-array>
+    <string name="SessionInputDistance">Custom distance</string>
+    <string name="SessionInputTime">Custom time</string>
 </resources>
