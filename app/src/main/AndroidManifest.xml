@@ -18,8 +18,8 @@
         </activity>
         <activity android:name=".Session" />
         <activity android:name=".Guide" />
-        <activity android:name=".Statistics"></activity>
-        <activity android:name=".SessionInput" />
+        <activity android:name=".Statistics"/>
+        <activity android:name=".SessionInput"/>
     </application>
 
 </manifest>
