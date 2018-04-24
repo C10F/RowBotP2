@@ -9,4 +9,6 @@
     <string name="StartSession">Start</string>
     <string name="PauseSession">Pause</string>
     <string name="timerText">Time : \u0020</string>
+    <string name="SessionInputContinue">Continue</string>
+    <string name="SessionInputPreset">Recommended preset</string>
 </resources>
