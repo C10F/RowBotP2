@@ -28,7 +28,7 @@ public class Session extends AppCompatActivity {
         //sets the chronometer variable to the chronometer in the xml file by id
         sessionTimer = findViewById(R.id.timerCounter);
         //sets the input format to a string of text where the %s means the format is mm:ss after 59:59 the format change automatically to hh:mm:ss
-        sessionTimer.setFormat("Time:\n%s\n");
+        sessionTimer.setFormat("Elapsed time:\n%s\n");
         //this updates the string when we start the activity
         sessionTimer.setBase(SystemClock.elapsedRealtime());
 
