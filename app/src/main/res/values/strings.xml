@@ -36,4 +36,8 @@
     <string name="SessionInputPresetSelection4">You have selected the following preset:\n\n5.000 meters in 50 minutes</string>
     <string name="SessionInputPresetSelection5">You have selected the following preset:\n\n10.000 meters in 60 minutes</string>
     <string name="SessionInputPresetSelection6">You have selected the following preset:\n\n15.000 meters in 70 minutes</string>
+    <string name="time">Time</string>
+    <string name="targTime">Target Time</string>
+    <string name="distance">Distance</string>
+    <string name="targDistance">Target Distance</string>
 </resources>
