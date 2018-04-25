@@ -8,8 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Chronometer;
-import android.widget.ImageView;
 import android.widget.TextView;
+
 
 public class Session extends AppCompatActivity {
 
@@ -19,6 +19,9 @@ public class Session extends AppCompatActivity {
     private long pauseOffset;
     //boolean used to see whether or not the timer is running
     private boolean running;
+    String targetDistance;
+    String targetTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +30,18 @@ public class Session extends AppCompatActivity {
         // force landscape mode
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        // extra fetched from SessionInput
+        Bundle extra = getIntent().getExtras();
+        if(extra != null){
+            targetDistance = extra.getString("EXTRA_DISTANCE");
+            targetTime = extra.getString("EXTRA_TIME");
+        }
+
+        TextView debugD = findViewById(R.id.debugOutput);
+        TextView debugT = findViewById(R.id.debugOutput2);
+        debugD.setText(targetDistance);
+        debugT.setText(targetTime);
 
         //sets the chronometer variable to the chronometer in the xml file by id
         sessionTimer = findViewById(R.id.timerCounter);
