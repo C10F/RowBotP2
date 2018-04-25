@@ -15,6 +15,8 @@
     <string name="timerText">Time : \u0020</string>
     <string name="SessionInputContinue">Continue</string>
     <string name="SessionInputPreset">Session preset</string>
+    <string name="targetDistance">@string/targetDistance</string>
+    <string name="targetTime">@string/targetTime</string>
     <string-array name="Presets">
         <item>Choose a build-in preset.</item>
         <item>500m in 20 minutes</item>

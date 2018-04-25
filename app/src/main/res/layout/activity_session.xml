@@ -87,4 +87,23 @@
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/debugOutput"
+        android:layout_width="162dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/targetDistance" />
+
+    <TextView
+        android:id="@+id/debugOutput2"
+        android:layout_width="162dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/debugOutput"
+        android:layout_marginEnd="158dp"
+        android:text="@string/targetTime" />
+
 </RelativeLayout>

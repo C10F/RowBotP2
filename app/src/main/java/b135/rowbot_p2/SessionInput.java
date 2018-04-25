@@ -20,7 +20,8 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
     private TextInputLayout sessionInputT;
     private TextView selected;
     private Button goTo;
-
+    private String inputTargetDistance;
+    private String inputTargetTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +76,9 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             goTo.setVisibility(View.VISIBLE);
             sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
+            // set variables to be put extra
+            inputTargetDistance = "500";
+            inputTargetTime = "20:00";
         }
         else if (position == 2) {
             selected.setText(R.string.SessionInputPresetSelection2);
@@ -82,6 +86,8 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             goTo.setVisibility(View.VISIBLE);
             sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
+            inputTargetDistance = "1000";
+            inputTargetTime = "30:00";
         }
         else if (position == 3) {
             selected.setText(R.string.SessionInputPresetSelection3);
@@ -136,6 +142,9 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
 
         //}
         Intent intent = new Intent(getApplicationContext(),Session.class);
+        // put extra the distance and time chosen
+        intent.putExtra("EXTRA_DISTANCE", inputTargetDistance);
+        intent.putExtra("EXTRA_TIME", inputTargetTime);
         startActivity(intent);
     }
 }
