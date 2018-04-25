@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 public class SessionInput extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
+    private boolean customChosen;
     private TextInputLayout sessionInputD;
     private TextInputLayout sessionInputT;
     private TextView selected;
@@ -95,6 +96,8 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             goTo.setVisibility(View.VISIBLE);
             sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
+            inputTargetDistance = "2000";
+            inputTargetTime = "40:00";
         }
         else if (position == 4) {
             selected.setText(R.string.SessionInputPresetSelection4);
@@ -102,6 +105,8 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             goTo.setVisibility(View.VISIBLE);
             sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
+            inputTargetDistance = "5000";
+            inputTargetTime = "50:00";
         }
         else if (position == 5) {
             selected.setText(R.string.SessionInputPresetSelection5);
@@ -109,6 +114,8 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             goTo.setVisibility(View.VISIBLE);
             sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
+            inputTargetDistance = "10000";
+            inputTargetTime = "60:00";
         }
         else if (position == 6) {
             selected.setText(R.string.SessionInputPresetSelection6);
@@ -116,6 +123,8 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             goTo.setVisibility(View.VISIBLE);
             sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
+            inputTargetDistance = "15000";
+            inputTargetTime = "70:00";
         }
         //makes the textView disappear and makes the TextInputLayouts appear
         else if (position == 7) {
@@ -123,6 +132,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             goTo.setVisibility(View.VISIBLE);
             sessionInputD.setVisibility(View.VISIBLE);
             sessionInputT.setVisibility(View.VISIBLE);
+            customChosen = true;
         }
     }
 
@@ -143,6 +153,10 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
         //}
         Intent intent = new Intent(getApplicationContext(),Session.class);
         // put extra the distance and time chosen
+        if(customChosen){
+            inputTargetDistance = sessionInputD.getEditText().getText().toString();
+            inputTargetTime = sessionInputT.getEditText().getText().toString();
+        }
         intent.putExtra("EXTRA_DISTANCE", inputTargetDistance);
         intent.putExtra("EXTRA_TIME", inputTargetTime);
         startActivity(intent);
