@@ -81,10 +81,10 @@
         <TextView
             android:id="@+id/debugOutput2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="28dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="93dp"
+
             android:text="@string/targetTime" />
 
         <TextView
@@ -96,10 +96,10 @@
         <TextView
             android:id="@+id/debugOutput"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="28dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="127dp"
+            
             android:text="@string/targetDistance" />
 
     </LinearLayout>
