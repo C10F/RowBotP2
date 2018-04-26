@@ -99,7 +99,7 @@
             android:layout_height="28dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            
+
             android:text="@string/targetDistance" />
 
     </LinearLayout>
