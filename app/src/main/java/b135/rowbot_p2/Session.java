@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.SystemClock;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -42,6 +43,12 @@ public class Session extends AppCompatActivity {
             targetTime = extra.getString("EXTRA_TIME");
         }
 
+        //here we create and instance of our viewPager
+        ViewPager viewPager = findViewById(R.id.sessionViewPager);
+        //here we create our imageAdapter by calling the constructor method
+        ImageAdapter adapter = new ImageAdapter(this);
+        //here we take our viewPager variable and call the setAdapter method on it and then pass our adapter
+        viewPager.setAdapter(adapter);
         TextView debugD = findViewById(R.id.debugOutput);
         TextView debugT = findViewById(R.id.debugOutput2);
         debugD.setText(targetDistance);
