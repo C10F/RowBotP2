@@ -17,7 +17,9 @@ public class Statistics extends AppCompatActivity {
 
     private boolean weekSelected;
     private boolean monthSelected;
-
+    private boolean timeSelected;
+    private boolean distanceSelected;
+    private boolean spmSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,26 @@ public class Statistics extends AppCompatActivity {
         // change color of buttons to identify choice
         wButton.setBackgroundColor(Color.GREEN);
         mButton.setBackgroundColor(Color.LTGRAY);
+
+        ImageView tmonthph = findViewById(R.id.monthTimeSpent);
+        ImageView tweekph = findViewById(R.id.weekTimeSpent);
+        ImageView dmonthph = findViewById(R.id.monthDistCov);
+        ImageView dweekph = findViewById(R.id.weekDistCov);
+        ImageView sweekph = findViewById(R.id.weekSPM);
+        ImageView smonthph = findViewById(R.id.monthSPM);
+
+        if (weekSelected && timeSelected){
+            tmonthph.setVisibility(View.GONE);
+            tweekph.setVisibility(View.VISIBLE);
+        }
+        else if (weekSelected && distanceSelected){
+            dmonthph.setVisibility(View.GONE);
+            dweekph.setVisibility(View.VISIBLE);
+        }
+        else if (weekSelected && spmSelected){
+            smonthph.setVisibility(View.GONE);
+            sweekph.setVisibility(View.VISIBLE);
+        }
     }
 
     public void monthSelected (View view) {
@@ -50,9 +72,33 @@ public class Statistics extends AppCompatActivity {
         // change color of buttons to identify choice
         wButton.setBackgroundColor(Color.LTGRAY);
         mButton.setBackgroundColor(Color.GREEN);
+
+        ImageView tmonthph = findViewById(R.id.monthTimeSpent);
+        ImageView tweekph = findViewById(R.id.weekTimeSpent);
+        ImageView dmonthph = findViewById(R.id.monthDistCov);
+        ImageView dweekph = findViewById(R.id.weekDistCov);
+        ImageView sweekph = findViewById(R.id.weekSPM);
+        ImageView smonthph = findViewById(R.id.monthSPM);
+
+        if (monthSelected && timeSelected){
+            tweekph.setVisibility(View.GONE);
+            tmonthph.setVisibility(View.VISIBLE);
+        }
+        else if (monthSelected && distanceSelected){
+            dweekph.setVisibility(View.GONE);
+            dmonthph.setVisibility(View.VISIBLE);
+        }
+        else if (monthSelected && spmSelected){
+            sweekph.setVisibility(View.GONE);
+            smonthph.setVisibility(View.VISIBLE);
+        }
     }
 
     public void timeSelected (View view){
+        timeSelected = true;
+        distanceSelected = false;
+        spmSelected = false;
+
         ImageView tmonthph = findViewById(R.id.monthTimeSpent);
         ImageView tweekph = findViewById(R.id.weekTimeSpent);
         ImageView dmonthph = findViewById(R.id.monthDistCov);
@@ -83,6 +129,10 @@ public class Statistics extends AppCompatActivity {
     }
 
     public void distanceSelected (View view){
+        timeSelected = false;
+        distanceSelected = true;
+        spmSelected = false;
+
         ImageView tmonthph = findViewById(R.id.monthTimeSpent);
         ImageView tweekph = findViewById(R.id.weekTimeSpent);
         ImageView dmonthph = findViewById(R.id.monthDistCov);
@@ -113,6 +163,10 @@ public class Statistics extends AppCompatActivity {
     }
 
     public void spmSelected (View view){
+        timeSelected = false;
+        distanceSelected = false;
+        spmSelected = true;
+
         ImageView tmonthph = findViewById(R.id.monthTimeSpent);
         ImageView tweekph = findViewById(R.id.weekTimeSpent);
         ImageView dmonthph = findViewById(R.id.monthDistCov);
