@@ -16,6 +16,8 @@
         android:onClick="startTimerCounter"
         android:text="@string/StartSession"
         android:textAllCaps="false"
+        android:background="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp" />
 
     <Button
@@ -29,7 +31,8 @@
         android:onClick="pauseTimerCounter"
         android:text="@string/PauseSession"
         android:textAllCaps="false"
-        android:textColor="@color/black"
+        android:background="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp" />
 
 

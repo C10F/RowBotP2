@@ -12,6 +12,7 @@
     <string name="SessionData">Target time:\n00:00\n\nSPM:\n00\n\nPace:\n00\n\nDistance:\n0/0m</string>
     <string name="StartSession">Start</string>
     <string name="PauseSession">Pause</string>
+    <string name="StopSession">Stop</string>
     <string name="timerText">Time : \u0020</string>
     <string name="SessionInputContinue">Continue</string>
     <string name="SessionInputPreset">Session preset</string>
