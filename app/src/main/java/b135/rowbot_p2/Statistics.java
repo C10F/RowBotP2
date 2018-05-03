@@ -99,6 +99,10 @@ public class Statistics extends AppCompatActivity {
         distanceSelected = false;
         spmSelected = false;
 
+        Button tButton = findViewById(R.id.TimeButton);
+        Button dButton = findViewById(R.id.distButton);
+        Button sButton = findViewById(R.id.spmButton);
+
         ImageView tmonthph = findViewById(R.id.monthTimeSpent);
         ImageView tweekph = findViewById(R.id.weekTimeSpent);
         ImageView dmonthph = findViewById(R.id.monthDistCov);
@@ -111,6 +115,10 @@ public class Statistics extends AppCompatActivity {
         dweekph.setVisibility(View.GONE);
         smonthph.setVisibility(View.GONE);
         sweekph.setVisibility(View.GONE);
+
+        tButton.setBackgroundColor(Color.GREEN);
+        dButton.setBackgroundColor(Color.LTGRAY);
+        sButton.setBackgroundColor(Color.LTGRAY);
 
         if(weekSelected){
             // show weekly overview of selected
@@ -133,6 +141,10 @@ public class Statistics extends AppCompatActivity {
         distanceSelected = true;
         spmSelected = false;
 
+        Button tButton = findViewById(R.id.TimeButton);
+        Button dButton = findViewById(R.id.distButton);
+        Button sButton = findViewById(R.id.spmButton);
+
         ImageView tmonthph = findViewById(R.id.monthTimeSpent);
         ImageView tweekph = findViewById(R.id.weekTimeSpent);
         ImageView dmonthph = findViewById(R.id.monthDistCov);
@@ -145,6 +157,10 @@ public class Statistics extends AppCompatActivity {
         tweekph.setVisibility(View.GONE);
         smonthph.setVisibility(View.GONE);
         sweekph.setVisibility(View.GONE);
+
+        tButton.setBackgroundColor(Color.LTGRAY);
+        dButton.setBackgroundColor(Color.GREEN);
+        sButton.setBackgroundColor(Color.LTGRAY);
 
         if(weekSelected){
             // show weekly overview of selected
@@ -167,6 +183,10 @@ public class Statistics extends AppCompatActivity {
         distanceSelected = false;
         spmSelected = true;
 
+        Button tButton = findViewById(R.id.TimeButton);
+        Button dButton = findViewById(R.id.distButton);
+        Button sButton = findViewById(R.id.spmButton);
+
         ImageView tmonthph = findViewById(R.id.monthTimeSpent);
         ImageView tweekph = findViewById(R.id.weekTimeSpent);
         ImageView dmonthph = findViewById(R.id.monthDistCov);
@@ -179,6 +199,10 @@ public class Statistics extends AppCompatActivity {
         tweekph.setVisibility(View.GONE);
         dmonthph.setVisibility(View.GONE);
         dweekph.setVisibility(View.GONE);
+
+        tButton.setBackgroundColor(Color.LTGRAY);
+        dButton.setBackgroundColor(Color.LTGRAY);
+        sButton.setBackgroundColor(Color.GREEN);
 
         if(weekSelected){
             // show weekly overview of selected

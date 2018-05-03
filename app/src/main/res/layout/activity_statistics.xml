@@ -64,7 +64,7 @@
 
         <Button
             android:id="@+id/TimeButton"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="timeSelected"
@@ -72,7 +72,7 @@
 
         <Button
             android:id="@+id/spmButton"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="spmSelected"
@@ -80,7 +80,7 @@
 
         <Button
             android:id="@+id/distButton"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            style="@style/Widget.AppCompat.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="distanceSelected"
