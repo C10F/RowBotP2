@@ -80,6 +80,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             // set variables to be put extra
             inputTargetDistance = "500";
             inputTargetTime = "20:00";
+            customChosen = false;
         }
         else if (position == 2) {
             selected.setText(R.string.SessionInputPresetSelection2);
@@ -89,6 +90,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "1000";
             inputTargetTime = "30:00";
+            customChosen = false;
         }
         else if (position == 3) {
             selected.setText(R.string.SessionInputPresetSelection3);
@@ -98,6 +100,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "2000";
             inputTargetTime = "40:00";
+            customChosen = false;
         }
         else if (position == 4) {
             selected.setText(R.string.SessionInputPresetSelection4);
@@ -107,6 +110,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "5000";
             inputTargetTime = "50:00";
+            customChosen = false;
         }
         else if (position == 5) {
             selected.setText(R.string.SessionInputPresetSelection5);
@@ -116,6 +120,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "10000";
             inputTargetTime = "60:00";
+            customChosen = false;
         }
         else if (position == 6) {
             selected.setText(R.string.SessionInputPresetSelection6);
@@ -125,6 +130,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "15000";
             inputTargetTime = "70:00";
+            customChosen = false;
         }
         //makes the textView disappear and makes the TextInputLayouts appear
         else if (position == 7) {
