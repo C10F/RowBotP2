@@ -14,7 +14,7 @@
         android:text="@string/SessionInputPreset"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textColor="@color/black"
         android:layout_gravity="center_horizontal" />
 
@@ -26,20 +26,33 @@
         android:layout_marginBottom="10dp">
     </Spinner>
 
+    <TextView
+        android:id="@+id/selectedPresetText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/SessionInputPresetNone"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:paddingBottom="30dp"
+        android:paddingTop="30dp"
+        android:visibility="gone"
+        android:textAlignment="center" />
+
     <android.support.design.widget.TextInputLayout
         android:id="@+id/distanceText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:counterEnabled="true"
-        app:counterMaxLength="4"
+        app:counterMaxLength="5"
         app:errorEnabled="true">
 
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/SessionInputDistance"
-            android:maxLength="4"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:maxLength="5" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -47,6 +60,7 @@
         android:id="@+id/timeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:counterEnabled="true"
         app:counterMaxLength="5"
         app:errorEnabled="true">
@@ -55,8 +69,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/SessionInputTime"
-            android:maxLength="5"
-            android:inputType="time"/>
+            android:inputType="time"
+            android:maxLength="5" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -67,6 +81,7 @@
         android:text="@string/SessionInputContinue"
         android:textSize="20sp"
         android:textAllCaps="false"
+        android:visibility="gone"
         android:onClick="goToSessionFinal"
         android:layout_gravity="center_horizontal" />
 

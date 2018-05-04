@@ -12,6 +12,7 @@ public class Guide extends AppCompatActivity {
 
     boolean videoShowing;
     boolean setupShowing;
+    boolean termShowing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class Guide extends AppCompatActivity {
 
 
     public void showVideo(View view){
+        ImageView termPH = findViewById(R.id.termPH);
         ImageView videoPH = findViewById(R.id.embedVideoPH);
         ImageView setupPH = findViewById(R.id.setupPH);
         TextView videoTxt = findViewById(R.id.videoText);
@@ -31,6 +33,10 @@ public class Guide extends AppCompatActivity {
         if (setupShowing) {
             setupPH.setVisibility(View.GONE);
             setupShowing = false;
+        }
+        if (termShowing){
+            termPH.setVisibility(View.GONE);
+            termShowing = false;
         }
         // set our video-view and title to be visible on button press
         videoPH.setVisibility(View.VISIBLE);
@@ -40,6 +46,7 @@ public class Guide extends AppCompatActivity {
 
 
     public void showSetup(View view){
+        ImageView termPH = findViewById(R.id.termPH);
         ImageView videoPH = findViewById(R.id.embedVideoPH);
         ImageView setupPH = findViewById(R.id.setupPH);
         TextView videoTxt = findViewById(R.id.videoText);
@@ -50,12 +57,17 @@ public class Guide extends AppCompatActivity {
            videoTxt.setVisibility(View.GONE);
            videoShowing = false;
         }
+        if (termShowing){
+            termPH.setVisibility(View.GONE);
+            termShowing = false;
+        }
         // set our setup guide to be visible on button press
         setupPH.setVisibility(View.VISIBLE);
         setupShowing = true;
     }
 
     public void showTermin(View view){
+        ImageView termPH = findViewById(R.id.termPH);
         ImageView videoPH = findViewById(R.id.embedVideoPH);
         ImageView setupPH = findViewById(R.id.setupPH);
         TextView videoTxt = findViewById(R.id.videoText);
@@ -71,5 +83,8 @@ public class Guide extends AppCompatActivity {
             setupShowing = false;
         }
         // set our terminology infographic to be visible on button press
+        termPH.setVisibility(View.VISIBLE);
+        termShowing = true;
+
     }
 }

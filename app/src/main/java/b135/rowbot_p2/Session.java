@@ -1,5 +1,6 @@
 package b135.rowbot_p2;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Chronometer;
+import android.widget.TextView;
+
 
 public class Session extends AppCompatActivity {
 
@@ -16,6 +19,9 @@ public class Session extends AppCompatActivity {
     private long pauseOffset;
     //boolean used to see whether or not the timer is running
     private boolean running;
+    String targetDistance;
+    String targetTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +31,22 @@ public class Session extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
+        // extra fetched from SessionInput
+        Bundle extra = getIntent().getExtras();
+        if(extra != null){
+            targetDistance = extra.getString("EXTRA_DISTANCE");
+            targetTime = extra.getString("EXTRA_TIME");
+        }
+
+        TextView debugD = findViewById(R.id.debugOutput);
+        TextView debugT = findViewById(R.id.debugOutput2);
+        debugD.setText(targetDistance);
+        debugT.setText(targetTime);
+
         //sets the chronometer variable to the chronometer in the xml file by id
         sessionTimer = findViewById(R.id.timerCounter);
         //sets the input format to a string of text where the %s means the format is mm:ss after 59:59 the format change automatically to hh:mm:ss
-        sessionTimer.setFormat("Time : %s");
+        sessionTimer.setFormat("Elapsed time:\n%s\n");
         //this updates the string when we start the activity
         sessionTimer.setBase(SystemClock.elapsedRealtime());
 

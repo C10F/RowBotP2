@@ -2,6 +2,7 @@ package b135.rowbot_p2;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.hardware.*;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -36,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),Guide.class);
         startActivity(intent);
 
+    }
+    public void goToTest (View view) {
+        Intent goToTest = new Intent(getApplicationContext(), SensorTest_Activity.class);
+        startActivity(goToTest);
     }
 
 }

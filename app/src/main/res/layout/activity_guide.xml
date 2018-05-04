@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Guide">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="72dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="157dp"
-        android:text="You are in guide activity" />
-
     <View
         android:id="@+id/divider"
         android:layout_width="2dp"
@@ -88,6 +79,17 @@
             android:onClick="showTermin"
             android:text="@string/termButton" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/termPH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="15dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/termfigure" />
 
 
 </RelativeLayout>
