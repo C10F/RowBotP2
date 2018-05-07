@@ -78,7 +78,7 @@ public class Statistics extends AppCompatActivity {
             tmonthph.setVisibility(View.VISIBLE);
         }
         // prompt user to make a decision on weekly/monthly overview if none has been selected
-        else Toast.makeText(getApplicationContext(),"please select either weekly, or monthly overview",Toast.LENGTH_SHORT).show();
+        else Utility.doToast(getApplicationContext(),"please select either weekly, or monthly overview");
 
     }
 
@@ -108,41 +108,37 @@ public class Statistics extends AppCompatActivity {
             dmonthph.setVisibility(View.VISIBLE);
         }
         // prompt user to make a decision on weekly/monthly overview if none has been selected
-        else Toast.makeText(getApplicationContext(),"please select either weekly, or monthly overview",Toast.LENGTH_SHORT).show();
+        else Utility.doToast(getApplicationContext(),"please select either weekly, or monthly overview");
 
     }
 
     public void spmSelected (View view){
-        ImageView tmonthph = findViewById(R.id.monthTimeSpent);
-        ImageView tweekph = findViewById(R.id.weekTimeSpent);
-        ImageView dmonthph = findViewById(R.id.monthDistCov);
-        ImageView dweekph = findViewById(R.id.weekDistCov);
-        ImageView sweekph = findViewById(R.id.weekSPM);
-        ImageView smonthph = findViewById(R.id.monthSPM);
+        ImageView tMonthPH = findViewById(R.id.monthTimeSpent);
+        ImageView tWeekPH = findViewById(R.id.weekTimeSpent);
+        ImageView dMonthPH = findViewById(R.id.monthDistCov);
+        ImageView dWeekPH = findViewById(R.id.weekDistCov);
+        ImageView sWeekPH = findViewById(R.id.weekSPM);
+        ImageView sMonthPH = findViewById(R.id.monthSPM);
 
         // make other selections GONE
-        tmonthph.setVisibility(View.GONE);
-        tweekph.setVisibility(View.GONE);
-        dmonthph.setVisibility(View.GONE);
-        dweekph.setVisibility(View.GONE);
+        tMonthPH.setVisibility(View.GONE);
+        tWeekPH.setVisibility(View.GONE);
+        dMonthPH.setVisibility(View.GONE);
+        dWeekPH.setVisibility(View.GONE);
 
         if(weekSelected){
             // show weekly overview of selected
-            smonthph.setVisibility(View.GONE);
-            sweekph.setVisibility(View.VISIBLE);
+            sMonthPH.setVisibility(View.GONE);
+            sWeekPH.setVisibility(View.VISIBLE);
         }
         else if (monthSelected){
             // show monthly overview of selected
-            sweekph.setVisibility(View.GONE);
-            smonthph.setVisibility(View.VISIBLE);
+            sWeekPH.setVisibility(View.GONE);
+            sMonthPH.setVisibility(View.VISIBLE);
         }
         // prompt user to make a decision on weekly/monthly overview if none has been selected
-        else Toast.makeText(getApplicationContext(),"please select either weekly, or monthly overview",Toast.LENGTH_SHORT).show();
+        else Utility.doToast(getApplicationContext(),"please select either weekly, or monthly overview");
 
     }
 }
 
-
-/*
-            NOTE: COLOR CHANGING BUTTONS HAVE A BUG WHERE THEY CHANGE THEME WHEN CHANGING COLOR, LOOK INTO THAT LATER /CF
-*/
