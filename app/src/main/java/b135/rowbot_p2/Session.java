@@ -26,6 +26,7 @@ public class Session extends AppCompatActivity {
     private boolean sessionStop = false;
     String targetDistance;
     String targetTime;
+    private String currentDistance = "0/";
 
 
     @Override
@@ -43,6 +44,8 @@ public class Session extends AppCompatActivity {
             targetTime = extra.getString("EXTRA_TIME");
         }
 
+        String distance = currentDistance+targetDistance;
+
         //here we create and instance of our viewPager
         ViewPager viewPager = findViewById(R.id.sessionViewPager);
         //here we create our imageAdapter by calling the constructor method
@@ -51,7 +54,7 @@ public class Session extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         TextView debugD = findViewById(R.id.debugOutput);
         TextView debugT = findViewById(R.id.debugOutput2);
-        debugD.setText(targetDistance);
+        debugD.setText(distance);
         debugT.setText(targetTime);
 
         //sets the chronometer variable to the chronometer in the xml file by id

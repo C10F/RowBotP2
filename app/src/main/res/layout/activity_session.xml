@@ -70,11 +70,19 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/sessionViewPager"
-        android:layout_width="400dp"
-        android:layout_height="250dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_toStartOf="@id/horizontalLine"/>
+        android:layout_below="@+id/pauseSession"
+        android:layout_toStartOf="@id/horizontalLine">
+
+        <android.support.v4.view.PagerTabStrip
+            android:id="@+id/sessionViewPagerHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.v4.view.ViewPager>
 
     <View
         android:id="@+id/horizontalLine"
