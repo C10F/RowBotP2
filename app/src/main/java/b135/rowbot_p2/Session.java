@@ -87,6 +87,8 @@ public class Session extends AppCompatActivity {
             sessionStop = false;
             //sets running to true so that when you press pause the if statement is active
             running = true;
+            // toast the user that session has begun
+            Utility.doToast(getApplicationContext(),"Session started!");
         }
     }
 
@@ -117,7 +119,11 @@ public class Session extends AppCompatActivity {
         }
         else if (sessionStop) {
             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            // somewhere about here, we want to save an 'entry' of a new session (save the data long term)
+            // toast the user that session has been saved
+            Utility.doToast(getApplicationContext(),"Session was saved");
             startActivity(intent);
+
         }
     }
 }
