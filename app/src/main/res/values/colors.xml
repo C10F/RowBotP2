@@ -8,4 +8,7 @@
     <color name="green">#1eff00</color>
     <color name="red">#ff0000</color>
     <color name="standardColor">#FAFAFA</color>
+    <color name="blueMainActivity">#00a6ff</color>
+    <color name="orangeMainActivity">#ff7e00</color>
+    <color name="blueButtonStatePressed">#198fcf</color>
 </resources>
