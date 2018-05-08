@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -102,6 +103,7 @@ public class Session extends AppCompatActivity {
         Button pButton = findViewById(R.id.pauseSession);
         Button saveButton = findViewById(R.id.saveSession);
         Button rButton = findViewById(R.id.returnSession);
+        ViewPager viewPager = findViewById(R.id.sessionViewPager);
         //if the boolean is true i.e. running the timer will pause
         if (running) {
             //sets various colors and texts
@@ -123,6 +125,10 @@ public class Session extends AppCompatActivity {
             running = false;
         }
         else if (sessionStop) {
+            //this makes sure the viewPager stays below the buttons and doesn't go to match parent when the buttons change
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) viewPager.getLayoutParams();
+            layoutParams.addRule(RelativeLayout.BELOW, saveButton.getId());
+            viewPager.setLayoutParams(layoutParams);
             sButton.setVisibility(View.GONE);
             pButton.setVisibility(View.GONE);
             saveButton.setVisibility(View.VISIBLE);
@@ -144,6 +150,11 @@ public class Session extends AppCompatActivity {
         Button pButton = findViewById(R.id.pauseSession);
         Button saveButton = findViewById(R.id.saveSession);
         Button rButton = findViewById(R.id.returnSession);
+        ViewPager viewPager = findViewById(R.id.sessionViewPager);
+
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) viewPager.getLayoutParams();
+        layoutParams.addRule(RelativeLayout.BELOW, pButton.getId());
+        viewPager.setLayoutParams(layoutParams);
 
         sButton.setVisibility(View.VISIBLE);
         pButton.setVisibility(View.VISIBLE);
