@@ -2,6 +2,7 @@ package b135.rowbot_p2;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,5 +50,18 @@ public class StatisticsImAdapterDist extends PagerAdapter {
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         //to remove the view we pass our object into the removeView method and then cast it to an ImageView
         container.removeView((ImageView) object);
+    }
+
+    @Nullable
+    @Override
+    public CharSequence getPageTitle(int position) {
+        String title = null;
+        if (position == 0) {
+            title = "Week";
+        }
+        else if (position == 1) {
+            title = "Month";
+        }
+        return title;
     }
 }
