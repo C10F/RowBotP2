@@ -13,6 +13,8 @@
     <string name="StartSession">Start</string>
     <string name="PauseSession">Pause</string>
     <string name="StopSession">Stop</string>
+    <string name="returnSession">Return</string>
+    <string name="saveSession">Save</string>
     <string name="timerText">Time : \u0020</string>
     <string name="SessionInputContinue">Continue</string>
     <string name="SessionInputPreset">Session preset</string>
