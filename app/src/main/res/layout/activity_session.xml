@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/pauseSession"
+        android:layout_below="@id/pauseSession"
         android:layout_toStartOf="@id/horizontalLine">
 
         <android.support.v4.view.PagerTabStrip
