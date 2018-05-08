@@ -41,9 +41,16 @@ public class Statistics extends AppCompatActivity {
     }
 
     public void timeSelected (View view){
+        Button tButton = findViewById(R.id.TimeButton);
+        Button sButton = findViewById(R.id.spmButton);
+        Button dButton = findViewById(R.id.distButton);
         ViewPager timeSpentViewPager = findViewById(R.id.timeSpentVP);
         ViewPager spmViewPager = findViewById(R.id.spmVP);
         ViewPager distViewPager = findViewById(R.id.distanceVP);
+
+        tButton.setBackgroundColor(getResources().getColor(R.color.green));
+        sButton.setBackgroundColor(getResources().getColor(R.color.standardColor));
+        dButton.setBackgroundColor(getResources().getColor(R.color.standardColor));
 
         timeSpentViewPager.setVisibility(View.VISIBLE);
         spmViewPager.setVisibility(View.GONE);
@@ -51,9 +58,16 @@ public class Statistics extends AppCompatActivity {
     }
 
     public void distanceSelected (View view){
+        Button tButton = findViewById(R.id.TimeButton);
+        Button sButton = findViewById(R.id.spmButton);
+        Button dButton = findViewById(R.id.distButton);
         ViewPager timeSpentViewPager = findViewById(R.id.timeSpentVP);
         ViewPager spmViewPager = findViewById(R.id.spmVP);
         ViewPager distViewPager = findViewById(R.id.distanceVP);
+
+        dButton.setBackgroundColor(getResources().getColor(R.color.green));
+        tButton.setBackgroundColor(getResources().getColor(R.color.standardColor));
+        sButton.setBackgroundColor(getResources().getColor(R.color.standardColor));
 
         timeSpentViewPager.setVisibility(View.GONE);
         spmViewPager.setVisibility(View.GONE);
@@ -61,9 +75,16 @@ public class Statistics extends AppCompatActivity {
     }
 
     public void spmSelected (View view){
+        Button tButton = findViewById(R.id.TimeButton);
+        Button sButton = findViewById(R.id.spmButton);
+        Button dButton = findViewById(R.id.distButton);
         ViewPager timeSpentViewPager = findViewById(R.id.timeSpentVP);
         ViewPager spmViewPager = findViewById(R.id.spmVP);
         ViewPager distViewPager = findViewById(R.id.distanceVP);
+
+        sButton.setBackgroundColor(getResources().getColor(R.color.green));
+        tButton.setBackgroundColor(getResources().getColor(R.color.standardColor));
+        dButton.setBackgroundColor(getResources().getColor(R.color.standardColor));
 
         timeSpentViewPager.setVisibility(View.GONE);
         spmViewPager.setVisibility(View.VISIBLE);

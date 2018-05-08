@@ -80,6 +80,8 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:onClick="timeSelected"
             android:text="@string/timeButton" />
 
@@ -88,6 +90,8 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:onClick="spmSelected"
             android:text="@string/spmButton" />
 
@@ -96,6 +100,8 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             android:onClick="distanceSelected"
             android:text="@string/distButton" />
     </LinearLayout>

@@ -7,4 +7,5 @@
     <color name="black">#000000</color>
     <color name="green">#1eff00</color>
     <color name="red">#ff0000</color>
+    <color name="standardColor">#FAFAFA</color>
 </resources>
