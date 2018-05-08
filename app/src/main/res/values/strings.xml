@@ -44,9 +44,10 @@
     <string name="distButton">Distance</string>
     <string name="week">WEEK</string>
     <string name="month">MONTH</string>
-    <string name="time">Time:</string>
+    <string name="time">Target time:</string>
     <string name="targTime">Target Time</string>
     <string name="distance">Distance:</string>
     <string name="targDistance">Target Distance</string>
     <string name="lineSkip">\n</string>
+    <string name="currentDistnace">0/</string>
 </resources>
