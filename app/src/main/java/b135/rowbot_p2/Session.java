@@ -97,6 +97,8 @@ public class Session extends AppCompatActivity {
         //initializing buttons by id
         Button sButton = findViewById(R.id.startSession);
         Button pButton = findViewById(R.id.pauseSession);
+        Button saveButton = findViewById(R.id.saveSession);
+        Button rButton = findViewById(R.id.returnSession);
         //if the boolean is true i.e. running the timer will pause
         if (running) {
             //sets various colors and texts
@@ -118,12 +120,31 @@ public class Session extends AppCompatActivity {
             running = false;
         }
         else if (sessionStop) {
-            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-            // somewhere about here, we want to save an 'entry' of a new session (save the data long term)
-            // toast the user that session has been saved
-            Utility.doToast(getApplicationContext(),"Session was saved");
-            startActivity(intent);
-
+            sButton.setVisibility(View.GONE);
+            pButton.setVisibility(View.GONE);
+            saveButton.setVisibility(View.VISIBLE);
+            rButton.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void saveSession(View v) {
+        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        // somewhere about here, we want to save an 'entry' of a new session (save the data long term)
+        // toast the user that session has been saved
+        Utility.doToast(getApplicationContext(),"Session was saved");
+        startActivity(intent);
+    }
+
+    public void returnToSession(View v) {
+        //initializing buttons by id
+        Button sButton = findViewById(R.id.startSession);
+        Button pButton = findViewById(R.id.pauseSession);
+        Button saveButton = findViewById(R.id.saveSession);
+        Button rButton = findViewById(R.id.returnSession);
+
+        sButton.setVisibility(View.VISIBLE);
+        pButton.setVisibility(View.VISIBLE);
+        saveButton.setVisibility(View.GONE);
+        rButton.setVisibility(View.GONE);
     }
 }

@@ -18,7 +18,8 @@
         android:textAllCaps="false"
         android:background="@color/black"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:visibility="visible"/>
 
     <Button
         android:id="@+id/pauseSession"
@@ -33,7 +34,39 @@
         android:textAllCaps="false"
         android:background="@color/black"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:visibility="visible"/>
+
+    <Button
+        android:id="@+id/returnSession"
+        android:layout_width="139dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/saveSession"
+        android:layout_marginStart="84dp"
+        android:onClick="returnToSession"
+        android:text="@string/returnSession"
+        android:textAllCaps="false"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/saveSession"
+        android:layout_width="139dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="14dp"
+        android:onClick="saveSession"
+        android:text="@string/saveSession"
+        android:textAllCaps="false"
+        android:background="@color/black"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:visibility="gone"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/sessionViewPager"
