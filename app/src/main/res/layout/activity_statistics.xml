@@ -81,6 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:textAllCaps="false"
             android:background="@drawable/statistics_buttons_deselected"
             android:onClick="timeSelected"
             android:text="@string/timeButton" />
@@ -91,6 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:textAllCaps="false"
             android:background="@drawable/statistics_buttons_deselected"
             android:onClick="spmSelected"
             android:text="@string/spmButton" />
@@ -101,6 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:textAllCaps="false"
             android:background="@drawable/statistics_buttons_deselected"
             android:onClick="distanceSelected"
             android:text="@string/distButton" />

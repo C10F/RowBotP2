@@ -61,6 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:textAllCaps="false"
             android:background="@drawable/statistics_buttons_deselected"
             android:onClick="showVideo"
             android:text="@string/techButton" />
@@ -71,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:textAllCaps="false"
             android:background="@drawable/statistics_buttons_deselected"
             android:onClick="showSetup"
             android:text="@string/setupButton" />
@@ -81,6 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:textAllCaps="false"
             android:background="@drawable/statistics_buttons_deselected"
             android:onClick="showTermin"
             android:text="@string/termButton" />
