@@ -17,17 +17,17 @@
     <string name="saveSession">Save</string>
     <string name="timerText">Time : \u0020</string>
     <string name="SessionInputContinue">Continue</string>
-    <string name="SessionInputPreset">Session preset</string>
+    <string name="SessionInputPreset">Please select the amount of time you want to workout.</string>
     <string name="targetDistance">@string/targetDistance</string>
     <string name="targetTime">@string/targetTime</string>
     <string-array name="Presets">
         <item>Choose a build-in preset.</item>
-        <item>500m in 20 minutes</item>
-        <item>1.000m in 30 minutes</item>
-        <item>2.000m in 40 minutes</item>
-        <item>5.000m in 50 minutes</item>
-        <item>10.000m in 60 minutes</item>
-        <item>15.000m in 70 minutes</item>
+        <item>5 minutes.</item>
+        <item>10 minutes.</item>
+        <item>20 minutes.</item>
+        <item>30 minutes.</item>
+        <item>60 minutes.</item>
+        <item>90 minutes.</item>
         <item>Custom</item>
     </string-array>
     <string name="currentDistnace">0/</string>
@@ -35,22 +35,24 @@
     <string name="guideSelection">Please select an option on the right\nto learn more about the selected topic.</string>
     <string name="SessionInputDistance">Distance in meters</string>
     <string name="SessionInputTime">Time in minutes</string>
-    <string name="SessionInputPresetNone">No preset has been selected\nplease select a preset.</string>
-    <string name="SessionInputPresetSelection1">You have selected the following preset:\n\n500 meters in 20 minutes</string>
-    <string name="SessionInputPresetSelection2">You have selected the following preset:\n\n1.000 meters in 30 minutes</string>
-    <string name="SessionInputPresetSelection3">You have selected the following preset:\n\n2.000 meters in 40 minutes</string>
-    <string name="SessionInputPresetSelection4">You have selected the following preset:\n\n5.000 meters in 50 minutes</string>
-    <string name="SessionInputPresetSelection5">You have selected the following preset:\n\n10.000 meters in 60 minutes</string>
-    <string name="SessionInputPresetSelection6">You have selected the following preset:\n\n15.000 meters in 70 minutes</string>
+    <string name="SessionInputPresetNone">No time has been selected yet.</string>
+    <string name="SessionInputPresetSelection1">You have selected the following preset:\n\n5 minutes.</string>
+    <string name="SessionInputPresetSelection2">You have selected the following preset:\n\n10 minutes.</string>
+    <string name="SessionInputPresetSelection3">You have selected the following preset:\n\n20 minutes.</string>
+    <string name="SessionInputPresetSelection4">You have selected the following preset:\n\n30 minutes.</string>
+    <string name="SessionInputPresetSelection5">You have selected the following preset:\n\n60 minutes.</string>
+    <string name="SessionInputPresetSelection6">You have selected the following preset:\n\n90 minutes.</string>
     <string name="timeButton">Time</string>
     <string name="spmButton">SPM</string>
     <string name="distButton">Distance</string>
     <string name="week">WEEK</string>
     <string name="month">MONTH</string>
-    <string name="time">Time:</string>
+    <string name="time">Target time:</string>
     <string name="targTime">Target Time</string>
     <string name="distance">Distance:</string>
+    <string name="spm">SPM:</string>
     <string name="targDistance">Target Distance</string>
     <string name="lineSkip">\n</string>
     <string name="title_activity_sensor">Sensor</string>
+    <string name="spmNumbers">00</string>
 </resources>

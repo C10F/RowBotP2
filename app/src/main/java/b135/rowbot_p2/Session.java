@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -25,9 +26,9 @@ public class Session extends AppCompatActivity {
     private boolean running;
     //boolean used to see whether or not the stop button is available and if true then the session is able to stop
     private boolean sessionStop = false;
-    String targetDistance;
+    //String targetDistance;
     String targetTime;
-    private String currentDistance = "0/";
+    //private String currentDistance = "0/";
 
 
     @Override
@@ -41,21 +42,21 @@ public class Session extends AppCompatActivity {
         // extra fetched from SessionInput
         Bundle extra = getIntent().getExtras();
         if(extra != null){
-            targetDistance = extra.getString("EXTRA_DISTANCE");
+            //targetDistance = extra.getString("EXTRA_DISTANCE");
             targetTime = extra.getString("EXTRA_TIME");
         }
 
-        String distance = currentDistance+targetDistance;
+        //String distance = currentDistance+targetDistance;
 
         //here we create and instance of our viewPager
-        ViewPager viewPager = findViewById(R.id.sessionViewPager);
+        //ViewPager viewPager = findViewById(R.id.sessionViewPager);
         //here we create our imageAdapter by calling the constructor method
-        ImageAdapter adapter = new ImageAdapter(this);
+        //ImageAdapter adapter = new ImageAdapter(this);
         //here we take our viewPager variable and call the setAdapter method on it and then pass our adapter
-        viewPager.setAdapter(adapter);
-        TextView debugD = findViewById(R.id.debugOutput);
+        //viewPager.setAdapter(adapter);
+        //TextView debugD = findViewById(R.id.debugOutput);
         TextView debugT = findViewById(R.id.debugOutput2);
-        debugD.setText(distance);
+        //debugD.setText(distance);
         debugT.setText(targetTime);
 
         //sets the chronometer variable to the chronometer in the xml file by id
@@ -75,10 +76,10 @@ public class Session extends AppCompatActivity {
         //if the boolean is false i.e. not running the timer will start
         if (!running) {
             //sets various colors and texts
-            sButton.setBackgroundColor(getResources().getColor(R.color.green));
+            sButton.setBackgroundResource(R.drawable.session_start_button);
             sButton.setTextColor(getResources().getColor(R.color.black));
-            pButton.setBackgroundColor(getResources().getColor(R.color.black));
-            pButton.setTextColor(getResources().getColor(R.color.white));
+            pButton.setBackgroundResource(R.drawable.session_standard_button);
+            pButton.setTextColor(getResources().getColor(R.color.black));
             pButton.setText(R.string.PauseSession);
             //this makes the chronometer start counting when we click the button and not from when we start the activity which is the default
             //we subtract the offset to make sure that if we pause it, when we the run it again it will
@@ -103,13 +104,13 @@ public class Session extends AppCompatActivity {
         Button pButton = findViewById(R.id.pauseSession);
         Button saveButton = findViewById(R.id.saveSession);
         Button rButton = findViewById(R.id.returnSession);
-        ViewPager viewPager = findViewById(R.id.sessionViewPager);
+        ImageView imageView = findViewById(R.id.sessionImageView);
         //if the boolean is true i.e. running the timer will pause
         if (running) {
             //sets various colors and texts
-            sButton.setBackgroundColor(getResources().getColor(R.color.black));
-            sButton.setTextColor(getResources().getColor(R.color.white));
-            pButton.setBackgroundColor(getResources().getColor(R.color.red));
+            sButton.setBackgroundResource(R.drawable.session_standard_button);
+            sButton.setTextColor(getResources().getColor(R.color.black));
+            pButton.setBackgroundResource(R.drawable.session_stop_button);
             pButton.setTextColor(getResources().getColor(R.color.black));
             pButton.setText(R.string.StopSession);
             //pauses the chronometer i.e. the timer and stops the timer text without resetting it.
@@ -126,9 +127,9 @@ public class Session extends AppCompatActivity {
         }
         else if (sessionStop) {
             //this makes sure the viewPager stays below the buttons and doesn't go to match parent when the buttons change
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) viewPager.getLayoutParams();
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) imageView.getLayoutParams();
             layoutParams.addRule(RelativeLayout.BELOW, saveButton.getId());
-            viewPager.setLayoutParams(layoutParams);
+            imageView.setLayoutParams(layoutParams);
             sButton.setVisibility(View.GONE);
             pButton.setVisibility(View.GONE);
             saveButton.setVisibility(View.VISIBLE);
@@ -150,11 +151,11 @@ public class Session extends AppCompatActivity {
         Button pButton = findViewById(R.id.pauseSession);
         Button saveButton = findViewById(R.id.saveSession);
         Button rButton = findViewById(R.id.returnSession);
-        ViewPager viewPager = findViewById(R.id.sessionViewPager);
+        ImageView imageView = findViewById(R.id.sessionImageView);
 
-        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) viewPager.getLayoutParams();
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) imageView.getLayoutParams();
         layoutParams.addRule(RelativeLayout.BELOW, pButton.getId());
-        viewPager.setLayoutParams(layoutParams);
+        imageView.setLayoutParams(layoutParams);
 
         sButton.setVisibility(View.VISIBLE);
         pButton.setVisibility(View.VISIBLE);

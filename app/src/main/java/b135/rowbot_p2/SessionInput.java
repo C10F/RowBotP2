@@ -79,7 +79,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             sessionInputT.setVisibility(View.GONE);
             // set variables to be put extra
             inputTargetDistance = "500";
-            inputTargetTime = "20:00";
+            inputTargetTime = "05:00";
         }
         else if (position == 2) {
             selected.setText(R.string.SessionInputPresetSelection2);
@@ -88,7 +88,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "1000";
-            inputTargetTime = "30:00";
+            inputTargetTime = "10:00";
         }
         else if (position == 3) {
             selected.setText(R.string.SessionInputPresetSelection3);
@@ -97,7 +97,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "2000";
-            inputTargetTime = "40:00";
+            inputTargetTime = "20:00";
         }
         else if (position == 4) {
             selected.setText(R.string.SessionInputPresetSelection4);
@@ -106,7 +106,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "5000";
-            inputTargetTime = "50:00";
+            inputTargetTime = "30:00";
         }
         else if (position == 5) {
             selected.setText(R.string.SessionInputPresetSelection5);
@@ -124,7 +124,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "15000";
-            inputTargetTime = "70:00";
+            inputTargetTime = "90:00";
         }
         //makes the textView disappear and makes the TextInputLayouts appear
         else if (position == 7) {
@@ -149,7 +149,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             inputTargetDistance = sessionInputD.getEditText().getText().toString();
             inputTargetTime = sessionInputT.getEditText().getText().toString();
         }
-        intent.putExtra("EXTRA_DISTANCE", inputTargetDistance);
+        //intent.putExtra("EXTRA_DISTANCE", inputTargetDistance);
         intent.putExtra("EXTRA_TIME", inputTargetTime);
         startActivity(intent);
     }

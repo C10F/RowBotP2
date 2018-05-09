@@ -4,7 +4,7 @@
         <shape>
             <solid android:color="@color/statButtonGreen"/>
             <stroke
-                android:color="@color/black"
+                android:color="@color/statButtonGreen"
                 android:width="5dp"/>
             <corners android:radius="150dp"/>
         </shape>
