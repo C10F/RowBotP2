@@ -30,6 +30,9 @@
         <item>15.000m in 70 minutes</item>
         <item>Custom</item>
     </string-array>
+    <string name="currentDistnace">0/</string>
+    <string name="statSelection">Please select an option on the right\nto review your statistics.</string>
+    <string name="guideSelection">Please select an option on the right\nto learn more about the selected topic.</string>
     <string name="SessionInputDistance">Distance in meters</string>
     <string name="SessionInputTime">Time in minutes</string>
     <string name="SessionInputPresetNone">No preset has been selected\nplease select a preset.</string>
@@ -44,12 +47,10 @@
     <string name="distButton">Distance</string>
     <string name="week">WEEK</string>
     <string name="month">MONTH</string>
-    <string name="time">Target time:</string>
+    <string name="time">Time:</string>
     <string name="targTime">Target Time</string>
     <string name="distance">Distance:</string>
     <string name="targDistance">Target Distance</string>
     <string name="lineSkip">\n</string>
-    <string name="currentDistnace">0/</string>
-    <string name="statSelection">Please select an option on the right\nto review your statistics.</string>
-    <string name="guideSelection">Please select an option on the right\nto learn more about the selected topic.</string>
+    <string name="title_activity_sensor">Sensor</string>
 </resources>

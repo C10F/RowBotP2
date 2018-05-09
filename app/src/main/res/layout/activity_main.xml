@@ -52,6 +52,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/sensorButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="goToTest"
+        android:text="Go to sensor" />
+
     <ImageView
         android:id="@+id/sketchyFrontpage"
         android:layout_width="wrap_content"
@@ -66,5 +73,4 @@
         app:layout_constraintEnd_toStartOf="@+id/statButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </android.support.constraint.ConstraintLayout>
