@@ -80,8 +80,8 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/statistics_buttons_deselected"
             android:onClick="timeSelected"
             android:text="@string/timeButton" />
 
@@ -90,8 +90,8 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/statistics_buttons_deselected"
             android:onClick="spmSelected"
             android:text="@string/spmButton" />
 
@@ -100,10 +100,23 @@
             style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/statistics_buttons_deselected"
             android:onClick="distanceSelected"
             android:text="@string/distButton" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/statStartText"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_toStartOf="@id/divider"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp"
+        android:text="@string/statSelection"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:gravity="center" />
 
 </RelativeLayout>

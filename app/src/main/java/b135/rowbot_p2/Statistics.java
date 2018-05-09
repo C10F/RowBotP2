@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import javax.xml.datatype.Duration;
@@ -41,6 +42,7 @@ public class Statistics extends AppCompatActivity {
     }
 
     public void timeSelected (View view){
+        TextView textView = findViewById(R.id.statStartText);
         Button tButton = findViewById(R.id.TimeButton);
         Button sButton = findViewById(R.id.spmButton);
         Button dButton = findViewById(R.id.distButton);
@@ -48,9 +50,11 @@ public class Statistics extends AppCompatActivity {
         ViewPager spmViewPager = findViewById(R.id.spmVP);
         ViewPager distViewPager = findViewById(R.id.distanceVP);
 
-        tButton.setBackgroundColor(getResources().getColor(R.color.green));
-        sButton.setBackgroundColor(getResources().getColor(R.color.standardColor));
-        dButton.setBackgroundColor(getResources().getColor(R.color.standardColor));
+        textView.setVisibility(View.GONE);
+
+        tButton.setBackgroundResource(R.drawable.statistics_buttons_selected);
+        sButton.setBackgroundResource(R.drawable.statistics_buttons_deselected);
+        dButton.setBackgroundResource(R.drawable.statistics_buttons_deselected);
 
         timeSpentViewPager.setVisibility(View.VISIBLE);
         spmViewPager.setVisibility(View.GONE);
@@ -58,6 +62,7 @@ public class Statistics extends AppCompatActivity {
     }
 
     public void distanceSelected (View view){
+        TextView textView = findViewById(R.id.statStartText);
         Button tButton = findViewById(R.id.TimeButton);
         Button sButton = findViewById(R.id.spmButton);
         Button dButton = findViewById(R.id.distButton);
@@ -65,9 +70,11 @@ public class Statistics extends AppCompatActivity {
         ViewPager spmViewPager = findViewById(R.id.spmVP);
         ViewPager distViewPager = findViewById(R.id.distanceVP);
 
-        dButton.setBackgroundColor(getResources().getColor(R.color.green));
-        tButton.setBackgroundColor(getResources().getColor(R.color.standardColor));
-        sButton.setBackgroundColor(getResources().getColor(R.color.standardColor));
+        textView.setVisibility(View.GONE);
+
+        dButton.setBackgroundResource(R.drawable.statistics_buttons_selected);
+        tButton.setBackgroundResource(R.drawable.statistics_buttons_deselected);
+        sButton.setBackgroundResource(R.drawable.statistics_buttons_deselected);
 
         timeSpentViewPager.setVisibility(View.GONE);
         spmViewPager.setVisibility(View.GONE);
@@ -75,6 +82,7 @@ public class Statistics extends AppCompatActivity {
     }
 
     public void spmSelected (View view){
+        TextView textView = findViewById(R.id.statStartText);
         Button tButton = findViewById(R.id.TimeButton);
         Button sButton = findViewById(R.id.spmButton);
         Button dButton = findViewById(R.id.distButton);
@@ -82,9 +90,11 @@ public class Statistics extends AppCompatActivity {
         ViewPager spmViewPager = findViewById(R.id.spmVP);
         ViewPager distViewPager = findViewById(R.id.distanceVP);
 
-        sButton.setBackgroundColor(getResources().getColor(R.color.green));
-        tButton.setBackgroundColor(getResources().getColor(R.color.standardColor));
-        dButton.setBackgroundColor(getResources().getColor(R.color.standardColor));
+        textView.setVisibility(View.GONE);
+
+        sButton.setBackgroundResource(R.drawable.statistics_buttons_selected);
+        tButton.setBackgroundResource(R.drawable.statistics_buttons_deselected);
+        dButton.setBackgroundResource(R.drawable.statistics_buttons_deselected);
 
         timeSpentViewPager.setVisibility(View.GONE);
         spmViewPager.setVisibility(View.VISIBLE);

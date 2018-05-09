@@ -50,4 +50,5 @@
     <string name="targDistance">Target Distance</string>
     <string name="lineSkip">\n</string>
     <string name="currentDistnace">0/</string>
+    <string name="statSelection">Please select an option on the right\nto review your statistics.</string>
 </resources>
