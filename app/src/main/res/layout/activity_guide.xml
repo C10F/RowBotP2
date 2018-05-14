@@ -28,20 +28,23 @@
 
     <ImageView
         android:id="@+id/setupPH"
-        android:layout_width="447dp"
-        android:layout_height="251dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="27dp"
+        android:layout_toStartOf="@id/divider"
+        android:layout_margin="10dp"
         android:visibility="gone"
         app:srcCompat="@drawable/setupph" />
 
     <ImageView
         android:id="@+id/embedVideoPH"
-        android:layout_width="446dp"
-        android:layout_height="248dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/divider"
+        android:layout_margin="10dp"
         android:visibility="gone"
         app:srcCompat="@drawable/embedvideoph" />
 
@@ -91,12 +94,12 @@
 
     <ImageView
         android:id="@+id/termPH"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="12dp"
-        android:layout_marginStart="15dp"
+        android:layout_toStartOf="@id/divider"
+        android:layout_margin="10dp"
         android:visibility="gone"
         app:srcCompat="@drawable/termfigure" />
 
