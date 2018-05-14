@@ -17,7 +17,7 @@ import android.widget.TextView;
 public class SessionInput extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private boolean customChosen;
-    private TextInputLayout sessionInputD;
+    //private TextInputLayout sessionInputD;
     private TextInputLayout sessionInputT;
     private TextView selected;
     private Button goTo;
@@ -35,7 +35,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
         Spinner spinner = findViewById(R.id.presetSpinner);
 
         //reference to the TextInputLayout fields from the xml found by id
-        sessionInputD = findViewById(R.id.distanceText);
+        //sessionInputD = findViewById(R.id.distanceText);
         sessionInputT = findViewById(R.id.timeText);
 
         //this array adapter fits our spinner with the text from the string-array
@@ -67,7 +67,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             selected.setText(R.string.SessionInputPresetNone);
             selected.setVisibility(View.VISIBLE);
             goTo.setVisibility(View.GONE);
-            sessionInputD.setVisibility(View.GONE);
+            //sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
         }
         //the 6 following if statements do the same sets a specific text in the textView and makes the button appear when position is 1-6
@@ -75,7 +75,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             selected.setText(R.string.SessionInputPresetSelection1);
             selected.setVisibility(View.VISIBLE);
             goTo.setVisibility(View.VISIBLE);
-            sessionInputD.setVisibility(View.GONE);
+            //sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
             // set variables to be put extra
             inputTargetDistance = "500";
@@ -85,7 +85,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             selected.setText(R.string.SessionInputPresetSelection2);
             selected.setVisibility(View.VISIBLE);
             goTo.setVisibility(View.VISIBLE);
-            sessionInputD.setVisibility(View.GONE);
+            //sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "1000";
             inputTargetTime = "10:00";
@@ -94,7 +94,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             selected.setText(R.string.SessionInputPresetSelection3);
             selected.setVisibility(View.VISIBLE);
             goTo.setVisibility(View.VISIBLE);
-            sessionInputD.setVisibility(View.GONE);
+            //sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "2000";
             inputTargetTime = "20:00";
@@ -103,7 +103,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             selected.setText(R.string.SessionInputPresetSelection4);
             selected.setVisibility(View.VISIBLE);
             goTo.setVisibility(View.VISIBLE);
-            sessionInputD.setVisibility(View.GONE);
+            //sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "5000";
             inputTargetTime = "30:00";
@@ -112,7 +112,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             selected.setText(R.string.SessionInputPresetSelection5);
             selected.setVisibility(View.VISIBLE);
             goTo.setVisibility(View.VISIBLE);
-            sessionInputD.setVisibility(View.GONE);
+            //sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "10000";
             inputTargetTime = "60:00";
@@ -121,7 +121,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
             selected.setText(R.string.SessionInputPresetSelection6);
             selected.setVisibility(View.VISIBLE);
             goTo.setVisibility(View.VISIBLE);
-            sessionInputD.setVisibility(View.GONE);
+            //sessionInputD.setVisibility(View.GONE);
             sessionInputT.setVisibility(View.GONE);
             inputTargetDistance = "15000";
             inputTargetTime = "90:00";
@@ -130,7 +130,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
         else if (position == 7) {
             selected.setVisibility(View.GONE);
             goTo.setVisibility(View.VISIBLE);
-            sessionInputD.setVisibility(View.VISIBLE);
+            //sessionInputD.setVisibility(View.VISIBLE);
             sessionInputT.setVisibility(View.VISIBLE);
             customChosen = true;
         }
@@ -146,7 +146,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
         Intent intent = new Intent(getApplicationContext(),Session.class);
         // put extra the distance and time chosen
         if(customChosen){
-            inputTargetDistance = sessionInputD.getEditText().getText().toString();
+            //inputTargetDistance = sessionInputD.getEditText().getText().toString();
             inputTargetTime = sessionInputT.getEditText().getText().toString();
         }
         //intent.putExtra("EXTRA_DISTANCE", inputTargetDistance);
