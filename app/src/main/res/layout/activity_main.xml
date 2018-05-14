@@ -1,11 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/startScreenLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:orientation="vertical"
+        android:gravity="fill_horizontal|center">
+
+        <Button
+            android:id="@+id/startbutton"
+            android:layout_width="179dp"
+            android:layout_height="55dp"
+            android:layout_margin="5dp"
+            android:onClick="goToSession"
+            android:background="@drawable/session_input_button"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:text="@string/StartButton" />
+
+        <Button
+            android:id="@+id/statButton"
+            android:layout_width="179dp"
+            android:layout_height="55dp"
+            android:layout_margin="5dp"
+            android:onClick="goToStats"
+            android:background="@drawable/session_input_button"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:text="@string/StatButton" />
+
+        <Button
+            android:id="@+id/guideButton"
+            android:layout_width="179dp"
+            android:layout_height="55dp"
+            android:layout_margin="5dp"
+            android:onClick="goToGuide"
+            android:background="@drawable/session_input_button"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:text="@string/GuideButton" />
+
+    </LinearLayout>
+
+    <!--
 
     <Button
         android:id="@+id/guideButton"
@@ -61,6 +106,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+        -->
+
     <Button
         android:id="@+id/sensorButton"
         android:layout_width="wrap_content"
@@ -70,16 +117,11 @@
 
     <ImageView
         android:id="@+id/sketchyFrontpage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:layout_toStartOf="@id/startScreenLinearLayout"
         android:contentDescription="@string/SketchyImageDescription"
-        android:src="@drawable/fun_design_sketchy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/statButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+        android:src="@drawable/fun_design_sketchy" />
+
+</RelativeLayout>
