@@ -3,38 +3,42 @@ package b135.rowbot_p2;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-public class StatisticsImAdapterSPM extends PagerAdapter {
-    //used to later pass context to the constructor
+public class StatisticsImAdapterSPM extends FragmentPagerAdapter {
+    /*//used to later pass context to the constructor
     private Context statSPMContext;
     //array holding the images of the ViewPager (swipeView)
     private int[] statSPMImageIds = new int[]
-            {R.drawable.weekspm_ph, R.drawable.monthspm_ph};
+            {R.drawable.weekspm_ph, R.drawable.monthspm_ph};*/
 
-    //constructor
-    StatisticsImAdapterSPM(Context context) {
-        statSPMContext = context;
+    //Constructor
+    public StatisticsImAdapterSPM(FragmentManager fm) {
+        super(fm);
     }
 
     @Override
+    //this returns the amount of pages in the adapter.
     public int getCount() {
-        return statSPMImageIds.length;
+        return 2;
     }
 
-    @Override
+    /*@Override
     //this method gets passed the object that we create in the method below and it functions as a key
     //to let the program know which view belongs to which item
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
         //this makes it so that the boolean that is returned is set to true
         //since it just checks if the imageView created below belongs to this object identifier
         return view == object;
-    }
+    }*/
 
-    @NonNull
+    /*@NonNull
     @Override
     //here we crate an imageView and then adds it to a container which is then returned as an object
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
@@ -43,14 +47,14 @@ public class StatisticsImAdapterSPM extends PagerAdapter {
         imageView.setImageResource(statSPMImageIds[position]);
         container.addView(imageView, 0);
         return imageView;
-    }
+    }*/
 
-    @Override
+    /*@Override
     //this method removes the image when the item is destroyed
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
         //to remove the view we pass our object into the removeView method and then cast it to an ImageView
         container.removeView((ImageView) object);
-    }
+    }*/
 
     @Nullable
     @Override
@@ -63,5 +67,18 @@ public class StatisticsImAdapterSPM extends PagerAdapter {
             title = "Month";
         }
         return title;
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        switch (position){
+            case 0:
+                return new FragmentsStatisticsSPMWeek();
+            case 1:
+                return new FragmentsStatisticsSPMMonth();
+            default:
+                break;
+        }
+        return null;
     }
 }
