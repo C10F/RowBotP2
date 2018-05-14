@@ -82,4 +82,18 @@
         app:layout_constraintEnd_toStartOf="@+id/statButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="38dp"
+        android:layout_marginEnd="267dp"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="30dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/sketchyFrontpage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sensorButton"
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
