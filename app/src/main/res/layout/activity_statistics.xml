@@ -39,6 +39,8 @@
 
     </android.support.v4.view.ViewPager>
 
+    <!--
+
     <android.support.v4.view.ViewPager
         android:id="@+id/distanceVP"
         android:layout_width="match_parent"
@@ -55,6 +57,8 @@
             android:paddingBottom="2dp" />
 
     </android.support.v4.view.ViewPager>
+
+    -->
 
     <View
         android:id="@+id/divider"
@@ -97,6 +101,8 @@
             android:onClick="spmSelected"
             android:text="@string/spmButton" />
 
+        <!--
+
         <Button
             android:id="@+id/distButton"
             style="@style/Widget.AppCompat.Button.Borderless"
@@ -107,6 +113,8 @@
             android:background="@drawable/statistics_buttons_deselected"
             android:onClick="distanceSelected"
             android:text="@string/distButton" />
+
+            -->
     </LinearLayout>
 
     <TextView

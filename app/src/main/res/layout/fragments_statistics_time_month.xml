@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentsStatisticsTimeWeek"
-    android:background="@color/red">
+    tools:context=".FragmentsStatisticsTimeMonth"
+    android:background="@color/green">
 
 </RelativeLayout>
