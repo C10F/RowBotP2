@@ -26,8 +26,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentsStatisticsTimeWeek extends Fragment {
+    private static final String TAG = "debugger";
     BarChart barChart;
     float[] weekValues = new float[7];
+    //String[] nullAddZero = new String[]{"tsMonday.txt", "tsTuesday.txt", "tsWednesday.txt", "tsThursday.txt", "tsFriday.txt", "tsSaturday.txt", "tsSunday"};
 
     public FragmentsStatisticsTimeWeek() {
         // Required empty public constructor
@@ -39,7 +41,49 @@ public class FragmentsStatisticsTimeWeek extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragments_statistics_time_week, container, false);
 
-        //Utility.writeToFile("21", "tsMonday.txt", getActivity());
+        /*for (int i = 0 ; i < weekValues.length+1 ; i++){
+            if(Utility.readFromFile(nullAddZero[i], getActivity()) == null) {
+                Utility.writeToFile("0",nullAddZero[i], getActivity());
+            }
+        }*/
+
+        /*if (Utility.readFromFile("tsMonday.txt", getActivity()) == null){
+            Log.d(TAG, "mon was run");
+            Utility.writeToFile("0", "tsMonday.txt", getActivity());
+        }
+        if (Utility.readFromFile("tsTuesday.txt", getActivity()) == null){
+            Log.d(TAG, "tue was run");
+            Utility.writeToFile("0", "tsTuesday.txt", getActivity());
+        }
+        if (Utility.readFromFile("tsWednesday.txt", getActivity()) == null){
+            Log.d(TAG, "wed was run");
+            Utility.writeToFile("0", "tsWednesday.txt", getActivity());
+        }
+        if (Utility.readFromFile("tsThursday.txt", getActivity()) == null){
+            Log.d(TAG, "thu was run");
+            Utility.writeToFile("0", "tsThursday.txt", getActivity());
+        }
+        if (Utility.readFromFile("tsFriday.txt", getActivity()) == null){
+            Log.d(TAG, "fri was run");
+            Utility.writeToFile("0", "tsFriday.txt", getActivity());
+        }
+        if (Utility.readFromFile("tsSaturday.txt", getActivity()) == null){
+            Log.d(TAG, "sat was run");
+            Utility.writeToFile("0", "tsSaturday.txt", getActivity());
+        }
+        if (Utility.readFromFile("tsSunday.txt", getActivity()) == null){
+            Log.d(TAG, "sun was run");
+            Utility.writeToFile("0", "tsSunday.txt", getActivity());
+        }*/
+
+        /*Utility.writeToFile("0", "tsMonday.txt", getActivity());
+        Utility.writeToFile("0", "tsTuesday.txt", getActivity());
+        Utility.writeToFile("0", "tsWednesday.txt", getActivity());
+        Utility.writeToFile("0", "tsThursday.txt", getActivity());
+        Utility.writeToFile("0", "tsFriday.txt", getActivity());
+        Utility.writeToFile("0", "tsSaturday.txt", getActivity());
+        Utility.writeToFile("0", "tsSunday.txt", getActivity());*/
+
         weekValues[0] = Float.parseFloat(divideString(Utility.readFromFile("tsMonday.txt",getActivity())));
         weekValues[1] = Float.parseFloat(divideString(Utility.readFromFile("tsTuesday.txt",getActivity())));
         weekValues[2] = Float.parseFloat(divideString(Utility.readFromFile("tsWednesday.txt",getActivity())));
