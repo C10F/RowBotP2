@@ -8,8 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +21,14 @@ public class MainActivity extends AppCompatActivity {
         // Set window fullscreen and force landscape orientation
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        checkForSave();
+    }
 
+    private void checkForSave(){
+        TextView result = findViewById(R.id.resultText);
+        if(Utility.readFromFile("sessionTimer.txt", getApplicationContext()) != null) {
+            result.setText(Utility.readFromFile("sessionTimer.txt", getApplicationContext()));
+        }
     }
 
     public void goToSession (View view) {

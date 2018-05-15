@@ -138,6 +138,8 @@ public class Session extends AppCompatActivity {
     }
 
     public void saveSession(View v) {
+        // a test save right here:
+        Utility.writeToFile(sessionTimer.getText().toString(), "sessionTimer.txt", getApplicationContext());
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         // somewhere about here, we want to save an 'entry' of a new session (save the data long term)
         // toast the user that session has been saved
@@ -161,5 +163,6 @@ public class Session extends AppCompatActivity {
         pButton.setVisibility(View.VISIBLE);
         saveButton.setVisibility(View.GONE);
         rButton.setVisibility(View.GONE);
+        // COMMENTS PL0X
     }
 }
