@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 
 public class Session extends AppCompatActivity {
 
@@ -28,7 +30,7 @@ public class Session extends AppCompatActivity {
     private boolean sessionStop = false;
     //String targetDistance;
     String targetTime;
-    //private String currentDistance = "0/";
+    int day = Calendar.DAY_OF_WEEK;
 
 
     @Override
@@ -139,7 +141,25 @@ public class Session extends AppCompatActivity {
 
     public void saveSession(View v) {
         // a test save right here:
-        Utility.writeToFile(sessionTimer.getText().toString(), "sessionTimer.txt", getApplicationContext());
+        //Utility.writeToFile(sessionTimer.getText().toString(), "sessionTimer.txt", getApplicationContext());
+        switch (day) {
+            case Calendar.MONDAY:
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsMonday", getApplicationContext());
+            case Calendar.TUESDAY:
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsTuesday", getApplicationContext());
+            case Calendar.WEDNESDAY:
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsWednesday", getApplicationContext());
+            case Calendar.THURSDAY:
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsThursday", getApplicationContext());
+            case Calendar.FRIDAY:
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsFriday", getApplicationContext());
+            case Calendar.SATURDAY:
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsSaturday", getApplicationContext());
+            case Calendar.SUNDAY:
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsSunday", getApplicationContext());
+            default:
+                break;
+        }
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         // somewhere about here, we want to save an 'entry' of a new session (save the data long term)
         // toast the user that session has been saved
