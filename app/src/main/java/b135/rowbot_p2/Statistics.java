@@ -13,12 +13,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+import com.jjoe64.graphview.series.BarGraphSeries;
 import javax.xml.datatype.Duration;
 
 public class Statistics extends FragmentActivity {
     ViewPager timeSpentViewPager;
     ViewPager spmViewPager;
+    GraphView graphFFS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +46,28 @@ public class Statistics extends FragmentActivity {
         /*ViewPager distViewPager = findViewById(R.id.distanceVP);
         StatisticsImAdapterDist distAdapter = new StatisticsImAdapterDist(this);
         distViewPager.setAdapter(distAdapter);*/
+
+        graphFFS = findViewById(R.id.graphTest123);
+        graphFFS.addSeries(values);
+        values.setSpacing(10);
+        graphFFS.getViewport().setXAxisBoundsManual(true);
+        graphFFS.getViewport().setMinX(1);
+        graphFFS.getViewport().setMaxX(10);
+
     }
+
+    BarGraphSeries<DataPoint> values = new BarGraphSeries<>(new DataPoint[] {
+            new DataPoint(0,0),
+            new DataPoint(1,1),
+            new DataPoint(2,1.2),
+            new DataPoint(3,2),
+            new DataPoint(4,4),
+            new DataPoint(5,2),
+            new DataPoint(6,1),
+            new DataPoint(7,5),
+            new DataPoint(8,6)
+
+    });
 
     public void timeSelected (View view){
         TextView textView = findViewById(R.id.statStartText);
