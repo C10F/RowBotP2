@@ -1,107 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FragmentsStatisticsTimeWeek">
 
-    <TextView
-        android:id="@+id/timeSpentMondayText"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/monday"
-        android:textColor="@color/black"
-        android:textAlignment="center" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:id="@+id/timeSpentWeekBarchart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-    <View
-        android:id="@+id/tuesdayDivider"
-        android:layout_width="2dp"
-        android:layout_height="match_parent"
-        android:background="@color/black" />
-
-    <TextView
-        android:id="@+id/timeSpentTuesdayText"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/tuesday"
-        android:textColor="@color/black"
-        android:textAlignment="center"/>
-
-    <View
-        android:id="@+id/wednesdayDivider"
-        android:layout_width="2dp"
-        android:layout_height="match_parent"
-        android:background="@color/black" />
-
-    <TextView
-        android:id="@+id/timeSpentWednesdayText"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/wednesday"
-        android:textColor="@color/black"
-        android:textAlignment="center"/>
-
-    <View
-        android:id="@+id/thursdayDivider"
-        android:layout_width="2dp"
-        android:layout_height="match_parent"
-        android:background="@color/black" />
-
-    <TextView
-        android:id="@+id/timeSpentThursdayText"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/thursday"
-        android:textColor="@color/black"
-        android:textAlignment="center"/>
-
-    <View
-        android:id="@+id/fridayDivider"
-        android:layout_width="2dp"
-        android:layout_height="match_parent"
-        android:background="@color/black" />
-
-    <TextView
-        android:id="@+id/timeSpentFridayText"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/friday"
-        android:textColor="@color/black"
-        android:textAlignment="center"/>
-
-    <View
-        android:id="@+id/saturdayDivider"
-        android:layout_width="2dp"
-        android:layout_height="match_parent"
-        android:background="@color/black" />
-
-    <TextView
-        android:id="@+id/timeSpentSaturdayText"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/saturday"
-        android:textColor="@color/black"
-        android:textAlignment="center"/>
-
-    <View
-        android:id="@+id/mondayDivider"
-        android:layout_width="2dp"
-        android:layout_height="match_parent"
-        android:background="@color/black" />
-
-    <TextView
-        android:id="@+id/timeSpentSundayText"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:text="@string/sunday"
-        android:textColor="@color/black"
-        android:textAlignment="center"/>
-
-</LinearLayout>
+</FrameLayout>

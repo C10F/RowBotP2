@@ -5,11 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".Statistics">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toStartOf="@id/divider">
+
     <android.support.v4.view.ViewPager
         android:id="@+id/timeSpentVP"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_toStartOf="@id/divider"
         android:padding="5dp"
         android:visibility="gone">
 
@@ -26,7 +30,6 @@
         android:id="@+id/spmVP"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_toStartOf="@id/divider"
         android:padding="5dp"
         android:visibility="gone">
 
@@ -38,6 +41,20 @@
             android:paddingBottom="2dp" />
 
     </android.support.v4.view.ViewPager>
+
+    <TextView
+        android:id="@+id/statStartText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_margin="10dp"
+        android:text="@string/statSelection"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:gravity="center" />
+
+    </RelativeLayout>
 
     <!--
 
@@ -116,18 +133,5 @@
 
             -->
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/statStartText"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_toStartOf="@id/divider"
-        android:layout_alignParentStart="true"
-        android:layout_margin="10dp"
-        android:text="@string/statSelection"
-        android:textColor="@color/black"
-        android:textSize="25sp"
-        android:textAlignment="center"
-        android:gravity="center" />
 
 </RelativeLayout>

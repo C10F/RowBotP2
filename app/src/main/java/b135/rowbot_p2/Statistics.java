@@ -14,11 +14,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.BarGraphSeries;
+import com.jjoe64.graphview.series.DataPoint;
+
+import java.util.ArrayList;
+
 import javax.xml.datatype.Duration;
 
 public class Statistics extends FragmentActivity {
     ViewPager timeSpentViewPager;
     ViewPager spmViewPager;
+    //GraphView tsWeekChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,22 @@ public class Statistics extends FragmentActivity {
         /*ViewPager distViewPager = findViewById(R.id.distanceVP);
         StatisticsImAdapterDist distAdapter = new StatisticsImAdapterDist(this);
         distViewPager.setAdapter(distAdapter);*/
+
+        /*
+        tsWeekChart = findViewById(R.id.timeSpentWeekBarchart);
+
+        BarGraphSeries<DataPoint> tsWeekDataSet = new BarGraphSeries<>(new DataPoint[] {
+                new DataPoint(0, 44),
+                new DataPoint(1, 88),
+                new DataPoint(2, 66),
+                new DataPoint(3, 12),
+                new DataPoint(4, 19),
+                new DataPoint(5, 91),
+                new DataPoint(6, 22),
+        });
+        tsWeekChart.addSeries(tsWeekDataSet);
+        tsWeekChart.setTitle("hej med dig");
+        */
     }
 
     public void timeSelected (View view){
