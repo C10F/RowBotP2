@@ -7,6 +7,7 @@ import android.os.SystemClock;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -19,6 +20,7 @@ import java.util.Calendar;
 
 
 public class Session extends AppCompatActivity {
+    private static final String TAG = "session";
 
     //chronometer variable
     private Chronometer sessionTimer;
@@ -30,7 +32,11 @@ public class Session extends AppCompatActivity {
     private boolean sessionStop = false;
     //String targetDistance;
     String targetTime;
-    int day = Calendar.DAY_OF_WEEK;
+    Calendar c = Calendar.getInstance();
+    int day = c.get(Calendar.DAY_OF_WEEK);
+    String elapsedTimeText = "Elapsed time:\n";
+    String elapsedTimeCounter = "%s\n";
+    String elapsedTime;
 
 
     @Override
@@ -48,6 +54,9 @@ public class Session extends AppCompatActivity {
             targetTime = extra.getString("EXTRA_TIME");
         }
 
+        elapsedTime = elapsedTimeText+elapsedTimeCounter;
+
+
         //String distance = currentDistance+targetDistance;
 
         //here we create and instance of our viewPager
@@ -64,7 +73,7 @@ public class Session extends AppCompatActivity {
         //sets the chronometer variable to the chronometer in the xml file by id
         sessionTimer = findViewById(R.id.timerCounter);
         //sets the input format to a string of text where the %s means the format is mm:ss after 59:59 the format change automatically to hh:mm:ss
-        sessionTimer.setFormat("Elapsed time:\n%s\n");
+        sessionTimer.setFormat("%s\n");
         //this updates the string when we start the activity
         sessionTimer.setBase(SystemClock.elapsedRealtime());
 
@@ -144,19 +153,33 @@ public class Session extends AppCompatActivity {
         //Utility.writeToFile(sessionTimer.getText().toString(), "sessionTimer.txt", getApplicationContext());
         switch (day) {
             case Calendar.MONDAY:
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsMonday", getApplicationContext());
+                Log.d(TAG, "Monday was selected");
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsMonday.txt", getApplicationContext());
+                break;
             case Calendar.TUESDAY:
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsTuesday", getApplicationContext());
+                Log.d(TAG, "Tuesday was selected");
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsTuesday.txt", getApplicationContext());
+                break;
             case Calendar.WEDNESDAY:
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsWednesday", getApplicationContext());
+                Log.d(TAG, "Wednesday was selected");
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsWednesday.txt", getApplicationContext());
+                break;
             case Calendar.THURSDAY:
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsThursday", getApplicationContext());
+                Log.d(TAG, "Thursday was selected");
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsThursday.txt", getApplicationContext());
+                break;
             case Calendar.FRIDAY:
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsFriday", getApplicationContext());
+                Log.d(TAG, "Friday was selected");
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsFriday.txt", getApplicationContext());
+                break;
             case Calendar.SATURDAY:
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsSaturday", getApplicationContext());
+                Log.d(TAG, "Saturday was selected");
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsSaturday.txt", getApplicationContext());
+                break;
             case Calendar.SUNDAY:
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsSunday", getApplicationContext());
+                Log.d(TAG, "Sunday was selected");
+                Utility.writeToFile(sessionTimer.getText().toString(), "tsSunday.txt", getApplicationContext());
+                break;
             default:
                 break;
         }

@@ -40,13 +40,13 @@ public class FragmentsStatisticsTimeWeek extends Fragment {
         View view = inflater.inflate(R.layout.fragments_statistics_time_week, container, false);
 
         //Utility.writeToFile("21", "tsMonday.txt", getActivity());
-        weekValues[0] = Float.parseFloat(Utility.readFromFile("tsMonday.txt",getActivity()));
-        weekValues[1] = Float.parseFloat(Utility.readFromFile("tsTuesday.txt",getActivity()));
-        weekValues[2] = Float.parseFloat(Utility.readFromFile("tsWednesday.txt",getActivity()));
-        weekValues[3] = Float.parseFloat(Utility.readFromFile("tsThursday.txt",getActivity()));
-        weekValues[4] = Float.parseFloat(Utility.readFromFile("tsFriday.txt",getActivity()));
-        weekValues[5] = Float.parseFloat(Utility.readFromFile("tsSaturday.txt",getActivity()));
-        weekValues[6] = Float.parseFloat(Utility.readFromFile("tsSunday.txt",getActivity()));
+        weekValues[0] = Float.parseFloat(divideString(Utility.readFromFile("tsMonday.txt",getActivity())));
+        weekValues[1] = Float.parseFloat(divideString(Utility.readFromFile("tsTuesday.txt",getActivity())));
+        weekValues[2] = Float.parseFloat(divideString(Utility.readFromFile("tsWednesday.txt",getActivity())));
+        weekValues[3] = Float.parseFloat(divideString(Utility.readFromFile("tsThursday.txt",getActivity())));
+        weekValues[4] = Float.parseFloat(divideString(Utility.readFromFile("tsFriday.txt",getActivity())));
+        weekValues[5] = Float.parseFloat(divideString(Utility.readFromFile("tsSaturday.txt",getActivity())));
+        weekValues[6] = Float.parseFloat(divideString(Utility.readFromFile("tsSunday.txt",getActivity())));
 
         barChart = view.findViewById(R.id.timeSpentWeekBarchart);
 
@@ -82,5 +82,12 @@ public class FragmentsStatisticsTimeWeek extends Fragment {
         return view;
     }
 
+    public String divideString(String weekday) {
+        String returnString;
+
+        String[] result = weekday.split(":");
+        returnString = result[0];
+        return returnString;
+    }
 
 }

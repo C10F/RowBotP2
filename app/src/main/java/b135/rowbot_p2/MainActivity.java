@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkForSave(){
         TextView result = findViewById(R.id.resultText);
-        if(Utility.readFromFile("sessionTimer.txt", getApplicationContext()) != null) {
-            result.setText(Utility.readFromFile("sessionTimer.txt", getApplicationContext()));
+        if(Utility.readFromFile("tsTuesday.txt", getApplicationContext()) != null) {
+            result.setText(Utility.readFromFile("tsTuesday.txt", getApplicationContext()));
         }
     }
 
