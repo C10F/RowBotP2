@@ -32,4 +32,12 @@
         android:layout_below="@+id/yText"
         android:layout_alignEnd="@+id/yText"
         android:layout_marginTop="30dp" />
+
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
+        android:layout_width="353dp"
+        android:layout_height="118dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="82dp" />
 </RelativeLayout>
