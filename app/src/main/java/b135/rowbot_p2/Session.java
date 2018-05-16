@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -37,6 +41,9 @@ public class Session extends AppCompatActivity {
     String elapsedTimeText = "Elapsed time:\n";
     String elapsedTimeCounter = "%s\n";
     String elapsedTime;
+    private DrawerLayout mDrawerLayout;
+
+    private boolean runningForDrawer = true;
 
 
     @Override
@@ -53,6 +60,35 @@ public class Session extends AppCompatActivity {
             //targetDistance = extra.getString("EXTRA_DISTANCE");
             targetTime = extra.getString("EXTRA_TIME");
         }
+
+        mDrawerLayout = findViewById(R.id.drawerLayoutSession);
+
+        NavigationView navigationView = findViewById(R.id.navViewSession);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        item.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        int id = item.getItemId();
+
+                        if (id == R.id.navMainFromSession){
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.putExtra("SAVED_RUNNING",runningForDrawer);
+                            startActivity(intent);
+                        }
+                        else if (id == R.id.navStatisticsFromSession){
+                            Intent intent = new Intent(getApplicationContext(), Statistics.class);
+                            startActivity(intent);
+                        }
+                        else if (id == R.id.navGuideFromSession){
+                            Intent intent = new Intent(getApplicationContext(), Guide.class);
+                            startActivity(intent);
+                        }
+
+                        return true;
+                    }
+                });
 
         elapsedTime = elapsedTimeText+elapsedTimeCounter;
 
@@ -149,6 +185,9 @@ public class Session extends AppCompatActivity {
     }
 
     public void saveSession(View v) {
+        if (runningForDrawer){
+            runningForDrawer = false;
+        }
         // a test save right here:
         //Utility.writeToFile(sessionTimer.getText().toString(), "sessionTimer.txt", getApplicationContext());
         switch (day) {
@@ -184,6 +223,7 @@ public class Session extends AppCompatActivity {
                 break;
         }
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        intent.putExtra("SAVED_RUNNING",runningForDrawer);
         // somewhere about here, we want to save an 'entry' of a new session (save the data long term)
         // toast the user that session has been saved
         Utility.doToast(getApplicationContext(),"Session was saved");

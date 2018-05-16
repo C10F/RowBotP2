@@ -15,4 +15,5 @@
     <color name="statButtonGreen">#3afa09</color>
     <color name="statButtonGreenPressed">#35dd0a</color>
     <color name="grayButtonPressed">#ebeaea</color>
+    <color name="drawerGreen">#27d921</color>
 </resources>
