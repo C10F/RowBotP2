@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.util.Calendar;
 
 
@@ -146,6 +148,11 @@ public class Session extends AppCompatActivity {
             saveButton.setVisibility(View.VISIBLE);
             rButton.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public FileOutputStream openFileOutput(String name, int mode) throws FileNotFoundException {
+        return super.openFileOutput(name, mode);
     }
 
     public void saveSession(View v) {

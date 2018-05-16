@@ -19,7 +19,9 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.Stack;
 
 import javax.xml.datatype.Duration;
 
@@ -27,6 +29,7 @@ public class Statistics extends FragmentActivity {
     ViewPager timeSpentViewPager;
     ViewPager spmViewPager;
     //GraphView tsWeekChart;
+    String[] nullAddZero = new String[]{"tsMonday.txt", "tsTuesday.txt", "tsWednesday.txt", "tsThursday.txt", "tsFriday.txt", "tsSaturday.txt", "tsSunday"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,12 @@ public class Statistics extends FragmentActivity {
         // Set window fullscreen and force landscape orientation
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        /*for (int i = 0 ; i < nullAddZero.length+1 ; i++){
+            if(Utility.readFromFile(nullAddZero[i], getApplicationContext()) == null) {
+                Utility.writeToFile("0",nullAddZero[i], getApplicationContext());
+            }
+        }*/
 
         //here we create and instance of our viewPager
         timeSpentViewPager = findViewById(R.id.timeSpentVP);
@@ -127,4 +136,28 @@ public class Statistics extends FragmentActivity {
         spmViewPager.setVisibility(View.VISIBLE);
         //distViewPager.setVisibility(View.GONE);
     }
+
+    /*public static ArrayList<File> getAllFilesInDir(File dir) {
+        if (dir == null)
+            return null;
+
+        ArrayList<File> files = new ArrayList<>();
+
+        Stack<File> dirList = new Stack<>();
+        dirList.clear();
+        dirList.push(dir);
+
+        while (!dirList.isEmpty()) {
+            File dirCurrent = dirList.pop();
+
+            File[] fileList = dirCurrent.listFiles();
+            for (File aFileList : fileList) {
+                if (aFileList.isDirectory())
+                    dirList.push(aFileList);
+                else
+                    files.add(aFileList);
+            }
+        }
+        return files;
+    }*/
 }

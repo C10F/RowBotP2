@@ -2,7 +2,9 @@ package b135.rowbot_p2;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.ColorRes;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,10 +20,14 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.RectD;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,6 +109,7 @@ public class FragmentsStatisticsTimeWeek extends Fragment {
         barEntries.add(new BarEntry(weekValues[5], 5));
         barEntries.add(new BarEntry(weekValues[6], 6));
         BarDataSet barDataSet = new BarDataSet(barEntries,"Sessions");
+        barDataSet.setColor(Color.BLUE);
 
         final ArrayList<String> theDays = new ArrayList<>();
         theDays.add("Mon");
