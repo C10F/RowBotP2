@@ -17,10 +17,13 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout mDrawerLayout;
     private boolean running = false;
+    private boolean hasOpened;
 
     //private static final String KEY_RUNNING = "running boolean save";
 
@@ -34,9 +37,17 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         checkForSave();
 
-        /*if (savedInstanceState != null) {
-            running = savedInstanceState.getBoolean(KEY_RUNNING);
-        }*/
+        if (Utility.readFromFile("hasOpened.txt",getApplicationContext()).equals("true")){
+            hasOpened = true;
+        }
+        else if (!hasOpened){
+            File f = new File("hasOpened.txt");
+            runZero();
+            Utility.writeToFile("true","hasOpened.txt",getApplicationContext());
+            hasOpened = true;
+        }
+
+        //weekDays = new File[]{new File("tsMonday.txt"), new File("tsTuesday.txt"), new File("tsWednesday.txt"), new File("tsThursday.txt"), new File("tsFriday.txt"), new File("tsSaturday.txt"), new File("tsSunday")};
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -77,6 +88,16 @@ public class MainActivity extends AppCompatActivity {
                         return true;
                     }
                 });
+    }
+
+    private void runZero() {
+        Utility.writeToFile("0", "tsMonday.txt", getApplicationContext());
+        Utility.writeToFile("0", "tsTuesday.txt", getApplicationContext());
+        Utility.writeToFile("0", "tsWednesday.txt", getApplicationContext());
+        Utility.writeToFile("0", "tsThursday.txt", getApplicationContext());
+        Utility.writeToFile("0", "tsFriday.txt", getApplicationContext());
+        Utility.writeToFile("0", "tsSaturday.txt", getApplicationContext());
+        Utility.writeToFile("0", "tsSunday.txt", getApplicationContext());
     }
 
     private void checkForSave(){
