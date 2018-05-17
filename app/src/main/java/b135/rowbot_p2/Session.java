@@ -194,32 +194,32 @@ public class Session extends AppCompatActivity {
         //Utility.writeToFile(sessionTimer.getText().toString(), "sessionTimer.txt", getApplicationContext());
         switch (day) {
             case Calendar.MONDAY:
+                checkForContent("tsMonday.txt");
                 Log.d(TAG, "Monday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsMonday.txt", getApplicationContext());
                 break;
             case Calendar.TUESDAY:
+                checkForContent("tsTuesday.txt");
                 Log.d(TAG, "Tuesday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsTuesday.txt", getApplicationContext());
                 break;
             case Calendar.WEDNESDAY:
+                checkForContent("tsWednesday.txt");
                 Log.d(TAG, "Wednesday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsWednesday.txt", getApplicationContext());
                 break;
             case Calendar.THURSDAY:
+                checkForContent("tsThursday.txt");
                 Log.d(TAG, "Thursday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsThursday.txt", getApplicationContext());
                 break;
             case Calendar.FRIDAY:
+                checkForContent("tsFriday.txt");
                 Log.d(TAG, "Friday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsFriday.txt", getApplicationContext());
                 break;
             case Calendar.SATURDAY:
+                checkForContent("tsSaturday.txt");
                 Log.d(TAG, "Saturday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsSaturday.txt", getApplicationContext());
                 break;
             case Calendar.SUNDAY:
+                checkForContent("tsSunday.txt");
                 Log.d(TAG, "Sunday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsSunday.txt", getApplicationContext());
                 break;
             default:
                 break;
@@ -230,6 +230,21 @@ public class Session extends AppCompatActivity {
         // toast the user that session has been saved
         Utility.doToast(getApplicationContext(),"Session was saved");
         startActivity(intent);
+    }
+
+    private void checkForContent(String weekDay) {
+        if(!weekDay.equals("0")) {
+            // conv to int, add new sessiomdata as int, convert to string
+            //Log.d(TAG,Integer.getInteger(Utility.readFromFile(weekDay,getApplicationContext())).toString());
+            int old = Integer.getInteger(Utility.divideString(Utility.readFromFile(weekDay,getApplicationContext())));
+            int newest = Integer.getInteger(sessionTimer.getText().toString());
+            int combined = old+newest;
+            Utility.writeToFile(Integer.toString(combined),weekDay,getApplicationContext());
+        }
+        else {
+            // normal procedure
+            Utility.writeToFile(sessionTimer.getText().toString(), weekDay, getApplicationContext());
+        }
     }
 
     public void returnToSession(View v) {

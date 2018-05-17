@@ -57,4 +57,14 @@ public abstract class Utility {
 
         return resultText;
     }
+
+
+    public static String divideString(String weekday) {
+        String returnString;
+
+        String[] result = weekday.split(":");
+        returnString = result[0];
+        return returnString;
+    }
+
 }

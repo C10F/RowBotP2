@@ -22,12 +22,14 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentsStatisticsTimeWeek extends Fragment {
     BarChart barChart;
     float[] weekValues = new float[7];
+
 
     public FragmentsStatisticsTimeWeek() {
         // Required empty public constructor
@@ -39,14 +41,16 @@ public class FragmentsStatisticsTimeWeek extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragments_statistics_time_week, container, false);
 
+
+
         //Utility.writeToFile("21", "tsMonday.txt", getActivity());
-        weekValues[0] = Float.parseFloat(divideString(Utility.readFromFile("tsMonday.txt",getActivity())));
-        weekValues[1] = Float.parseFloat(divideString(Utility.readFromFile("tsTuesday.txt",getActivity())));
-        weekValues[2] = Float.parseFloat(divideString(Utility.readFromFile("tsWednesday.txt",getActivity())));
-        weekValues[3] = Float.parseFloat(divideString(Utility.readFromFile("tsThursday.txt",getActivity())));
-        weekValues[4] = Float.parseFloat(divideString(Utility.readFromFile("tsFriday.txt",getActivity())));
-        weekValues[5] = Float.parseFloat(divideString(Utility.readFromFile("tsSaturday.txt",getActivity())));
-        weekValues[6] = Float.parseFloat(divideString(Utility.readFromFile("tsSunday.txt",getActivity())));
+        weekValues[0] = Float.parseFloat(Utility.divideString(Utility.readFromFile("tsMonday.txt",getActivity())));
+        weekValues[1] = Float.parseFloat(Utility.divideString(Utility.readFromFile("tsTuesday.txt",getActivity())));
+        weekValues[2] = Float.parseFloat(Utility.divideString(Utility.readFromFile("tsWednesday.txt",getActivity())));
+        weekValues[3] = Float.parseFloat(Utility.divideString(Utility.readFromFile("tsThursday.txt",getActivity())));
+        weekValues[4] = Float.parseFloat(Utility.divideString(Utility.readFromFile("tsFriday.txt",getActivity())));
+        weekValues[5] = Float.parseFloat(Utility.divideString(Utility.readFromFile("tsSaturday.txt",getActivity())));
+        weekValues[6] = Float.parseFloat(Utility.divideString(Utility.readFromFile("tsSunday.txt",getActivity())));
 
         barChart = view.findViewById(R.id.timeSpentWeekBarchart);
 
@@ -59,6 +63,7 @@ public class FragmentsStatisticsTimeWeek extends Fragment {
         barEntries.add(new BarEntry(weekValues[5], 5));
         barEntries.add(new BarEntry(weekValues[6], 6));
         BarDataSet barDataSet = new BarDataSet(barEntries,"Sessions");
+        barDataSet.setColor(R.color.orangeMainActivity);
 
         final ArrayList<String> theDays = new ArrayList<>();
         theDays.add("Mon");
@@ -80,14 +85,6 @@ public class FragmentsStatisticsTimeWeek extends Fragment {
         barChart.setDescription(null);
 
         return view;
-    }
-
-    public String divideString(String weekday) {
-        String returnString;
-
-        String[] result = weekday.split(":");
-        returnString = result[0];
-        return returnString;
     }
 
 }
