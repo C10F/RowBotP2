@@ -87,6 +87,8 @@
         android:contentDescription="@string/SketchyImageDescription"
         android:src="@drawable/fun_design_sketchy" />
 
+    <!-- This textView is used for debugging the saved data from session
+
     <TextView
         android:id="@+id/resultText"
         android:layout_width="wrap_content"
@@ -95,6 +97,8 @@
         android:layout_alignParentStart="true"
         android:layout_marginStart="193dp"
         android:text="TextView" />
+
+        -->
 
 </RelativeLayout>
 
