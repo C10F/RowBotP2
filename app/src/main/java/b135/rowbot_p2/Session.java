@@ -1,9 +1,12 @@
 package b135.rowbot_p2;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.ViewPager;
@@ -43,9 +46,9 @@ public class Session extends AppCompatActivity {
     String elapsedTimeCounter = "%s\n";
     String elapsedTime;
     private DrawerLayout mDrawerLayout;
+    private TextView debugT;
 
     private boolean runningForDrawer = true;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,8 +107,9 @@ public class Session extends AppCompatActivity {
         //ImageAdapter adapter = new ImageAdapter(this);
         //here we take our viewPager variable and call the setAdapter method on it and then pass our adapter
         //viewPager.setAdapter(adapter);
+
         //TextView debugD = findViewById(R.id.debugOutput);
-        TextView debugT = findViewById(R.id.debugOutput2);
+        debugT = findViewById(R.id.debugOutput2);
         //debugD.setText(distance);
         debugT.setText(targetTime);
 
@@ -255,4 +259,32 @@ public class Session extends AppCompatActivity {
     public void openDrawerSession(View view) {
         mDrawerLayout.openDrawer(Gravity.START);
     }
+
+    //saves the current time and target time when the activity is not active
+    /*public void saveData(){
+        SharedPreferences sharedPref = getSharedPreferences("time", Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("chronometerTime", sessionTimer.getText().toString());
+        editor.putString("estimatedTime", debugT.getText().toString());
+        editor.apply();
+    }
+
+    //restores the saved data
+    public void restoreData() {
+        SharedPreferences sharedPref = getSharedPreferences("time", Context.MODE_PRIVATE);
+
+        String currentTime = sharedPref.getString("chronometerTime", "");
+        String targetTime = sharedPref.getString("estimatedTime", "");
+        sessionTimer.setText(currentTime);
+        debugT.setText(targetTime);
+    }
+
+    private void checkSharedPreferences(){
+        String currentTime = saveData.getString(getString(R.string.currentTime), "");
+        String setTime = saveData.getString(getString(R.string.setTime), "");
+
+        sessionTimer.setText(currentTime);
+        debugT.setText(setTime);
+    }*/
 }

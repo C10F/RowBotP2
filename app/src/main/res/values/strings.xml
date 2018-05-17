@@ -77,4 +77,9 @@
     <string name="drawerHeaderTitleGuide">RowBot - Guide</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+
+    <!-- KEYS -->
+
+    <string name="currentTime">b135.rowbot_p2.currentTime</string>
+    <string name="setTime">b135.rowbot_p2.setTime</string>
 </resources>
