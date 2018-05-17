@@ -235,9 +235,8 @@ public class Session extends AppCompatActivity {
     private void checkForContent(String weekDay) {
         if(!weekDay.equals("0")) {
             // conv to int, add new sessiomdata as int, convert to string
-            //Log.d(TAG,Integer.getInteger(Utility.readFromFile(weekDay,getApplicationContext())).toString());
-            int old = Integer.getInteger(Utility.divideString(Utility.readFromFile(weekDay,getApplicationContext())));
-            int newest = Integer.getInteger(sessionTimer.getText().toString());
+            int old = Integer.parseInt(Utility.divideString(Utility.readFromFile(weekDay,getApplicationContext())));
+            int newest = Integer.parseInt(Utility.divideString(sessionTimer.getText().toString()));
             int combined = old+newest;
             Utility.writeToFile(Integer.toString(combined),weekDay,getApplicationContext());
         }
