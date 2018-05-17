@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -105,6 +106,10 @@ public class MainActivity extends AppCompatActivity {
     public void goToTest (View view) {
         Intent goToTest = new Intent(getApplicationContext(), SensorTest_Activity.class);
         startActivity(goToTest);
+    }
+
+    public void openDrawer(View view) {
+        mDrawerLayout.openDrawer(Gravity.START);
     }
 
     /*@Override
