@@ -2,6 +2,7 @@ package b135.rowbot_p2;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -63,7 +64,7 @@ public class FragmentsStatisticsTimeWeek extends Fragment {
         barEntries.add(new BarEntry(weekValues[5], 5));
         barEntries.add(new BarEntry(weekValues[6], 6));
         BarDataSet barDataSet = new BarDataSet(barEntries,"Sessions");
-        barDataSet.setColor(R.color.orangeMainActivity);
+        barDataSet.setColor(Color.BLUE);
 
         final ArrayList<String> theDays = new ArrayList<>();
         theDays.add("Mon");
