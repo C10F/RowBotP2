@@ -1,12 +1,17 @@
 package b135.rowbot_p2;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.media.Image;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -26,6 +31,8 @@ import javax.xml.datatype.Duration;
 public class Statistics extends FragmentActivity {
     ViewPager timeSpentViewPager;
     ViewPager spmViewPager;
+    private DrawerLayout mDrawerLayout;
+    private boolean running = false;
     //GraphView tsWeekChart;
 
     @Override
@@ -35,6 +42,46 @@ public class Statistics extends FragmentActivity {
         // Set window fullscreen and force landscape orientation
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            running = extras.getBoolean("SAVED_RUNNING");
+        }
+
+        mDrawerLayout = findViewById(R.id.drawerLayoutStatistics);
+
+        NavigationView navigationView = findViewById(R.id.navViewStatistics);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        item.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        int id = item.getItemId();
+
+                        if (id == R.id.navMainFromStatistics){
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                        }
+                        else if (id == R.id.navSessionInputFromStatistics){
+                            if (!running){
+                                running = true;
+                                Intent intent = new Intent(getApplicationContext(), SessionInput.class);
+                                startActivity(intent);
+                            }
+                            else {
+                                Intent intent = new Intent(getApplicationContext(), Session.class);
+                                startActivity(intent);
+                            }
+                        }
+                        else if (id == R.id.navGuideFromStatistics){
+                            Intent intent = new Intent(getApplicationContext(), Guide.class);
+                            startActivity(intent);
+                        }
+
+                        return true;
+                    }
+                });
 
         //here we create and instance of our viewPager
         timeSpentViewPager = findViewById(R.id.timeSpentVP);

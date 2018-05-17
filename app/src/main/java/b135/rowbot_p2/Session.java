@@ -79,10 +79,12 @@ public class Session extends AppCompatActivity {
                         }
                         else if (id == R.id.navStatisticsFromSession){
                             Intent intent = new Intent(getApplicationContext(), Statistics.class);
+                            intent.putExtra("SAVED_RUNNING",runningForDrawer);
                             startActivity(intent);
                         }
                         else if (id == R.id.navGuideFromSession){
                             Intent intent = new Intent(getApplicationContext(), Guide.class);
+                            intent.putExtra("SAVED_RUNNING",runningForDrawer);
                             startActivity(intent);
                         }
 

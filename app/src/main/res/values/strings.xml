@@ -73,6 +73,8 @@
     <string name="navGuide">Guide</string>
     <string name="drawerHeaderTitle">RowBot - Main screen</string>
     <string name="drawerHeaderTitleSession">RowBot - Session</string>
+    <string name="drawerHeaderTitleStatistics">RowBot - Statistics</string>
+    <string name="drawerHeaderTitleGuide">RowBot - Guide</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
 </resources>
