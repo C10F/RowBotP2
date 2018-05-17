@@ -7,6 +7,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -63,7 +64,7 @@ public class Guide extends AppCompatActivity {
                             }
                         }
                         else if (id == R.id.navStatisticsFromGuide){
-                            Intent intent = new Intent(getApplicationContext(), Guide.class);
+                            Intent intent = new Intent(getApplicationContext(), Statistics.class);
                             startActivity(intent);
                         }
 
@@ -159,5 +160,9 @@ public class Guide extends AppCompatActivity {
         termPH.setVisibility(View.VISIBLE);
         termShowing = true;
 
+    }
+
+    public void openDrawerGuide(View view) {
+        mDrawerLayout.openDrawer(Gravity.START);
     }
 }

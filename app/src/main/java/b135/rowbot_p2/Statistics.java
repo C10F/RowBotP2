@@ -11,6 +11,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -173,5 +174,9 @@ public class Statistics extends FragmentActivity {
         timeSpentViewPager.setVisibility(View.GONE);
         spmViewPager.setVisibility(View.VISIBLE);
         //distViewPager.setVisibility(View.GONE);
+    }
+
+    public void openDrawerStatistics(View view) {
+        mDrawerLayout.openDrawer(Gravity.START);
     }
 }

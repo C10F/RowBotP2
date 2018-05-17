@@ -11,6 +11,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -249,5 +250,9 @@ public class Session extends AppCompatActivity {
         saveButton.setVisibility(View.GONE);
         rButton.setVisibility(View.GONE);
         // COMMENTS PL0X
+    }
+
+    public void openDrawerSession(View view) {
+        mDrawerLayout.openDrawer(Gravity.START);
     }
 }
