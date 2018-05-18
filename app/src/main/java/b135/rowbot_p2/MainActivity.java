@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         // Set window fullscreen and force landscape orientation
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        checkForSave();
+        //checkForSave();
 
         if (Utility.readFromFile("hasOpened.txt",getApplicationContext()).equals("true")){
             hasOpened = true;
@@ -100,12 +100,12 @@ public class MainActivity extends AppCompatActivity {
         Utility.writeToFile("0", "tsSunday.txt", getApplicationContext());
     }
 
-    private void checkForSave(){
+    /*private void checkForSave(){
         TextView result = findViewById(R.id.resultText);
         if(Utility.readFromFile("tsTuesday.txt", getApplicationContext()) != null) {
             result.setText(Utility.readFromFile("tsTuesday.txt", getApplicationContext()));
         }
-    }
+    }*/
 
     public void goToSession (View view) {
         Intent intent = new Intent(getApplicationContext(),SessionInput.class);
