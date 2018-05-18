@@ -39,6 +39,7 @@ public class Session extends AppCompatActivity {
     String targetTime;
     Calendar c = Calendar.getInstance();
     int day = c.get(Calendar.DAY_OF_WEEK);
+    int dayMonth = c.get(Calendar.DAY_OF_YEAR);
     String elapsedTimeText = "Elapsed time:\n";
     String elapsedTimeCounter = "%s\n";
     String elapsedTime;
@@ -225,6 +226,11 @@ public class Session extends AppCompatActivity {
             default:
                 break;
         }
+
+        /*switch (dayMonth) {
+            case Calendar.DAY_OF_YEAR:
+                Utility.writeToFile(sessionTimer.getText().toString(), String.valueOf(dayMonth), getApplicationContext());
+        }*/
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         intent.putExtra("SAVED_RUNNING",runningForDrawer);
         // somewhere about here, we want to save an 'entry' of a new session (save the data long term)
