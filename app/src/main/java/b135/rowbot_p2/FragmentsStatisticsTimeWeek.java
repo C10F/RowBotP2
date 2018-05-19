@@ -1,29 +1,16 @@
 package b135.rowbot_p2;
 
-
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-
 import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.series.BarGraphSeries;
-import com.jjoe64.graphview.series.DataPoint;
-
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class FragmentsStatisticsTimeWeek extends Fragment {
     BarChart barChart;
@@ -38,8 +25,17 @@ public class FragmentsStatisticsTimeWeek extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragments_statistics_time_week, container, false);
+        // make a method that takes a string and does this to it, it will be a lot neater...
+        /*
+        Utility.writeToFile("0","tsMonday.txt", getActivity());
+        Utility.writeToFile("0","tsTuesday.txt", getActivity());
+        Utility.writeToFile("0","tsWednesday.txt", getActivity());
+        Utility.writeToFile("0","tsThursday.txt", getActivity());
+        Utility.writeToFile("0","tsFriday.txt", getActivity());
+        Utility.writeToFile("0","tsSaturday.txt", getActivity());
+        Utility.writeToFile("0","tsSunday.txt", getActivity());
+        */
 
-        //Utility.writeToFile("21", "tsMonday.txt", getActivity());
         weekValues[0] = Float.parseFloat(divideString(Utility.readFromFile("tsMonday.txt",getActivity())));
         weekValues[1] = Float.parseFloat(divideString(Utility.readFromFile("tsTuesday.txt",getActivity())));
         weekValues[2] = Float.parseFloat(divideString(Utility.readFromFile("tsWednesday.txt",getActivity())));

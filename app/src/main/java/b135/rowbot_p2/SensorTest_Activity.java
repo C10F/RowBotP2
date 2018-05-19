@@ -21,6 +21,9 @@ public class SensorTest_Activity extends AppCompatActivity implements SensorEven
     private Sensor mySensor;
     private SensorManager SM;
     private LineGraphSeries values;
+    private DataPoint[] displayValues = new DataPoint[20];                                                              // the array that holds graph values
+    float xCounter;
+
     GraphView graph;
 
     @Override
@@ -44,14 +47,22 @@ public class SensorTest_Activity extends AppCompatActivity implements SensorEven
 
         graph = findViewById(R.id.graph);
 
+        for (int i = 0; i<displayValues.length;i++){
+         displayValues[i] = new DataPoint(0,0);
+        }
+        xCounter = 0;
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        xText.setText("X: " + event.values[0]);
-        yText.setText("Y: " + event.values[1]);
-        zText.setText("Z: " + event.values[2]);
+        //xText.setText("X: " + event.values[0]);
+        //yText.setText("Y: " + event.values[1]);
+        //zText.setText("Z: " + event.values[2]);
+
+
+        // NOTE: here, we want to make sure to check that if the values are negative, do *(-1) to revert them. we want negative G's to be displayed the same i think.
         updateValues(event.values[0], event.values[1]);
+
     }
 
     @Override
@@ -60,20 +71,34 @@ public class SensorTest_Activity extends AppCompatActivity implements SensorEven
     }
 
     public void updateValues(float event1, float event2){
+     // temporary place to hold previous values
+     DataPoint[] tempValues = new DataPoint[20];
 
-        // create array that holds 10x2 (float)
-        // bump array with new event1 + event2 ('bump' all places down one index)
-        // push arrays to LineGraphSeries (below)
+     for (int i=0; i<displayValues.length-1;i++){
+         // make every spot equal to the one above from displayValues
+        tempValues[i] = displayValues[i+1];
+     }
+     // finally add new data to last spot
+     tempValues[19] = new DataPoint(xCounter,event2);
+     // arbitrary 30 limit should be refactored to something else.
+     if(xCounter < 30){
+     xCounter++;
+     }
+     //invalidate does not remove the line completely.. we need another way to reset the graph.
+     else if (xCounter == 30){
+     graph.invalidate();
+     for (int i = 0; i<tempValues.length;i++){
+         tempValues[i] = new DataPoint(0,0);
+        }
+        xCounter = 0;
 
-       values = new LineGraphSeries<>(new DataPoint[] {
-            new DataPoint(event1,event2),
-            new DataPoint(event1,event2),
-            new DataPoint(event1,event2),
-            new DataPoint(event1,event2),
-            new DataPoint(event1,event2),
-
-    });
-       graph.addSeries(values);
+     }
+     // make our temporary array the actual one, and display it IF there is a change in the last spot from initial 0.
+     displayValues = tempValues;
+     values = new LineGraphSeries<>(displayValues);
+     if(displayValues[19] != new DataPoint(0,0)){
+     graph.addSeries(values);
+     }
 
     }
 }
