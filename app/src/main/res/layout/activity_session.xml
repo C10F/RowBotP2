@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayoutSession"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".Session">
 
     <Button
@@ -74,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="5dp"
+        android:layout_margin="2dp"
         android:src="@drawable/powergraph"
         android:layout_below="@id/pauseSession"
         android:layout_toStartOf="@id/horizontalLine"/>
@@ -195,4 +202,28 @@
 
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/burgerSession"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/standardColor"
+        android:src="@drawable/ic_dehaze"
+        android:scaleType="fitCenter"
+        android:onClick="openDrawerSession"/>
+
 </RelativeLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navViewSession"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/drawer_view_session"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/drawer_header_session"/>
+
+</android.support.v4.widget.DrawerLayout>

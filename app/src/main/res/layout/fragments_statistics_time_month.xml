@@ -4,6 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FragmentsStatisticsTimeMonth"
-    android:background="@color/green">
+    android:orientation="horizontal">
+
+    <CalendarView
+        android:id="@+id/calendarTSMonth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/resultsText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/calendarTSMonth"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="20sp"
+        android:visibility="gone"
+        android:text=""/>
 
 </RelativeLayout>

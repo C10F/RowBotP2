@@ -4,10 +4,15 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -34,9 +39,13 @@ public class Session extends AppCompatActivity {
     String targetTime;
     Calendar c = Calendar.getInstance();
     int day = c.get(Calendar.DAY_OF_WEEK);
+    int dayMonth = c.get(Calendar.DAY_OF_YEAR);
     String elapsedTimeText = "Elapsed time:\n";
     String elapsedTimeCounter = "%s\n";
     String elapsedTime;
+    private DrawerLayout mDrawerLayout;
+
+    private boolean runningForDrawer = true;
 
 
     @Override
@@ -53,6 +62,37 @@ public class Session extends AppCompatActivity {
             //targetDistance = extra.getString("EXTRA_DISTANCE");
             targetTime = extra.getString("EXTRA_TIME");
         }
+
+        mDrawerLayout = findViewById(R.id.drawerLayoutSession);
+
+        NavigationView navigationView = findViewById(R.id.navViewSession);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        item.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        int id = item.getItemId();
+
+                        if (id == R.id.navMainFromSession){
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.putExtra("SAVED_RUNNING",runningForDrawer);
+                            startActivity(intent);
+                        }
+                        else if (id == R.id.navStatisticsFromSession){
+                            Intent intent = new Intent(getApplicationContext(), Statistics.class);
+                            intent.putExtra("SAVED_RUNNING",runningForDrawer);
+                            startActivity(intent);
+                        }
+                        else if (id == R.id.navGuideFromSession){
+                            Intent intent = new Intent(getApplicationContext(), Guide.class);
+                            intent.putExtra("SAVED_RUNNING",runningForDrawer);
+                            startActivity(intent);
+                        }
+
+                        return true;
+                    }
+                });
 
         elapsedTime = elapsedTimeText+elapsedTimeCounter;
 
@@ -149,45 +189,68 @@ public class Session extends AppCompatActivity {
     }
 
     public void saveSession(View v) {
+        if (runningForDrawer){
+            runningForDrawer = false;
+        }
         // a test save right here:
         //Utility.writeToFile(sessionTimer.getText().toString(), "sessionTimer.txt", getApplicationContext());
         switch (day) {
             case Calendar.MONDAY:
+                checkForContent("tsMonday.txt");
                 Log.d(TAG, "Monday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsMonday.txt", getApplicationContext());
                 break;
             case Calendar.TUESDAY:
+                checkForContent("tsTuesday.txt");
                 Log.d(TAG, "Tuesday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsTuesday.txt", getApplicationContext());
                 break;
             case Calendar.WEDNESDAY:
+                checkForContent("tsWednesday.txt");
                 Log.d(TAG, "Wednesday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsWednesday.txt", getApplicationContext());
                 break;
             case Calendar.THURSDAY:
+                checkForContent("tsThursday.txt");
                 Log.d(TAG, "Thursday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsThursday.txt", getApplicationContext());
                 break;
             case Calendar.FRIDAY:
+                checkForContent("tsFriday.txt");
                 Log.d(TAG, "Friday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsFriday.txt", getApplicationContext());
                 break;
             case Calendar.SATURDAY:
+                checkForContent("tsSaturday.txt");
                 Log.d(TAG, "Saturday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsSaturday.txt", getApplicationContext());
                 break;
             case Calendar.SUNDAY:
+                checkForContent("tsSunday.txt");
                 Log.d(TAG, "Sunday was selected");
-                Utility.writeToFile(sessionTimer.getText().toString(), "tsSunday.txt", getApplicationContext());
                 break;
             default:
                 break;
         }
+
+        /*switch (dayMonth) {
+            case Calendar.DAY_OF_YEAR:
+                Utility.writeToFile(sessionTimer.getText().toString(), String.valueOf(dayMonth), getApplicationContext());
+        }*/
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        intent.putExtra("SAVED_RUNNING",runningForDrawer);
         // somewhere about here, we want to save an 'entry' of a new session (save the data long term)
         // toast the user that session has been saved
         Utility.doToast(getApplicationContext(),"Session was saved");
         startActivity(intent);
+    }
+
+    private void checkForContent(String weekDay) {
+        if(!weekDay.equals("0")) {
+            // conv to int, add new sessiomdata as int, convert to string
+            int old = Integer.parseInt(Utility.divideString(Utility.readFromFile(weekDay,getApplicationContext())));
+            int newest = Integer.parseInt(Utility.divideString(sessionTimer.getText().toString()));
+            int combined = old+newest;
+            Utility.writeToFile(Integer.toString(combined),weekDay,getApplicationContext());
+        }
+        else {
+            // normal procedure
+            Utility.writeToFile(sessionTimer.getText().toString(), weekDay, getApplicationContext());
+        }
     }
 
     public void returnToSession(View v) {
@@ -207,5 +270,9 @@ public class Session extends AppCompatActivity {
         saveButton.setVisibility(View.GONE);
         rButton.setVisibility(View.GONE);
         // COMMENTS PL0X
+    }
+
+    public void openDrawerSession(View view) {
+        mDrawerLayout.openDrawer(Gravity.START);
     }
 }

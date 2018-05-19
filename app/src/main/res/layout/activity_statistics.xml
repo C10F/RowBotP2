@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayoutStatistics"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Statistics">
@@ -14,6 +22,7 @@
         android:id="@+id/timeSpentVP"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
         android:padding="5dp"
         android:visibility="gone">
 
@@ -30,6 +39,7 @@
         android:id="@+id/spmVP"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
         android:padding="5dp"
         android:visibility="gone">
 
@@ -134,4 +144,28 @@
             -->
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/burgerStatistics"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@color/standardColor"
+        android:src="@drawable/ic_dehaze"
+        android:scaleType="fitCenter"
+        android:onClick="openDrawerStatistics"/>
+
 </RelativeLayout>
+
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navViewStatistics"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/drawer_view_statistics"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/drawer_header_statistics"/>
+
+</android.support.v4.widget.DrawerLayout>

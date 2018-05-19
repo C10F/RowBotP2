@@ -1,8 +1,14 @@
 package b135.rowbot_p2;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -15,6 +21,9 @@ public class Guide extends AppCompatActivity {
     boolean setupShowing;
     boolean termShowing;
 
+    private DrawerLayout mDrawerLayout;
+    private boolean running = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +31,46 @@ public class Guide extends AppCompatActivity {
         // force landscape mode and full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            running = extras.getBoolean("SAVED_RUNNING");
+        }
+
+        mDrawerLayout = findViewById(R.id.drawerLayoutGuide);
+
+        NavigationView navigationView = findViewById(R.id.navViewGuide);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        item.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        int id = item.getItemId();
+
+                        if (id == R.id.navMainFromGuide){
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                        }
+                        else if (id == R.id.navSessionInputFromGuide){
+                            if (!running){
+                                running = true;
+                                Intent intent = new Intent(getApplicationContext(), SessionInput.class);
+                                startActivity(intent);
+                            }
+                            else {
+                                Intent intent = new Intent(getApplicationContext(), Session.class);
+                                startActivity(intent);
+                            }
+                        }
+                        else if (id == R.id.navStatisticsFromGuide){
+                            Intent intent = new Intent(getApplicationContext(), Statistics.class);
+                            startActivity(intent);
+                        }
+
+                        return true;
+                    }
+                });
     }
 
 
@@ -111,5 +160,9 @@ public class Guide extends AppCompatActivity {
         termPH.setVisibility(View.VISIBLE);
         termShowing = true;
 
+    }
+
+    public void openDrawerGuide(View view) {
+        mDrawerLayout.openDrawer(Gravity.START);
     }
 }

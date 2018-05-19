@@ -66,4 +66,15 @@
     <string name="sunday">Sunday</string>
 
     <string name="tsMonday">12</string>
+
+    <string name="navSessionInput">Start session</string>
+    <string name="navMain">Main screen</string>
+    <string name="navStatistics">Statistics</string>
+    <string name="navGuide">Guide</string>
+    <string name="drawerHeaderTitle">RowBot - Main screen</string>
+    <string name="drawerHeaderTitleSession">RowBot - Session</string>
+    <string name="drawerHeaderTitleStatistics">RowBot - Statistics</string>
+    <string name="drawerHeaderTitleGuide">RowBot - Guide</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
