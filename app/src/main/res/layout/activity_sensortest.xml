@@ -33,7 +33,7 @@
         android:layout_alignEnd="@+id/yText"
         android:layout_marginTop="30dp" />
 
-    <com.jjoe64.graphview.GraphView
+    <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/graph"
         android:layout_width="353dp"
         android:layout_height="118dp"

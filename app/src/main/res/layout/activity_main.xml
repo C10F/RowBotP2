@@ -56,7 +56,7 @@
 
     </LinearLayout>
 
-    <!-- sensor test button
+
 
     <Button
         android:id="@+id/sensorButton"
@@ -67,7 +67,7 @@
         android:onClick="goToTest"
         android:text="Go to sensor" />
 
-        -->
+
 
     <ImageButton
         android:id="@+id/burgerMain"

@@ -4,20 +4,30 @@ import android.content.Context;
 import android.hardware.*;
 import android.hardware.Sensor;
 import android.hardware.SensorEventListener;
+import android.os.DropBoxManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.hardware.SensorManager;
 import android.hardware.SensorEvent;
+
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.BarGraphSeries;
 
+import java.util.ArrayList;
+
 
 public class SensorTest_Activity extends AppCompatActivity implements SensorEventListener {
+    private static final String TAG = "lineGraph";
 
-    private TextView xText, yText, zText;
+    //private TextView xText, yText, zText;
     private Sensor mySensor;
     private SensorManager SM;
     private LineGraphSeries values;
@@ -25,6 +35,10 @@ public class SensorTest_Activity extends AppCompatActivity implements SensorEven
     float xCounter;
 
     GraphView graph;
+
+    private LineChart mLineChart;
+    ArrayList<Entry> yValues = new ArrayList<>();
+    ArrayList<String> xTime = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,22 +49,49 @@ public class SensorTest_Activity extends AppCompatActivity implements SensorEven
         SM = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         // Accelerometer Sensor
-        mySensor = SM.getDefaultSensor(android.hardware.Sensor.TYPE_ACCELEROMETER);
+        mySensor = SM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         // Register sensor Listener
         SM.registerListener(this, mySensor, SensorManager.SENSOR_DELAY_NORMAL);
 
         // Assign TextView
-        xText = (TextView) findViewById(R.id.xText);
-        yText = (TextView) findViewById(R.id.yText);
-        zText = (TextView) findViewById(R.id.zText);
+        //xText = (TextView) findViewById(R.id.xText);
+        //yText = (TextView) findViewById(R.id.yText);
+        //zText = (TextView) findViewById(R.id.zText);
 
-        graph = findViewById(R.id.graph);
+        //graph = findViewById(R.id.graph);
+        mLineChart = findViewById(R.id.graph);
 
-        for (int i = 0; i<displayValues.length;i++){
+        mLineChart.setTouchEnabled(false);
+        mLineChart.setDragEnabled(false);
+        mLineChart.setScaleEnabled(false);
+        mLineChart.setPinchZoom(false);
+        //lineData.setValueTextSize(12);
+        mLineChart.setDescription(null);
+
+        yValues = new ArrayList<>();
+        for (int i = 0 ; i < displayValues.length ; i++) {
+            yValues.add(new Entry(0,i));
+        }
+
+        xTime = new ArrayList<>();
+        for (int i = 0 ; i < displayValues.length ; i++) {
+            xTime.add(String.valueOf(i));
+        }
+
+        LineDataSet lineDataSet = new LineDataSet(yValues, "Data set 1");
+
+        ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+        dataSets.add(lineDataSet);
+
+        LineData lineData = new LineData(xTime,dataSets);
+
+        mLineChart.setData(lineData);
+
+        /*for (int i = 0; i<displayValues.length;i++){
          displayValues[i] = new DataPoint(0,0);
         }
-        xCounter = 0;
+        xCounter = 0;*/
     }
 
     @Override
@@ -71,8 +112,25 @@ public class SensorTest_Activity extends AppCompatActivity implements SensorEven
     }
 
     public void updateValues(float event1, float event2){
+        ArrayList<Entry> tempYEntry = new ArrayList<>();
+        for (int i = 0 ; i < yValues.size()-1 ; i++) {
+            tempYEntry.add(i, yValues.get(i+1));
+        }
+        tempYEntry.add(new Entry(event1,19));
+
+        yValues = tempYEntry;
+
+        LineDataSet lineDataSet = new LineDataSet(yValues, "Data set 1");
+
+        ArrayList<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+        dataSets.add(lineDataSet);
+
+        LineData lineData = new LineData(xTime,dataSets);
+        mLineChart.invalidate();
+        mLineChart.setData(lineData);
+
      // temporary place to hold previous values
-     DataPoint[] tempValues = new DataPoint[20];
+     /*DataPoint[] tempValues = new DataPoint[20];
 
      for (int i=0; i<displayValues.length-1;i++){
          // make every spot equal to the one above from displayValues
@@ -98,7 +156,7 @@ public class SensorTest_Activity extends AppCompatActivity implements SensorEven
      values = new LineGraphSeries<>(displayValues);
      if(displayValues[19] != new DataPoint(0,0)){
      graph.addSeries(values);
-     }
+     }*/
 
     }
 }
