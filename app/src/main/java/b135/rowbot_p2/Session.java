@@ -55,6 +55,7 @@ public class Session extends AppCompatActivity implements SensorEventListener {
     String elapsedTime;
     private DrawerLayout mDrawerLayout;
     private TextView debugT;
+    private TextView spmNumbers;
 
     private boolean runningForDrawer = true;
 
@@ -262,8 +263,11 @@ public class Session extends AppCompatActivity implements SensorEventListener {
                 break;
         }
 
+        spmNumbers = findViewById(R.id.spmNumbers);
+
         Utility.writeToFile(sessionTimer.getText().toString(), dayMonth+".txt", getApplicationContext());
         Utility.writeToFile(debugT.getText().toString(), dayMonth+"targetTime.txt", getApplicationContext());
+        Utility.writeToFile(spmNumbers.getText().toString(), dayMonth+"SPM.txt", getApplicationContext());
         //checkForContentMonth(dayMonth+".txt");
 
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
