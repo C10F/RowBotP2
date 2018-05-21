@@ -2,11 +2,9 @@ package b135.rowbot_p2;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,6 +45,12 @@ public class Session extends AppCompatActivity {
 
     private boolean runningForDrawer = true;
 
+    private long gOffsetInit;
+    private long gOffset;
+    private long xVal_t_begin;
+    private long xVal_t_end;
+    private long xVal_t_total;
+    private int yValues;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +98,8 @@ public class Session extends AppCompatActivity {
                     }
                 });
 
-        elapsedTime = elapsedTimeText+elapsedTimeCounter;
-
+        gOffsetInit = SystemClock.elapsedRealtime() - pauseOffset;
+        gOffset = SystemClock.elapsedRealtime() - (pauseOffset + gOffsetInit + xVal_t_end);
 
         //String distance = currentDistance+targetDistance;
 
@@ -274,5 +278,42 @@ public class Session extends AppCompatActivity {
 
     public void openDrawerSession(View view) {
         mDrawerLayout.openDrawer(Gravity.START);
+    }
+
+
+
+
+
+
+
+    //call this in onClick for start session
+    public void graphBegin() {
+        negativeToPositive();
+        if (yValues > 1) {
+            xVal_t_begin = SystemClock.elapsedRealtime() - (gOffsetInit + pauseOffset);
+            //in here we need to start drawing out graph and add to it
+        }
+    }
+
+    public void graphEnd() {
+        negativeToPositive();
+        if (yValues < 1) {
+            xVal_t_end = 0L;
+            //stop the graph from drawing
+        }
+    }
+
+    public void timeFromStartToFinish() {
+        xVal_t_total = xVal_t_end - xVal_t_begin;
+    }
+
+    //this is copied from the sensor test class just for now
+    public void negativeToPositive() {
+        /*if (event.values[0] < 0){
+            valueX = valueX * (-1);
+        }
+        if(event.values[1] < 0){
+            valueY = valueY * (-1);
+        }*/
     }
 }
