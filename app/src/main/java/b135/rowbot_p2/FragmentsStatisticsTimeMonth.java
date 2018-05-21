@@ -18,8 +18,10 @@ public class FragmentsStatisticsTimeMonth extends Fragment {
 
     private CalendarView mCalendarView;
     private TextView mTextView;
-    private String currentTime = "00";
+    private String currentTime;
     private String targetTime = "00";
+    Calendar c = Calendar.getInstance();
+    int dayMonth = c.get(Calendar.DAY_OF_YEAR);
 
     public FragmentsStatisticsTimeMonth() {
         // Required empty public constructor
@@ -37,16 +39,25 @@ public class FragmentsStatisticsTimeMonth extends Fragment {
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                String results = "Time: " + currentTime + " Target time: " + targetTime + " SPM:";
-                Log.d(TAG, "onSelectedDayChange" + results);
-
-                mTextView.setVisibility(View.VISIBLE);
-                mTextView.setText(results);
+                c.set(Calendar.YEAR, year);
+                c.set(Calendar.MONTH, month);
+                c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
 
             }
         });
 
         return view;
+    }
+
+    public void updateLabel(){
+        currentTime = Utility.readFromFile(dayMonth+".txt",getActivity());
+        targetTime = Utility.readFromFile(dayMonth+"targetTime.txt",getActivity());
+        String results = "Time: " + currentTime + " minutes" + "\n\nTarget time: " + targetTime + " minutes";
+        Log.d(TAG, "onSelectedDayChange" + results);
+
+        mTextView.setVisibility(View.VISIBLE);
+        mTextView.setText(results);
     }
 
 }
