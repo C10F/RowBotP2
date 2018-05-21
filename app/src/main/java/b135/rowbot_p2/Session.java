@@ -1,8 +1,13 @@
 package b135.rowbot_p2;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -21,10 +26,14 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.series.DataPoint;
+import com.jjoe64.graphview.series.LineGraphSeries;
+
 import java.util.Calendar;
 
 
-public class Session extends AppCompatActivity {
+public class Session extends AppCompatActivity implements SensorEventListener {
     private static final String TAG = "session";
 
     //chronometer variable
@@ -48,6 +57,14 @@ public class Session extends AppCompatActivity {
     private TextView debugT;
 
     private boolean runningForDrawer = true;
+
+    //sensor variables
+    private Sensor mySensor;
+    private SensorManager SM;
+    private LineGraphSeries values;
+    private DataPoint[] displayValues = new DataPoint[20];                                                              // the array that holds graph values
+    float xCounter;
+    GraphView graph;
 
 
     @Override
@@ -97,6 +114,22 @@ public class Session extends AppCompatActivity {
                 });
 
         elapsedTime = elapsedTimeText+elapsedTimeCounter;
+
+        // Create our Sensor Manager
+        SM = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        // Accelerometer Sensor
+        mySensor = SM.getDefaultSensor(android.hardware.Sensor.TYPE_ACCELEROMETER);
+
+        // Register sensor Listener
+        SM.registerListener(this, mySensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+        graph = findViewById(R.id.sessionGraph);
+
+        for (int i = 0; i<displayValues.length;i++){
+            displayValues[i] = new DataPoint(0,0);
+        }
+        xCounter = 0;
 
 
         //String distance = currentDistance+targetDistance;
@@ -157,7 +190,7 @@ public class Session extends AppCompatActivity {
         Button pButton = findViewById(R.id.pauseSession);
         Button saveButton = findViewById(R.id.saveSession);
         Button rButton = findViewById(R.id.returnSession);
-        ImageView imageView = findViewById(R.id.sessionImageView);
+        GraphView graphView = findViewById(R.id.sessionGraph);
         //if the boolean is true i.e. running the timer will pause
         if (running) {
             //sets various colors and texts
@@ -180,9 +213,9 @@ public class Session extends AppCompatActivity {
         }
         else if (sessionStop) {
             //this makes sure the viewPager stays below the buttons and doesn't go to match parent when the buttons change
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) imageView.getLayoutParams();
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) graphView.getLayoutParams();
             layoutParams.addRule(RelativeLayout.BELOW, saveButton.getId());
-            imageView.setLayoutParams(layoutParams);
+            graphView.setLayoutParams(layoutParams);
             sButton.setVisibility(View.GONE);
             pButton.setVisibility(View.GONE);
             saveButton.setVisibility(View.VISIBLE);
@@ -273,11 +306,11 @@ public class Session extends AppCompatActivity {
         Button pButton = findViewById(R.id.pauseSession);
         Button saveButton = findViewById(R.id.saveSession);
         Button rButton = findViewById(R.id.returnSession);
-        ImageView imageView = findViewById(R.id.sessionImageView);
+        GraphView graphView = findViewById(R.id.sessionGraph);
 
-        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) imageView.getLayoutParams();
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) graphView.getLayoutParams();
         layoutParams.addRule(RelativeLayout.BELOW, pButton.getId());
-        imageView.setLayoutParams(layoutParams);
+        graphView.setLayoutParams(layoutParams);
 
         sButton.setVisibility(View.VISIBLE);
         pButton.setVisibility(View.VISIBLE);
@@ -288,5 +321,53 @@ public class Session extends AppCompatActivity {
 
     public void openDrawerSession(View view) {
         mDrawerLayout.openDrawer(Gravity.START);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        //xText.setText("X: " + event.values[0]);
+        //yText.setText("Y: " + event.values[1]);
+        //zText.setText("Z: " + event.values[2]);
+
+
+        // NOTE: here, we want to make sure to check that if the values are negative, do *(-1) to revert them. we want negative G's to be displayed the same i think.
+        updateValues(event.values[0], event.values[1]);
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // Not in use
+    }
+
+    public void updateValues(float event1, float event2){
+        // temporary place to hold previous values
+        DataPoint[] tempValues = new DataPoint[20];
+
+        for (int i=0; i<displayValues.length-1;i++){
+            // make every spot equal to the one above from displayValues
+            tempValues[i] = displayValues[i+1];
+        }
+        // finally add new data to last spot
+        tempValues[19] = new DataPoint(xCounter,event2);
+        // arbitrary 30 limit should be refactored to something else.
+        if(xCounter < 30){
+            xCounter++;
+        }
+        //invalidate does not remove the line completely.. we need another way to reset the graph.
+        else if (xCounter == 30){
+            graph.invalidate();
+            for (int i = 0; i<tempValues.length;i++){
+                tempValues[i] = new DataPoint(0,0);
+            }
+            xCounter = 0;
+
+        }
+        // make our temporary array the actual one, and display it IF there is a change in the last spot from initial 0.
+        displayValues = tempValues;
+        values = new LineGraphSeries<>(displayValues);
+        if(displayValues[19] != new DataPoint(0,0)){
+            graph.addSeries(values);
+        }
+
     }
 }
