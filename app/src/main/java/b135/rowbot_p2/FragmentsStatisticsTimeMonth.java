@@ -39,18 +39,25 @@ public class FragmentsStatisticsTimeMonth extends Fragment {
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                currentTime = Utility.readFromFile(dayMonth+".txt",getActivity());
-                targetTime = Utility.readFromFile(dayMonth+"targetTime.txt",getActivity());
-                String results = "Time: " + currentTime + " minutes" + "\n\nTarget time: " + targetTime + " minutes";
-                Log.d(TAG, "onSelectedDayChange" + results);
-
-                mTextView.setVisibility(View.VISIBLE);
-                mTextView.setText(results);
+                c.set(Calendar.YEAR, year);
+                c.set(Calendar.MONTH, month);
+                c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
 
             }
         });
 
         return view;
+    }
+
+    public void updateLabel(){
+        currentTime = Utility.readFromFile(dayMonth+".txt",getActivity());
+        targetTime = Utility.readFromFile(dayMonth+"targetTime.txt",getActivity());
+        String results = "Time: " + currentTime + " minutes" + "\n\nTarget time: " + targetTime + " minutes";
+        Log.d(TAG, "onSelectedDayChange" + results);
+
+        mTextView.setVisibility(View.VISIBLE);
+        mTextView.setText(results);
     }
 
 }
