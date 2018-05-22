@@ -75,14 +75,13 @@
         android:textSize="20sp"
         android:visibility="gone"/>
 
-    <ImageView
-        android:id="@+id/sessionImageView"
+    <com.jjoe64.graphview.GraphView
+        android:id="@+id/graph"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="2dp"
-        android:src="@drawable/powergraph"
         android:layout_below="@id/pauseSession"
         android:layout_toStartOf="@id/horizontalLine"/>
 
