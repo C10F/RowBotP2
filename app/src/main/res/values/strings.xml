@@ -30,7 +30,7 @@
         <item>90 minutes.</item>
         <item>Custom</item>
     </string-array>
-    <string name="currentDistnace">0/</string>
+    <string name="currentDistance">0/</string>
     <string name="statSelection">Please select an option on the right\nto review your statistics.</string>
     <string name="guideSelection">Please select an option on the right\nto learn more about the selected topic.</string>
     <string name="SessionInputDistance">Distance in meters</string>
