@@ -1,8 +1,10 @@
 package b135.rowbot_p2;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -11,6 +13,7 @@ import android.graphics.Color;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -277,7 +280,10 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         }
 
         spmNumbers = findViewById(R.id.spmNumbers);
-
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            Utility.doToast(this,"permission to save not granted");
+        }
+        else
         Utility.writeToFile(sessionTimer.getText().toString(), dayMonth+".txt", getApplicationContext());
         Utility.writeToFile(debugT.getText().toString(), dayMonth+"targetTime.txt", getApplicationContext());
         Utility.writeToFile(spmNumbers.getText().toString(), dayMonth+"SPM.txt", getApplicationContext());
