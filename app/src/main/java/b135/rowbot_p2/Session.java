@@ -7,6 +7,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.graphics.Color;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -48,10 +49,13 @@ public class Session extends AppCompatActivity implements SensorEventListener {
     Calendar c = Calendar.getInstance();
     int day = c.get(Calendar.DAY_OF_WEEK);
     int dayMonth = c.get(Calendar.DAY_OF_YEAR);
+    int dayMonthTargetTime = c.get(Calendar.DAY_OF_YEAR);
     String elapsedTimeText = "Elapsed time:\n";
     String elapsedTimeCounter = "%s\n";
     String elapsedTime;
     private DrawerLayout mDrawerLayout;
+    private TextView debugT;
+    private TextView spmNumbers;
 
     private boolean runningForDrawer = true;
 
@@ -146,7 +150,7 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         //here we take our viewPager variable and call the setAdapter method on it and then pass our adapter
         //viewPager.setAdapter(adapter);
         //TextView debugD = findViewById(R.id.debugOutput);
-        TextView debugT = findViewById(R.id.debugOutput2);
+        debugT = findViewById(R.id.debugOutput2);
         //debugD.setText(distance);
         debugT.setText(targetTime);
 
@@ -272,10 +276,13 @@ public class Session extends AppCompatActivity implements SensorEventListener {
                 break;
         }
 
-        /*switch (dayMonth) {
-            case Calendar.DAY_OF_YEAR:
-                Utility.writeToFile(sessionTimer.getText().toString(), String.valueOf(dayMonth), getApplicationContext());
-        }*/
+        spmNumbers = findViewById(R.id.spmNumbers);
+
+        Utility.writeToFile(sessionTimer.getText().toString(), dayMonth+".txt", getApplicationContext());
+        Utility.writeToFile(debugT.getText().toString(), dayMonth+"targetTime.txt", getApplicationContext());
+        Utility.writeToFile(spmNumbers.getText().toString(), dayMonth+"SPM.txt", getApplicationContext());
+        //checkForContentMonth(dayMonth+".txt");
+
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
         intent.putExtra("SAVED_RUNNING",runningForDrawer);
         // somewhere about here, we want to save an 'entry' of a new session (save the data long term)
@@ -297,6 +304,18 @@ public class Session extends AppCompatActivity implements SensorEventListener {
             Utility.writeToFile(sessionTimer.getText().toString(), weekDay, getApplicationContext());
         }
     }
+
+    /*private void checkForContentMonth(String monthDay) {
+        if (!monthDay.equals("0")) {
+            int oldST = Integer.parseInt(Utility.divideString(Utility.readFromFile(monthDay,getApplicationContext())));
+            int newST = Integer.parseInt(Utility.divideString(sessionTimer.getText().toString()));
+            int combinedST = oldST+newST;
+            Utility.writeToFile(Integer.toString(combinedST),monthDay,getApplicationContext());
+        }
+        else {
+            Utility.writeToFile(sessionTimer.getText().toString(), dayMonth+".txt", getApplicationContext());
+        }
+    }*/
 
     public void returnToSession(View v) {
         //initializing buttons by id
