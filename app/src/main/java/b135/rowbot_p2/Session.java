@@ -68,12 +68,13 @@ public class Session extends AppCompatActivity implements SensorEventListener {
     private int mass = 20;
     private long gOffsetInit;
     private long gOffset;
-    private double graphMargin = 0.8;
+    private double graphMargin = 1.2;
     private long xVal_t_begin;
     private long xVal_t_end;
     private long xVal_t_total;
     private long xValue;
     private int xCounter;
+    private int xMax = 20;
     private DataPoint[] yValues;
     private SensorManager SM;
     private Sensor mySensor;
@@ -137,8 +138,8 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         graph = findViewById(R.id.graph);
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setYAxisBoundsManual(true);
-        graph.getViewport().setMaxY(100);
-        graph.getViewport().setMaxX(30);
+        graph.getViewport().setMaxY(150);
+        graph.getViewport().setMaxX(xMax);
         yValues = new DataPoint[20];
         for (int i = 0; i<yValues.length;i++){
             yValues[i] = new DataPoint(0,0);
@@ -280,10 +281,10 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         }
 
         spmNumbers = findViewById(R.id.spmNumbers);
-        if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            Utility.doToast(this,"permission to save not granted");
-        }
-        else
+        //if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            //Utility.doToast(this,"permission to save not granted");
+        //}
+        //else
         Utility.writeToFile(sessionTimer.getText().toString(), dayMonth+".txt", getApplicationContext());
         Utility.writeToFile(debugT.getText().toString(), dayMonth+"targetTime.txt", getApplicationContext());
         Utility.writeToFile(spmNumbers.getText().toString(), dayMonth+"SPM.txt", getApplicationContext());
@@ -441,18 +442,21 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         yValues = tempValues;
         graph.invalidate();
         values = new LineGraphSeries<>(yValues);
+        values.setDrawBackground(true);
+        values.setColor(Color.argb(60,0,0,255));
+        values.setBackgroundColor(Color.argb(20,0,0,255));
         if(running) {
             if(eventX > graphMargin) {
                 // make an SPM offset, and count time spent until < 1 again as SPM time. make an SPM offset, and count time spent until < 1 again as SPM time.
                 graph.addSeries(values);
 
-                if (xCounter < 30) {
+                if (xCounter < xMax) {
                     xCounter++;
                 }
             }
             else if (eventX < graphMargin){
                 // save time spent as SPM time
-                if (xCounter >= 30){
+                if (xCounter >= xMax){
                     graph.removeAllSeries();
                     graph.invalidate();
 
