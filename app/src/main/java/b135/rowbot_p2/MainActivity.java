@@ -100,6 +100,14 @@ public class MainActivity extends AppCompatActivity {
         Utility.writeToFile("0", "tsFriday.txt", getApplicationContext());
         Utility.writeToFile("0", "tsSaturday.txt", getApplicationContext());
         Utility.writeToFile("0", "tsSunday.txt", getApplicationContext());
+
+        Utility.writeToFile("0", "spmMonday.txt", getApplicationContext());
+        Utility.writeToFile("0", "spmTuesday.txt", getApplicationContext());
+        Utility.writeToFile("0", "spmWednesday.txt", getApplicationContext());
+        Utility.writeToFile("0", "spmThursday.txt", getApplicationContext());
+        Utility.writeToFile("0", "spmFriday.txt", getApplicationContext());
+        Utility.writeToFile("0", "spmSaturday.txt", getApplicationContext());
+        Utility.writeToFile("0", "spmSunday.txt", getApplicationContext());
     }
 
     //used for debugging the saved data from session to tsWeek
