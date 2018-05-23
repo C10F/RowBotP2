@@ -2,6 +2,7 @@ package b135.rowbot_p2;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -99,6 +100,15 @@ public class Guide extends AppCompatActivity {
         // set our video-view and title to be visible on button press
         videoPH.setVisibility(View.VISIBLE);
         videoTxt.setVisibility(View.VISIBLE);
+        videoPH.bringToFront();
+        videoPH.setClickable(true);
+        videoPH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent videoIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=zQ82RYIFLN8&t=11s"));
+                startActivity(videoIntent);
+            }
+        });
         videoShowing = true;
     }
 

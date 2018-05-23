@@ -14,6 +14,8 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 import com.jjoe64.graphview.series.BarGraphSeries;
 
+import java.util.Date;
+
 
 public class SensorTest_Activity extends AppCompatActivity implements SensorEventListener {
 
@@ -23,6 +25,7 @@ public class SensorTest_Activity extends AppCompatActivity implements SensorEven
     private LineGraphSeries values;
     private DataPoint[] displayValues = new DataPoint[20];                                                              // the array that holds graph values
     float xCounter;
+    int mass = 35;
 
     GraphView graph;
 
@@ -46,6 +49,10 @@ public class SensorTest_Activity extends AppCompatActivity implements SensorEven
         zText = (TextView) findViewById(R.id.zText);
 
         graph = findViewById(R.id.graph);
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setMaxY(100);
+        graph.getViewport().setMaxX(30);
 
         for (int i = 0; i<displayValues.length;i++){
          displayValues[i] = new DataPoint(0,0);
@@ -58,10 +65,20 @@ public class SensorTest_Activity extends AppCompatActivity implements SensorEven
         //xText.setText("X: " + event.values[0]);
         //yText.setText("Y: " + event.values[1]);
         //zText.setText("Z: " + event.values[2]);
-
+        float valueX = event.values[0];
+        float valueY = event.values[1];
+            /*
+        if (event.values[0] < 0){
+            valueX = valueX * (-1);
+        }
+        if(event.values[1] < 0){
+            valueY = valueY * (-1);
+        }
+            */
 
         // NOTE: here, we want to make sure to check that if the values are negative, do *(-1) to revert them. we want negative G's to be displayed the same i think.
-        updateValues(event.values[0], event.values[1]);
+
+        updateValues(valueX, valueY);
 
     }
 
@@ -79,26 +96,24 @@ public class SensorTest_Activity extends AppCompatActivity implements SensorEven
         tempValues[i] = displayValues[i+1];
      }
      // finally add new data to last spot
-     tempValues[19] = new DataPoint(xCounter,event2);
+     tempValues[19] = new DataPoint(new Date().getSeconds(),(mass*event2));
      // arbitrary 30 limit should be refactored to something else.
-     if(xCounter < 30){
-     xCounter++;
-     }
+     //if(xCounter < 30){
+     //xCounter++;
+     //}
      //invalidate does not remove the line completely.. we need another way to reset the graph.
-     else if (xCounter == 30){
-     graph.invalidate();
-     for (int i = 0; i<tempValues.length;i++){
-         tempValues[i] = new DataPoint(0,0);
-        }
-        xCounter = 0;
+     //else if (xCounter == 30){
+     //graph.invalidate();
+     //for (int i = 0; i<tempValues.length;i++){
+     //    tempValues[i] = new DataPoint(0,0);
+     //   }
+     //   xCounter = 0;
 
-     }
+     //}
      // make our temporary array the actual one, and display it IF there is a change in the last spot from initial 0.
      displayValues = tempValues;
+     graph.invalidate();
      values = new LineGraphSeries<>(displayValues);
-     if(displayValues[19] != new DataPoint(0,0)){
      graph.addSeries(values);
-     }
-
     }
 }

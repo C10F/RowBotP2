@@ -23,7 +23,6 @@
         android:background="?android:attr/listDivider" />
 
 
-
     <TextView
         android:id="@+id/videoText"
         android:layout_width="match_parent"
@@ -32,11 +31,10 @@
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@id/divider"
         android:paddingTop="10dp"
+        android:text="Click below for video instructions"
         android:textAlignment="center"
-        android:text="INSTRUCTIONAL VIDEO NAME"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:visibility="gone" />
-
 
 
     <ImageView
@@ -46,8 +44,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_below="@id/burgerGuide"
-        android:layout_toStartOf="@id/divider"
         android:layout_margin="10dp"
+        android:layout_toStartOf="@id/divider"
+        android:onClick="videoTest"
         android:visibility="gone"
         app:srcCompat="@drawable/setupph" />
 

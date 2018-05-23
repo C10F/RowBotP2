@@ -76,7 +76,7 @@
         android:visibility="gone"/>
 
     <com.jjoe64.graphview.GraphView
-        android:id="@+id/sessionGraph"
+        android:id="@+id/graph"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"

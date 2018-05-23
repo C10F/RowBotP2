@@ -1,17 +1,19 @@
 package b135.rowbot_p2;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.Color;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.graphics.Color;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.ViewPager;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -31,6 +33,7 @@ import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
 import java.util.Calendar;
+import java.util.Date;
 
 
 public class Session extends AppCompatActivity implements SensorEventListener {
@@ -59,14 +62,22 @@ public class Session extends AppCompatActivity implements SensorEventListener {
 
     private boolean runningForDrawer = true;
 
-    //sensor variables
-    private Sensor mySensor;
-    private SensorManager SM;
-    private LineGraphSeries values;
-    private DataPoint[] displayValues = new DataPoint[20];                                                              // the array that holds graph values
-    float xCounter;
+    // graph variables
     GraphView graph;
-
+    LineGraphSeries<DataPoint> values;
+    private int mass = 20;
+    private long gOffsetInit;
+    private long gOffset;
+    private double graphMargin = 1.2;
+    private long xVal_t_begin;
+    private long xVal_t_end;
+    private long xVal_t_total;
+    private long xValue;
+    private int xCounter;
+    private int xMax = 20;
+    private DataPoint[] yValues;
+    private SensorManager SM;
+    private Sensor mySensor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +94,14 @@ public class Session extends AppCompatActivity implements SensorEventListener {
             targetTime = extra.getString("EXTRA_TIME");
         }
 
+        // Create our Sensor Manager
+        SM = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        // Accelerometer Sensor
+        mySensor = SM.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
+
+        // Register sensor Listener
+        SM.registerListener(this, mySensor, SensorManager.SENSOR_DELAY_GAME);
         mDrawerLayout = findViewById(R.id.drawerLayoutSession);
 
         NavigationView navigationView = findViewById(R.id.navViewSession);
@@ -114,25 +133,18 @@ public class Session extends AppCompatActivity implements SensorEventListener {
                     }
                 });
 
-        elapsedTime = elapsedTimeText+elapsedTimeCounter;
-
-        // Create our Sensor Manager
-        SM = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-
-        // Accelerometer Sensor
-        mySensor = SM.getDefaultSensor(android.hardware.Sensor.TYPE_ACCELEROMETER);
-
-        // Register sensor Listener
-        SM.registerListener(this, mySensor, SensorManager.SENSOR_DELAY_NORMAL);
-
-        graph = findViewById(R.id.sessionGraph);
-
-        for (int i = 0; i<displayValues.length;i++){
-            displayValues[i] = new DataPoint(0,0);
+        //gOffsetInit = SystemClock.elapsedRealtime() - pauseOffset;
+        //gOffset = SystemClock.elapsedRealtime() - (pauseOffset + gOffsetInit + xVal_t_end);
+        graph = findViewById(R.id.graph);
+        graph.getViewport().setXAxisBoundsManual(true);
+        graph.getViewport().setYAxisBoundsManual(true);
+        graph.getViewport().setMaxY(150);
+        graph.getViewport().setMaxX(xMax);
+        yValues = new DataPoint[20];
+        for (int i = 0; i<yValues.length;i++){
+            yValues[i] = new DataPoint(0,0);
         }
         xCounter = 0;
-
-
         //String distance = currentDistance+targetDistance;
 
         //here we create and instance of our viewPager
@@ -181,6 +193,12 @@ public class Session extends AppCompatActivity implements SensorEventListener {
             running = true;
             // toast the user that session has begun
             Utility.doToast(getApplicationContext(),"Session started!");
+
+            // START THE GRAPH
+            // (call a method to start graph
+            //xBegin();
+            //xValue = SystemClock.elapsedRealtime()/1000;
+
         }
     }
 
@@ -191,7 +209,6 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         Button pButton = findViewById(R.id.pauseSession);
         Button saveButton = findViewById(R.id.saveSession);
         Button rButton = findViewById(R.id.returnSession);
-        GraphView graphView = findViewById(R.id.sessionGraph);
         //if the boolean is true i.e. running the timer will pause
         if (running) {
             //sets various colors and texts
@@ -214,9 +231,9 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         }
         else if (sessionStop) {
             //this makes sure the viewPager stays below the buttons and doesn't go to match parent when the buttons change
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) graphView.getLayoutParams();
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) graph.getLayoutParams();
             layoutParams.addRule(RelativeLayout.BELOW, saveButton.getId());
-            graphView.setLayoutParams(layoutParams);
+            graph.setLayoutParams(layoutParams);
             sButton.setVisibility(View.GONE);
             pButton.setVisibility(View.GONE);
             saveButton.setVisibility(View.VISIBLE);
@@ -264,7 +281,10 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         }
 
         spmNumbers = findViewById(R.id.spmNumbers);
-
+        //if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            //Utility.doToast(this,"permission to save not granted");
+        //}
+        //else
         Utility.writeToFile(sessionTimer.getText().toString(), dayMonth+".txt", getApplicationContext());
         Utility.writeToFile(debugT.getText().toString(), dayMonth+"targetTime.txt", getApplicationContext());
         Utility.writeToFile(spmNumbers.getText().toString(), dayMonth+"SPM.txt", getApplicationContext());
@@ -310,11 +330,10 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         Button pButton = findViewById(R.id.pauseSession);
         Button saveButton = findViewById(R.id.saveSession);
         Button rButton = findViewById(R.id.returnSession);
-        GraphView graphView = findViewById(R.id.sessionGraph);
 
-        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) graphView.getLayoutParams();
+        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) graph.getLayoutParams();
         layoutParams.addRule(RelativeLayout.BELOW, pButton.getId());
-        graphView.setLayoutParams(layoutParams);
+        graph.setLayoutParams(layoutParams);
 
         sButton.setVisibility(View.VISIBLE);
         pButton.setVisibility(View.VISIBLE);
@@ -327,15 +346,66 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         mDrawerLayout.openDrawer(Gravity.START);
     }
 
-    @Override
+
+
+
+
+
+
+    //call this in onClick for start session
+    public void xBegin() {
+        //negativeToPositive();
+
+
+        if (2 > 1) {
+            xVal_t_begin = SystemClock.elapsedRealtime() - (gOffsetInit + pauseOffset);
+            //in here we need to start drawing out graph and add to it
+        }
+
+
+    }
+
+    public void xEnd() {
+        negativeToPositive();
+        if (2 < 1) {
+            xVal_t_end = 0L;
+            //stop the graph from drawing
+        }
+    }
+
+    public void timeFromStartToFinish() {
+        xVal_t_total = xVal_t_end - xVal_t_begin;
+    }
+
+    //this is copied from the sensor test class just for now
+    public void negativeToPositive() {
+        /*if (event.values[0] < 0){
+            valueX = valueX * (-1);
+        }
+        if(event.values[1] < 0){
+            valueY = valueY * (-1);
+        }*/
+    }
+
     public void onSensorChanged(SensorEvent event) {
         //xText.setText("X: " + event.values[0]);
         //yText.setText("Y: " + event.values[1]);
         //zText.setText("Z: " + event.values[2]);
-
+        float valueX = event.values[0];
+        float valueY = event.values[1];
+            /*
+        if (event.values[0] < 0){
+            valueX = valueX * (-1);
+        }
+        if(event.values[1] < 0){
+            valueY = valueY * (-1);
+        }
+            */
 
         // NOTE: here, we want to make sure to check that if the values are negative, do *(-1) to revert them. we want negative G's to be displayed the same i think.
-        updateValues(event.values[0], event.values[1]);
+
+        updateValues(valueX, valueY);
+
     }
 
     @Override
@@ -343,35 +413,63 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         // Not in use
     }
 
-    public void updateValues(float event1, float event2){
+
+    public void updateValues(float eventX, float eventY){
         // temporary place to hold previous values
         DataPoint[] tempValues = new DataPoint[20];
 
-        for (int i=0; i<displayValues.length-1;i++){
+
+        for (int i=0; i<yValues.length-1;i++){
             // make every spot equal to the one above from displayValues
-            tempValues[i] = displayValues[i+1];
+            tempValues[i] = yValues[i+1];
         }
         // finally add new data to last spot
-        tempValues[19] = new DataPoint(xCounter,event2);
+        tempValues[19] = new DataPoint(xCounter,(eventX * mass));
         // arbitrary 30 limit should be refactored to something else.
-        if(xCounter < 30){
-            xCounter++;
-        }
+        //if(xCounter < 30){
+        //xCounter++;
+        //}
         //invalidate does not remove the line completely.. we need another way to reset the graph.
-        else if (xCounter == 30){
-            graph.invalidate();
-            for (int i = 0; i<tempValues.length;i++){
-                tempValues[i] = new DataPoint(0,0);
-            }
-            xCounter = 0;
+        //else if (xCounter == 30){
+        //graph.invalidate();
+        //for (int i = 0; i<tempValues.length;i++){
+        //    tempValues[i] = new DataPoint(0,0);
+        //   }
+        //   xCounter = 0;
 
-        }
+        //}
         // make our temporary array the actual one, and display it IF there is a change in the last spot from initial 0.
-        displayValues = tempValues;
-        values = new LineGraphSeries<>(displayValues);
-        if(displayValues[19] != new DataPoint(0,0)){
-            graph.addSeries(values);
+        yValues = tempValues;
+        graph.invalidate();
+        values = new LineGraphSeries<>(yValues);
+        values.setDrawBackground(true);
+        values.setColor(Color.argb(60,0,0,255));
+        values.setBackgroundColor(Color.argb(20,0,0,255));
+        if(running) {
+            if(eventX > graphMargin) {
+                // make an SPM offset, and count time spent until < 1 again as SPM time. make an SPM offset, and count time spent until < 1 again as SPM time.
+                graph.addSeries(values);
+
+                if (xCounter < xMax) {
+                    xCounter++;
+                }
+            }
+            else if (eventX < graphMargin){
+                // save time spent as SPM time
+                if (xCounter >= xMax){
+                    graph.removeAllSeries();
+                    graph.invalidate();
+
+                    xCounter = 0;
+                    for(int i = 0; i < yValues.length; i++){
+                        yValues[i] = new DataPoint(0,0);
+                    }
+                    updateValues(eventX,eventY);
+                }
+            }
         }
+
+
 
     }
 }
