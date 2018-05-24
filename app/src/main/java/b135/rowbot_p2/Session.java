@@ -62,6 +62,8 @@ public class Session extends AppCompatActivity implements SensorEventListener {
     private DrawerLayout mDrawerLayout;
     private TextView debugT;
     private TextView spmNumbers;
+
+    //drawer layout variable
     private boolean runningForDrawer = true;
 
     // graph variables
