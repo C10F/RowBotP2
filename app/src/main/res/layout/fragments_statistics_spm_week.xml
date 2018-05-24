@@ -3,7 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentsStatisticsSPMWeek"
-    android:background="@color/red">
+    tools:context=".FragmentsStatisticsSPMWeek">
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/spmWeekBarchart"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+    </com.github.mikephil.charting.charts.BarChart>
 
 </RelativeLayout>

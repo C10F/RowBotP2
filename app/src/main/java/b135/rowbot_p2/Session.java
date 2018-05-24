@@ -318,7 +318,7 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         }
     }
 
-   
+
 
     public void returnToSession(View v) {
         //initializing buttons by id
