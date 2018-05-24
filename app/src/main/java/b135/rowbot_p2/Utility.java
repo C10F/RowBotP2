@@ -11,15 +11,12 @@ import java.io.OutputStreamWriter;
 public abstract class Utility {
 
     public final String TAG = "Utility";
-    private static String fileNameTxt = "data.txt";
 
     // just a shortcut to make toasts
     public static void doToast(Context cont,String message){
         Toast.makeText(cont,message,Toast.LENGTH_SHORT).show();
     }
 
-    // NOTE: For these methods, fileNameTxt refers to the specific .txt
-    // you either want to save or load to/from.
 
     // write a string to file
     public static void writeToFile(String data, String target, Context context){
@@ -58,7 +55,8 @@ public abstract class Utility {
         return resultText;
     }
 
-
+    // returns the leftmost part of a string, divided by ":"
+    // used to extract minutes from sessionTimer
     public static String divideString(String weekday) {
         String returnString;
 
