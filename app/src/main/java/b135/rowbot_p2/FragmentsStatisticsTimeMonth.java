@@ -49,7 +49,7 @@ public class FragmentsStatisticsTimeMonth extends Fragment {
 
         return view;
     }
-
+    // update detailed information for each day in the month view
     public void updateLabel(){
         currentTime = Utility.readFromFile(dayMonth+".txt",getActivity());
         targetTime = Utility.readFromFile(dayMonth+"targetTime.txt",getActivity());

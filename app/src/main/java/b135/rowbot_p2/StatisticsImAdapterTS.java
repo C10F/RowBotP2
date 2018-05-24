@@ -10,7 +10,6 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 public class StatisticsImAdapterTS extends FragmentPagerAdapter {
     /*//used to later pass context to the constructor
     private Context statTimeSpentContext;

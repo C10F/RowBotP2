@@ -44,7 +44,7 @@ public class FragmentsStatisticsTimeWeek extends Fragment {
 
 
 
-        //Utility.writeToFile("21", "tsMonday.txt", getActivity());
+        // use our divideString method to extract our floats from the .txt files
         weekValues[0] = Float.parseFloat(Utility.divideString(Utility.readFromFile("tsMonday.txt",getActivity())));
         weekValues[1] = Float.parseFloat(Utility.divideString(Utility.readFromFile("tsTuesday.txt",getActivity())));
         weekValues[2] = Float.parseFloat(Utility.divideString(Utility.readFromFile("tsWednesday.txt",getActivity())));
@@ -54,7 +54,7 @@ public class FragmentsStatisticsTimeWeek extends Fragment {
         weekValues[6] = Float.parseFloat(Utility.divideString(Utility.readFromFile("tsSunday.txt",getActivity())));
 
         barChart = view.findViewById(R.id.timeSpentWeekBarchart);
-
+        // add the above weekValues as bars(y-axis) in our barchart-entries
         ArrayList<BarEntry> barEntries = new ArrayList<>();
         barEntries.add(new BarEntry(weekValues[0], 0));
         barEntries.add(new BarEntry(weekValues[1], 1));
@@ -65,7 +65,7 @@ public class FragmentsStatisticsTimeWeek extends Fragment {
         barEntries.add(new BarEntry(weekValues[6], 6));
         BarDataSet barDataSet = new BarDataSet(barEntries,"Sessions");
         barDataSet.setColor(Color.BLUE);
-
+        // these strings are labels for the x-axis
         final ArrayList<String> theDays = new ArrayList<>();
         theDays.add("Mon");
         theDays.add("Tue");
@@ -74,10 +74,10 @@ public class FragmentsStatisticsTimeWeek extends Fragment {
         theDays.add("Fri");
         theDays.add("Sat");
         theDays.add("Sun");
-
+        // here we add the two axis values as data in the barchart
         BarData barData = new BarData(theDays, barDataSet);
         barChart.setData(barData);
-
+        // allow pinch-to-zoom and other functionality
         barChart.setTouchEnabled(true);
         barChart.setDragEnabled(true);
         barChart.setScaleEnabled(true);

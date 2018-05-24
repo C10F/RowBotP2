@@ -17,7 +17,6 @@ import android.widget.TextView;
 public class SessionInput extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private boolean customChosen;
-    //private TextInputLayout sessionInputD;
     private TextInputLayout sessionInputT;
     private TextView selected;
     private Button goTo;
@@ -35,7 +34,6 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
         Spinner spinner = findViewById(R.id.presetSpinner);
 
         //reference to the TextInputLayout fields from the xml found by id
-        //sessionInputD = findViewById(R.id.distanceText);
         sessionInputT = findViewById(R.id.timeText);
 
         //this array adapter fits our spinner with the text from the string-array
@@ -139,7 +137,7 @@ public class SessionInput extends AppCompatActivity implements AdapterView.OnIte
     //this method is from the implemented interface and determines what happens when nothing is selected
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
+        // do nothing
     }
 
     public void goToSessionFinal(View view) {

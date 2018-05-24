@@ -35,7 +35,6 @@ public class FragmentsStatisticsSPMMonth extends Fragment {
 
         mCalendarView = view.findViewById(R.id.calendarSPMMonth);
         mTextView = view.findViewById(R.id.resultsSPMText);
-
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {

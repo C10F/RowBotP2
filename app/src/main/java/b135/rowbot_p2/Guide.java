@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Guide extends AppCompatActivity {
-
+    // booleans used to keep track of which selection the user has made
     boolean videoShowing;
     boolean setupShowing;
     boolean termShowing;
@@ -39,7 +39,7 @@ public class Guide extends AppCompatActivity {
         }
 
         mDrawerLayout = findViewById(R.id.drawerLayoutGuide);
-
+        // populate the drawer with appropriate items
         NavigationView navigationView = findViewById(R.id.navViewGuide);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -73,8 +73,9 @@ public class Guide extends AppCompatActivity {
                     }
                 });
     }
-
-
+    // below are three onClick's for each button.
+    // they all check whether the others are visible, and sets them to gone in that case.
+    // then it sets itself to be visible
     public void showVideo(View view){
         ImageView termPH = findViewById(R.id.termPH);
         ImageView videoPH = findViewById(R.id.embedVideoPH);
@@ -100,8 +101,10 @@ public class Guide extends AppCompatActivity {
         // set our video-view and title to be visible on button press
         videoPH.setVisibility(View.VISIBLE);
         videoTxt.setVisibility(View.VISIBLE);
+        // make sure the video-view is in front and clickable
         videoPH.bringToFront();
         videoPH.setClickable(true);
+        // on click, send intent to youtube to play the url.
         videoPH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

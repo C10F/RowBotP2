@@ -34,7 +34,7 @@ public class Statistics extends FragmentActivity {
     ViewPager spmViewPager;
     private DrawerLayout mDrawerLayout;
     private boolean running = false;
-    //GraphView tsWeekChart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,14 +43,14 @@ public class Statistics extends FragmentActivity {
         // Set window fullscreen and force landscape orientation
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
+        // get extras from previous screen
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             running = extras.getBoolean("SAVED_RUNNING");
         }
 
         mDrawerLayout = findViewById(R.id.drawerLayoutStatistics);
-
+        // set appropriate items in the drawer
         NavigationView navigationView = findViewById(R.id.navViewStatistics);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -84,7 +84,7 @@ public class Statistics extends FragmentActivity {
                     }
                 });
 
-        //here we create and instance of our viewPager
+
         timeSpentViewPager = findViewById(R.id.timeSpentVP);
         //here we create our imageAdapter by calling the constructor method
         StatisticsImAdapterTS tsAdapter = new StatisticsImAdapterTS(getSupportFragmentManager());
@@ -94,26 +94,6 @@ public class Statistics extends FragmentActivity {
         spmViewPager = findViewById(R.id.spmVP);
         StatisticsImAdapterSPM spmAdapter = new StatisticsImAdapterSPM(getSupportFragmentManager());
         spmViewPager.setAdapter(spmAdapter);
-
-        /*ViewPager distViewPager = findViewById(R.id.distanceVP);
-        StatisticsImAdapterDist distAdapter = new StatisticsImAdapterDist(this);
-        distViewPager.setAdapter(distAdapter);*/
-
-        /*
-        tsWeekChart = findViewById(R.id.timeSpentWeekBarchart);
-
-        BarGraphSeries<DataPoint> tsWeekDataSet = new BarGraphSeries<>(new DataPoint[] {
-                new DataPoint(0, 44),
-                new DataPoint(1, 88),
-                new DataPoint(2, 66),
-                new DataPoint(3, 12),
-                new DataPoint(4, 19),
-                new DataPoint(5, 91),
-                new DataPoint(6, 22),
-        });
-        tsWeekChart.addSeries(tsWeekDataSet);
-        tsWeekChart.setTitle("hej med dig");
-        */
     }
 
     public void timeSelected (View view){
@@ -126,7 +106,7 @@ public class Statistics extends FragmentActivity {
         //ViewPager distViewPager = findViewById(R.id.distanceVP);
 
         textView.setVisibility(View.GONE);
-
+        // this sets the appropriate background colours of the buttons to indicate state
         tButton.setBackgroundResource(R.drawable.statistics_buttons_selected);
         sButton.setBackgroundResource(R.drawable.statistics_buttons_deselected);
         //dButton.setBackgroundResource(R.drawable.statistics_buttons_deselected);
@@ -135,7 +115,7 @@ public class Statistics extends FragmentActivity {
         spmViewPager.setVisibility(View.GONE);
         //distViewPager.setVisibility(View.GONE);
     }
-
+    // this part is not used in this version of the prototype
     public void distanceSelected (View view){
         TextView textView = findViewById(R.id.statStartText);
         Button tButton = findViewById(R.id.TimeButton);
@@ -143,30 +123,25 @@ public class Statistics extends FragmentActivity {
         //Button dButton = findViewById(R.id.distButton);
         ViewPager timeSpentViewPager = findViewById(R.id.timeSpentVP);
         ViewPager spmViewPager = findViewById(R.id.spmVP);
-        //ViewPager distViewPager = findViewById(R.id.distanceVP);
 
         textView.setVisibility(View.GONE);
-
-        //dButton.setBackgroundResource(R.drawable.statistics_buttons_selected);
+        // this sets the appropriate background colours of the buttons to indicate state
         tButton.setBackgroundResource(R.drawable.statistics_buttons_deselected);
         sButton.setBackgroundResource(R.drawable.statistics_buttons_deselected);
 
         timeSpentViewPager.setVisibility(View.GONE);
         spmViewPager.setVisibility(View.GONE);
-        //distViewPager.setVisibility(View.VISIBLE);
+
     }
 
     public void spmSelected (View view){
         TextView textView = findViewById(R.id.statStartText);
         Button tButton = findViewById(R.id.TimeButton);
         Button sButton = findViewById(R.id.spmButton);
-        //Button dButton = findViewById(R.id.distButton);
         ViewPager timeSpentViewPager = findViewById(R.id.timeSpentVP);
         ViewPager spmViewPager = findViewById(R.id.spmVP);
-        //ViewPager distViewPager = findViewById(R.id.distanceVP);
-
         textView.setVisibility(View.GONE);
-
+        // this sets the appropriate background colours of the buttons to indicate state
         sButton.setBackgroundResource(R.drawable.statistics_buttons_selected);
         tButton.setBackgroundResource(R.drawable.statistics_buttons_deselected);
         //dButton.setBackgroundResource(R.drawable.statistics_buttons_deselected);

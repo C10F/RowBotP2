@@ -28,13 +28,13 @@ public abstract class Utility {
             e.printStackTrace();
         }
     }
-    // returns the string previously saved
+    // returns the string previously saved in target String location
     public static String readFromFile(String target, Context context){
         String resultText = "";
 
         try{
             InputStream is = context.openFileInput(target);
-
+            // if the file does not return null (aka exists)
             if(is != null) {
                 InputStreamReader isr = new InputStreamReader(is);
                 BufferedReader br = new BufferedReader(isr);
@@ -59,8 +59,9 @@ public abstract class Utility {
     // used to extract minutes from sessionTimer
     public static String divideString(String weekday) {
         String returnString;
-
+        // first we split the string to a string array with : as divider
         String[] result = weekday.split(":");
+        // then we return the first position in that array as variable returnString
         returnString = result[0];
         return returnString;
     }

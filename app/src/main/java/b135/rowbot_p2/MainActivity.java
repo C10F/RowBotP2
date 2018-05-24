@@ -35,29 +35,27 @@ public class MainActivity extends AppCompatActivity {
         // Set window fullscreen and force landscape orientation
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
-        //calling our debugger here
-        //checkForSave();
-
+        // this checks for a first-launch boolean. this is only false on very first open
         if (Utility.readFromFile("hasOpened.txt",getApplicationContext()).equals("true")){
             hasOpened = true;
         }
         else if (!hasOpened){
             File f = new File("hasOpened.txt");
+            // if we never opened the app before, init vars for statistics with 0's
             runZero();
+            // and write the hasOpened first-launch boolean string.
             Utility.writeToFile("true","hasOpened.txt",getApplicationContext());
             hasOpened = true;
         }
 
-        //weekDays = new File[]{new File("tsMonday.txt"), new File("tsTuesday.txt"), new File("tsWednesday.txt"), new File("tsThursday.txt"), new File("tsFriday.txt"), new File("tsSaturday.txt"), new File("tsSunday")};
-
+        // get extras from previous activity
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             running = extras.getBoolean("SAVED_RUNNING");
         }
 
         mDrawerLayout = findViewById(R.id.drawerLayoutMain);
-
+        // populate the drawer with appropriate items
         NavigationView navigationView = findViewById(R.id.navViewMain);
             navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -91,7 +89,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
+    // this method writes a 0 to all weekday files for statistics.
+    // in effect, this creates the file so that we can display it's values (even if 0)
     private void runZero() {
         Utility.writeToFile("0", "tsMonday.txt", getApplicationContext());
         Utility.writeToFile("0", "tsTuesday.txt", getApplicationContext());
@@ -117,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             result.setText(Utility.readFromFile("tsTuesday.txt", getApplicationContext()));
         }
     }*/
-
+    // below are the three OnClick's for the main menu
     public void goToSession (View view) {
         Intent intent = new Intent(getApplicationContext(),SessionInput.class);
         running = true;
@@ -135,6 +134,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+    // this one is no longer used in this version of the prototype
     public void goToTest (View view) {
         Intent goToTest = new Intent(getApplicationContext(), SensorTest_Activity.class);
         startActivity(goToTest);
@@ -143,18 +143,4 @@ public class MainActivity extends AppCompatActivity {
     public void openDrawer(View view) {
         mDrawerLayout.openDrawer(Gravity.START);
     }
-
-    /*@Override
-    protected void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putBoolean(KEY_RUNNING,running);
-
-        super.onSaveInstanceState(savedInstanceState);
-    }*/
-
-    /*@Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-
-        running = savedInstanceState.getBoolean(KEY_RUNNING);
-    }*/
 }

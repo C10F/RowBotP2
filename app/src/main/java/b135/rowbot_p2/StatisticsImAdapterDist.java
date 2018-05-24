@@ -7,6 +7,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+// this class is not used in this version of the prototype
 
 public class StatisticsImAdapterDist extends PagerAdapter {
     //used to later pass context to the constructor
