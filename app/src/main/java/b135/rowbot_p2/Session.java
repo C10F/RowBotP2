@@ -49,17 +49,19 @@ public class Session extends AppCompatActivity implements SensorEventListener {
     private boolean sessionStop = false;
     //String targetDistance;
     String targetTime;
+    // initializing calendar
     Calendar c = Calendar.getInstance();
     int day = c.get(Calendar.DAY_OF_WEEK);
     int dayMonth = c.get(Calendar.DAY_OF_YEAR);
     int dayMonthTargetTime = c.get(Calendar.DAY_OF_YEAR);
+    // formating for sessionTimer
     String elapsedTimeText = "Elapsed time:\n";
     String elapsedTimeCounter = "%s\n";
     String elapsedTime;
+    // drawer layout variable and monthly statistic variables
     private DrawerLayout mDrawerLayout;
     private TextView debugT;
     private TextView spmNumbers;
-
     private boolean runningForDrawer = true;
 
     // graph variables
@@ -76,6 +78,7 @@ public class Session extends AppCompatActivity implements SensorEventListener {
     private int xCounter;
     private int xMax = 20;
     private DataPoint[] yValues;
+    // acc. sensor variables
     private SensorManager SM;
     private Sensor mySensor;
 
@@ -103,7 +106,7 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         // Register sensor Listener
         SM.registerListener(this, mySensor, SensorManager.SENSOR_DELAY_GAME);
         mDrawerLayout = findViewById(R.id.drawerLayoutSession);
-
+        // set up the navigation drawer with appropriate items
         NavigationView navigationView = findViewById(R.id.navViewSession);
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
@@ -133,29 +136,22 @@ public class Session extends AppCompatActivity implements SensorEventListener {
                     }
                 });
 
-        //gOffsetInit = SystemClock.elapsedRealtime() - pauseOffset;
-        //gOffset = SystemClock.elapsedRealtime() - (pauseOffset + gOffsetInit + xVal_t_end);
+        // identify our graph view, and set boundaries of the coordinate-system
         graph = findViewById(R.id.graph);
         graph.getViewport().setXAxisBoundsManual(true);
         graph.getViewport().setYAxisBoundsManual(true);
         graph.getViewport().setMaxY(150);
         graph.getViewport().setMaxX(xMax);
+        // initialize the value-array with all 0
         yValues = new DataPoint[20];
         for (int i = 0; i<yValues.length;i++){
             yValues[i] = new DataPoint(0,0);
         }
+        // xCounter is our growing x-axis, here we initialize it as 0
         xCounter = 0;
-        //String distance = currentDistance+targetDistance;
 
-        //here we create and instance of our viewPager
-        //ViewPager viewPager = findViewById(R.id.sessionViewPager);
-        //here we create our imageAdapter by calling the constructor method
-        //ImageAdapter adapter = new ImageAdapter(this);
-        //here we take our viewPager variable and call the setAdapter method on it and then pass our adapter
-        //viewPager.setAdapter(adapter);
-        //TextView debugD = findViewById(R.id.debugOutput);
+
         debugT = findViewById(R.id.debugOutput2);
-        //debugD.setText(distance);
         debugT.setText(targetTime);
 
         //sets the chronometer variable to the chronometer in the xml file by id
@@ -193,12 +189,6 @@ public class Session extends AppCompatActivity implements SensorEventListener {
             running = true;
             // toast the user that session has begun
             Utility.doToast(getApplicationContext(),"Session started!");
-
-            // START THE GRAPH
-            // (call a method to start graph
-            //xBegin();
-            //xValue = SystemClock.elapsedRealtime()/1000;
-
         }
     }
 
@@ -321,12 +311,13 @@ public class Session extends AppCompatActivity implements SensorEventListener {
 
 
     public void returnToSession(View v) {
-        //initializing buttons by id
+        // initializing buttons by id
         Button sButton = findViewById(R.id.startSession);
         Button pButton = findViewById(R.id.pauseSession);
         Button saveButton = findViewById(R.id.saveSession);
         Button rButton = findViewById(R.id.returnSession);
-
+        // setting relative relationship between the graph and top buttons
+        // (making sure everything stays in the right place)
         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) graph.getLayoutParams();
         layoutParams.addRule(RelativeLayout.BELOW, pButton.getId());
         graph.setLayoutParams(layoutParams);
@@ -335,73 +326,26 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         pButton.setVisibility(View.VISIBLE);
         saveButton.setVisibility(View.GONE);
         rButton.setVisibility(View.GONE);
-        // COMMENTS PL0X
+
     }
 
+    // this method opens the navigation drawer
     public void openDrawerSession(View view) {
         mDrawerLayout.openDrawer(Gravity.START);
     }
 
 
 
-
-
-
-
-    //call this in onClick for start session
-    public void xBegin() {
-        //negativeToPositive();
-
-
-        if (2 > 1) {
-            xVal_t_begin = SystemClock.elapsedRealtime() - (gOffsetInit + pauseOffset);
-            //in here we need to start drawing out graph and add to it
-        }
-
-
-    }
-
-    public void xEnd() {
-        negativeToPositive();
-        if (2 < 1) {
-            xVal_t_end = 0L;
-            //stop the graph from drawing
-        }
-    }
-
+    // this method is not implemented
     public void timeFromStartToFinish() {
         xVal_t_total = xVal_t_end - xVal_t_begin;
     }
 
-    //this is copied from the sensor test class just for now
-    public void negativeToPositive() {
-        /*if (event.values[0] < 0){
-            valueX = valueX * (-1);
-        }
-        if(event.values[1] < 0){
-            valueY = valueY * (-1);
-        }*/
-    }
-
+    // this method receives sensor data, and passes x & y values to updateValues
     public void onSensorChanged(SensorEvent event) {
-        //xText.setText("X: " + event.values[0]);
-        //yText.setText("Y: " + event.values[1]);
-        //zText.setText("Z: " + event.values[2]);
         float valueX = event.values[0];
         float valueY = event.values[1];
-            /*
-        if (event.values[0] < 0){
-            valueX = valueX * (-1);
-        }
-        if(event.values[1] < 0){
-            valueY = valueY * (-1);
-        }
-            */
-
-        // NOTE: here, we want to make sure to check that if the values are negative, do *(-1) to revert them. we want negative G's to be displayed the same i think.
-
         updateValues(valueX, valueY);
-
     }
 
     @Override
@@ -421,20 +365,8 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         }
         // finally add new data to last spot
         tempValues[19] = new DataPoint(xCounter,(eventX * mass));
-        // arbitrary 30 limit should be refactored to something else.
-        //if(xCounter < 30){
-        //xCounter++;
-        //}
-        //invalidate does not remove the line completely.. we need another way to reset the graph.
-        //else if (xCounter == 30){
-        //graph.invalidate();
-        //for (int i = 0; i<tempValues.length;i++){
-        //    tempValues[i] = new DataPoint(0,0);
-        //   }
-        //   xCounter = 0;
 
-        //}
-        // make our temporary array the actual one, and display it IF there is a change in the last spot from initial 0.
+        // make our temporary array the actual one, and display it IF values exceed margin
         yValues = tempValues;
         graph.invalidate();
         values = new LineGraphSeries<>(yValues);
@@ -443,7 +375,8 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         values.setBackgroundColor(Color.argb(20,0,0,255));
         if(running) {
             if(eventX > graphMargin) {
-                // make an SPM offset, and count time spent until < 1 again as SPM time. make an SPM offset, and count time spent until < 1 again as SPM time.
+                // TO DO:
+                // make an SPM offset, and count time spent until < 1 again as SPM time.
                 graph.addSeries(values);
 
                 if (xCounter < xMax) {
@@ -451,21 +384,19 @@ public class Session extends AppCompatActivity implements SensorEventListener {
                 }
             }
             else if (eventX < graphMargin){
-                // save time spent as SPM time
                 if (xCounter >= xMax){
+                    // remove graph data, and force refresh
                     graph.removeAllSeries();
                     graph.invalidate();
-
+                    // reset xCounter and graph data
                     xCounter = 0;
                     for(int i = 0; i < yValues.length; i++){
                         yValues[i] = new DataPoint(0,0);
                     }
+                    // input graph data anew
                     updateValues(eventX,eventY);
                 }
             }
         }
-
-
-
     }
 }
