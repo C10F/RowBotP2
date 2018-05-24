@@ -231,7 +231,8 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         }
         else if (sessionStop) {
             //this makes sure the viewPager stays below the buttons and doesn't go to match parent when the buttons change
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) graph.getLayoutParams();
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)
+            graph.getLayoutParams();
             layoutParams.addRule(RelativeLayout.BELOW, saveButton.getId());
             graph.setLayoutParams(layoutParams);
             sButton.setVisibility(View.GONE);
@@ -242,11 +243,14 @@ public class Session extends AppCompatActivity implements SensorEventListener {
     }
 
     public void saveSession(View v) {
+        // checks whether we already have a preset selected, if yes, go straight past
+        // sessionInput, and into session.
         if (runningForDrawer){
             runningForDrawer = false;
         }
-        // a test save right here:
-        //Utility.writeToFile(sessionTimer.getText().toString(), "sessionTimer.txt", getApplicationContext());
+        // switch statement checks which day it is, through the calendar,
+        // and uses checkForContent to either create a file, or add to an existing one.
+        // these saved values are for the weekly statistics
         switch (day) {
             case Calendar.MONDAY:
                 checkForContent("tsMonday.txt");
@@ -279,28 +283,30 @@ public class Session extends AppCompatActivity implements SensorEventListener {
             default:
                 break;
         }
-
+        // SPM is disabled in this version due to it being unfinished
         spmNumbers = findViewById(R.id.spmNumbers);
-        //if(ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-            //Utility.doToast(this,"permission to save not granted");
-        //}
-        //else
+
+
+        // these values are for the monthly statistics
+        // containing target time, session time, and the placeholder SPM
         Utility.writeToFile(sessionTimer.getText().toString(), dayMonth+".txt", getApplicationContext());
         Utility.writeToFile(debugT.getText().toString(), dayMonth+"targetTime.txt", getApplicationContext());
         Utility.writeToFile(spmNumbers.getText().toString(), dayMonth+"SPM.txt", getApplicationContext());
-        //checkForContentMonth(dayMonth+".txt");
 
+        // return to main screen upon saving
         Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+        // here we notify(putExtra) that runningForDrawer is false, so that you will be
+        // referred to the sessionInput in case you start another session from drawer
         intent.putExtra("SAVED_RUNNING",runningForDrawer);
-        // somewhere about here, we want to save an 'entry' of a new session (save the data long term)
-        // toast the user that session has been saved
         Utility.doToast(getApplicationContext(),"Session was saved");
         startActivity(intent);
     }
 
+    // this method checks whether a file already contains data, and if it does, combines that data
+    // with new data, otherwise it writes the file from scratch
     private void checkForContent(String weekDay) {
         if(!weekDay.equals("0")) {
-            // conv to int, add new sessiomdata as int, convert to string
+            // conv to int, add new sessiondata as int, convert to string
             int old = Integer.parseInt(Utility.divideString(Utility.readFromFile(weekDay,getApplicationContext())));
             int newest = Integer.parseInt(Utility.divideString(sessionTimer.getText().toString()));
             int combined = old+newest;
@@ -312,17 +318,7 @@ public class Session extends AppCompatActivity implements SensorEventListener {
         }
     }
 
-    /*private void checkForContentMonth(String monthDay) {
-        if (!monthDay.equals("0")) {
-            int oldST = Integer.parseInt(Utility.divideString(Utility.readFromFile(monthDay,getApplicationContext())));
-            int newST = Integer.parseInt(Utility.divideString(sessionTimer.getText().toString()));
-            int combinedST = oldST+newST;
-            Utility.writeToFile(Integer.toString(combinedST),monthDay,getApplicationContext());
-        }
-        else {
-            Utility.writeToFile(sessionTimer.getText().toString(), dayMonth+".txt", getApplicationContext());
-        }
-    }*/
+   
 
     public void returnToSession(View v) {
         //initializing buttons by id
